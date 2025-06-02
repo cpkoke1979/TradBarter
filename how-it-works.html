@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How It Works</title>
+<link as="script" href="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" rel="preload"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      background-color: #e6f0fa;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+    .logo {
+      height: 180px;
+      margin-right: 40px;
+    }
+    .header-text {
+      max-width: 600px;
+      text-align: left;
+    }
+    .header-text h1 {
+      font-size: 42px;
+      margin: 0 0 10px;
+    }
+    .header-text p {
+      font-size: 24px;
+      margin: 0;
+    }
+    .steps {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateX(80px);
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 600px;
+    }
+    .emoji {
+      font-size: 48px;
+      width: 60px;
+      text-align: center;
+      margin-right: 15px;
+    }
+    .emoji i {
+      width: 48px;
+      height: 48px;
+      stroke: #003366;
+      stroke-width: 1.5;
+      transition: transform 0.3s ease;
+    }
+    .emoji:hover i {
+      transform: scale(1.2);
+    }
+    .step-text {
+      flex: 1;
+    }
+    .step-text h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+    .step-text p {
+      margin: 0;
+      font-size: 16px;
+    }
+    .cta {
+      text-align: center;
+      margin: 40px 20px;
+    }
+    .cta button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+    .cta button:hover {
+      background-color: #005fa3;
+    }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .header-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .logo {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      .header-text {
+        text-align: center;
+      }
+      .steps {
+        transform: none;
+      }
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .emoji {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      html, body {
+        background-color: #ffffff !important;
+        color: #003366 !important;
+      }
+      header, footer {
+        background-color: white !important;
+        color: #003366 !important;
+      }
+    }
+  </style><style>
+.steps {
+  margin-top: 30px !important;
+}
+</style>
+</head>
+<body>
+<div class="header-bar">
+<a href="index.html">
+<img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/>
+</a>
+<div class="header-text">
+<h1>How It Works</h1>
+<p>5 Simple Steps to Start Trading</p>
+</div>
+</div>
+<section class="steps">
+<div class="step">
+<div class="emoji"><i data-lucide="search"></i></div>
+<div class="step-text">
+<h3>Step 1: Browse</h3>
+<p>Explore listings for goods and services you need.</p>
+</div>
+</div>
+<div class="step">
+<div class="emoji"><i data-lucide="handshake"></i></div>
+<div class="step-text">
+<h3>Step 2: Match</h3>
+<p>Find the right person or service to trade with.</p>
+</div>
+</div>
+<div class="step">
+<div class="emoji"><i data-lucide="message-circle"></i></div>
+<div class="step-text">
+<h3>Step 3: Message</h3>
+<p>Connect, chat, and discuss your trade.</p>
+</div>
+</div>
+<div class="step">
+<div class="emoji"><i data-lucide="check-circle"></i></div>
+<div class="step-text">
+<h3>Step 4: Agree</h3>
+<p>Confirm details and set the terms of your trade.</p>
+</div>
+</div>
+<div class="step">
+<div class="emoji"><i data-lucide="party-popper"></i></div>
+<div class="step-text">
+<h3>Step 5: Trade</h3>
+<p>Make the swap! Celebrate your win-win exchange.</p>
+</div>
+</div>
+</section>
+<div class="cta">
+<button onclick="location.href='signup.html'">Start Trading Now</button>
+</div>
+<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

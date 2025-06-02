@@ -1,1 +1,100 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Sign Up</title></head><body><h2>Signup Page</h2></body></html>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up - TradBarter™</title>
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+      margin: 0;
+      padding: 0;
+    }
+    .header-bar {
+      background-color: #e6f0fa;
+      text-align: center;
+      padding: 3px;
+    }
+    .logo {
+      height: 140px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea {
+      padding: 3px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input[type="file"] {
+      padding: 6px;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .note {
+      font-size: 14px;
+      color: #666;
+      margin-top: -10px;
+    }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="header-bar">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
+</div>
+<div class="container">
+<h1>Create Your Account</h1>
+<form action="#" enctype="multipart/form-data" method="POST">
+<label for="name">Full Name</label>
+<input id="name" name="name" required="" type="text"/>
+<label for="email">Email</label>
+<input id="email" name="email" required="" type="email"/>
+<label for="password">Password</label>
+<input id="password" name="password" required="" type="password"/>
+<label for="confirm-password">Confirm Password</label>
+<input id="confirm-password" name="confirm-password" required="" type="password"/>
+<label for="kyc-doc">Upload ID Document</label>
+<input accept=".pdf,.jpg,.png" id="kyc-doc" name="kyc-doc" required="" type="file"/>
+<div class="note">Passport, driving licence, or utility bill accepted.</div>
+<button type="submit">Sign Up</button>
+</form>
+</div>
+<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+</body>
+</html>
