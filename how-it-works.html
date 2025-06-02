@@ -105,11 +105,7 @@
       color: #777;
       padding: 20px;
     }
-    @media (max-width: 768px) {
-      .header-bar {
-        flex-direction: column;
-        text-align: center;
-      }
+    
       .logo {
         margin-right: 0;
         margin-bottom: 20px;
@@ -225,10 +221,7 @@
 }
 
 
-@media (max-width: 768px) {
-  .header-bar .logo {
-    display: none !important;
-  }
+
 }
 
 
@@ -271,6 +264,37 @@
   .mobile-logo {
     margin-top: 0 !important;
     padding-top: 0 !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header-bar {
+    margin: 0 !important;
+    padding-top: 10px;
+    background-color: #e6f0fa;
+  }
+
+  .top-nav {
+    z-index: 1002;
+  }
+
+  .mobile-logo {
+    z-index: 1003;
+  }
+
+  .menu-toggle {
+    top: 16px !important;
+    z-index: 1004;
+  }
+
+  .nav-links {
+    z-index: 1001;
   }
 }
 
