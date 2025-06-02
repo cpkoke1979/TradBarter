@@ -5,55 +5,15 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>About Us - TradBarter™</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
-      color: #003366;
-      margin: 0;
-      padding: 0;
-    }
-    .header-bar {
-      background-color: #e6f0fa;
-      text-align: center;
-      padding: 3px;
-    }
-    .logo {
-      height: 140px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 26px;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-      padding: 20px;
-      margin-top: 40px;
-    }
   
 <style>
 .top-nav {
   background-color: #e6f0fa;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 12px 20px;
   position: relative;
-}
-.logo-left .logo {
-  height: 60px;
 }
 .menu-toggle {
   display: none;
@@ -76,6 +36,15 @@
   font-weight: bold;
 }
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1002;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+  }
   .nav-links {
     display: none;
     flex-direction: column;
@@ -90,14 +59,9 @@
   .nav-links.active {
     display: flex;
   }
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1002;
-  }
 }
 </style>
+
 
 </style>
 </head>
@@ -105,9 +69,7 @@
 
   
 <div class="top-nav">
-  <div class="logo-left">
-    <a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
-  </div>
+  
 
   <div class="menu-toggle" onclick="toggleMenu()">
     <span></span>
