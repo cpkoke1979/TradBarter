@@ -65,21 +65,286 @@ function toggleMenu() {
   navLinks.classList.toggle('active');
 }
 </script>
-</head>
-<body><div class="color-block" style="background-color:#e6f0fa; color:#003366; padding:20px 0; text-align:center;">
-<div class="desktop-nav" style="position: absolute; top: 40px; right: 30px;">
-<a href="index.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Home</a>
-<a href="how-it-works.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">How it Works</a>
-<a href="view-listings.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Browse</a>
-<a href="create-listing.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Create</a>
-<a href="dashboard.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Dashboard</a>
-<a href="contact.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Contact</a>
-<a class="login-link" href="login.html" style="margin-left: 15px; text-decoration: none; font-weight: bold; font-family: 'Segoe UI', sans-serif; background-color: #0077cc; color: white; padding: 6px 12px; border-radius: 6px;">Login</a>
+<style>* {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      flex-wrap: wrap;
+      text-align: left;
+      background-color: #e6f0fa;
+    }
+    .logo {
+      height: 160px;
+      margin-right: 30px;
+    }
+    .header-text {
+      max-width: 600px;
+      transition: all 0.3s ease-in-out;
+    }
+    .header-text h1 {
+      font-size: 36px;
+      margin: 0 0 12px 0;
+    }
+    .header-text p {
+      font-size: 22px;
+      margin: 0;
+    }
+    .main-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 30px 20px 10px;
+    }
+    .mockup {
+      height: 320px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .mockup:hover {
+      transform: scale(1.03);
+    }
+    .button-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+    }
+    .button:hover {
+      background-color: #005fa3;
+      transform: translateY(-2px);
+    }
+    .how-it-works {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      transition: all 0.3s ease-in-out;
+    }
+    .step {
+      flex: 1 1 300px;
+      display: flex;
+      align-items: flex-start;
+      margin: 10px;
+    }
+    .step img {
+      height: 80px;
+      margin-right: 20px;
+      image-rendering: crisp-edges;
+    }
+    .step-text h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .step-text p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .mockup {
+        height: 220px;
+      }
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .step img {
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      html, body {
+        background-color: #ffffff !important;
+        color: #003366 !important;
+      }
+      header, footer {
+        background-color: white !important;
+        color: #003366 !important;
+      }
+    }
+  
+.login-button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.login-button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 18px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+.login-button:hover {
+  background-color: #005fa3;
+}
+
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f0fa;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+.logo-left .logo {
+  height: 80px;
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+  color: #003366;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+.nav-links a.login-link {
+  background-color: #0077cc;
+  color: white;
+}
+.nav-links a.login-link:hover {
+  background-color: #005fa3;
+}
+
+
+<style>
+@media (max-width: 768px) {
+  .header-bar img.logo {
+    display: none;
+  }
+}
+
+<style>
+@media (max-width: 768px) {
+  .header-container .logo {
+    display: none !important;
+  }
+  .menu-toggle {
+    order: -1;
+    margin-left: 10px;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container .logo {
+    display: none !important;
+  }
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #003366;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    background-color: #e6f0fa;
+    padding: 10px 0;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    padding: 10px 20px;
+    width: 100%;
+  }
+}
+</style><style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.color-block {
+  padding: 15px 0 !important;
+}
+.contact-form {
+  margin: 10px auto !important;
+  padding: 10px !important;
+}
+footer {
+  margin-top: 20px !important;
+}
+</style></head>
+<body><div class="top-nav">
+<div class="logo-left">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
 </div>
-<a href="index.html" style="position: absolute; top: 20px; left: 30px; height: 80px;"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png" style="height: 80px; display: block; margin: 0 auto 15px;"/></a><div class="header-text">
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="how-it-works.html">How it Works</a>
+<a href="view-listings.html">Browse</a>
+<a href="create-listing.html">Create</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+<a href="about-us.html">About Us</a>
+<a class="login-link" href="login.html">Login</a>
+</div>
+</div><div class="color-block" style="background-color:#e6f0fa; color:#003366; padding:20px 0; text-align:center;"><a href="index.html" style="position: absolute; top: 20px; left: 30px; height: 80px;"></a><div class="header-text">
 </div></div>
 <div class="color-block" style="background-color:#e6f0fa; color:#003366; padding:30px 0; text-align:center;">
 <h1>Contact Us</h1>
+<p>We'd love to hear from you</p>
 </div>
 <div class="contact-form">
 <form action="https://formspree.io/f/mpwrzlqd" id="contact-form" method="POST">
@@ -104,7 +369,7 @@ function toggleMenu() {
 </div>
 </div>
 </div>
-<footer style="text-align: center; padding: 20px; font-size: 14px; color: #777; margin-top: -20px">© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+<footer style="text-align: center; padding: 20px; font-size: 14px; color: #777; margin-top: 40px;">© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
   lucide.createIcons();
