@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - TradBarter™</title>
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #003366;
+  margin: 0;
+  padding: 0;
+}
+.header-bar {
+  background-color: #e6f0fa;
+  text-align: center;
+  padding: 3px;
+}
+.logo {
+  height: 140px;
+}
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.login-button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.login-button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 18px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+.login-button:hover {
+  background-color: #005fa3;
+}
+
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f0fa;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+.logo-left .logo {
+  height: 80px;
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+  color: #003366;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+.nav-links a.login-link {
+  background-color: #0077cc;
+  color: white;
+}
+.nav-links a.login-link:hover {
+  background-color: #005fa3;
+}
+
+</style>
+
+<style>
+/* Hamburger menu and mobile login */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 10px;
+}
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #003366;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+.mobile-login {
+  display: none;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    background-color: #e6f0fa;
+    padding: 10px 0;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    padding: 10px 20px;
+    width: 100%;
+  }
+  .mobile-login {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+  .logo-header {
+    display: none; /* hides large header logo on mobile */
+  }
+}
+@media (min-width: 769px) {
+  .mobile-login {
+    display: none;
+  }
+}
+.mobile-login a {
+  background-color: #0077cc;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 15px;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+.mobile-login a:hover {
+  background-color: #005fa3;
+}
+</style>
+<script>
+function toggleMenu() {
+  var menu = document.querySelector('.nav-links');
+  menu.classList.toggle('active');
+}
+</script>
+
+<style>
+.logo-header {
+  height: 70px !important;
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+.header-bar {
+  padding: 0 !important;
+}
+.top-nav {
+  padding: 3px 8px !important;
+}
+</style>
+
+    <style>
+    body, html {
+      background: #fdfdfd;
+    }
+    .container {
+      border: 2px dashed red;
+      background-color: #fff8f8;
+    }
+    h1 {
+      background-color: #ffe;
+      color: #000;
+    }
+    p {
+      background-color: #eef;
+      color: #000;
+    }
+    @media (max-width: 768px) {
+      .container {
+        border: 2px solid green;
+      }
+    }
+    </style>
+    </head>
+<body>
+<div class="mobile-login">
+  <a href="login.html">Login</a>
+</div>
+
+<div class="top-nav">
+  <div class="logo-left">
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+    <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo logo-header" /></a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How it Works</a>
+    <a href="view-listings.html">Browse</a>
+    <a href="create-listing.html">Create</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-link">Login</a>
+  </div>
+</div>
+
+
+
+<div class="header-bar">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
+</div>
+
+<div class="container">
+<h1>Login to TradBarter</h1>
+<p>Access your account below.</p><p>[Login form will be implemented here]</p>
+</div>
+
+<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+
+</body>
+</html>
