@@ -3,112 +3,111 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us - TradBarter™</title>
   
 <style>
-.top-nav {
-  background-color: #e6f0fa;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 12px 20px;
-  position: relative;
-}
-.menu-toggle {
-  display: none;
-}
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background-color: #003366;
-  margin: 4px 0;
-  display: block;
-  border-radius: 2px;
-}
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
-.nav-links a {
-  color: #003366;
-  text-decoration: none;
-  font-weight: bold;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1002;
-    position: absolute;
-    top: 12px;
-    right: 20px;
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    color: #003366;
+    margin: 0;
+    padding: 0;
   }
-  .nav-links {
+  .header-bar {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    height: 60px;
+  }
+  .menu-toggle {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: #e6f0fa;
-    padding: 10px;
-    border-radius: 6px;
-    z-index: 1001;
+    cursor: pointer;
   }
-  .nav-links.active {
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #003366;
+    margin: 4px 0;
+    border-radius: 2px;
+  }
+  .nav-links {
     display: flex;
+    gap: 20px;
   }
-}
+  .nav-links a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: bold;
+  }
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      background-color: #ffffff;
+      padding: 10px 0;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .nav-links a {
+      padding: 10px 20px;
+      width: 100%;
+    }
+  }
 </style>
+<script>
+  function toggleMenu() {
+    var menu = document.querySelector('.nav-links');
+    menu.classList.toggle('active');
+  }
+</script>
 
-
-</style>
 </head>
 <body>
-
   
-<div class="top-nav">
-  
-
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
+<header class="header-bar" style="background-color: #e6f0fa; padding: 10px 20px;">
+  <div class="navbar">
+    <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo"></a>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="get-started.html">Get Started</a>
+      <a href="about-us.html">About Us</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="login.html">Login</a>
+    </nav>
   </div>
+</header>
 
-  <div class="nav-links" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="get-started.html">Get Started</a>
-    <a href="about-us.html">About Us</a>
-    <a href="signup.html">Sign Up</a>
-    <a href="login.html">Login</a>
-  </div>
-</div>
-
-<div class="header-bar">
-    <a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
   
-
+<div class="container" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+  <h1 style="text-align: center;">About Us</h1>
+  <p>TradBarter is a global platform dedicated to revitalizing the age-old practice of bartering. We believe the true value lies within people and their abilities — not just in their <strong>skills</strong>, but also in the <strong>items</strong> and <strong>resources</strong> they have to offer. We empower individuals to leverage these inherent strengths — whether it's a talent, a service, or something tangible — to create opportunities for meaningful exchange that go beyond financial limitations.</p>
+  <p>In a world where <strong>skills</strong> and <strong>useful items</strong> often sit idle, TradBarter fosters a trusted community where people can trade what they have to get what they need. Built on the values of trust, sustainability, and human connection, we aim to help create a more resilient and cooperative world.</p>
 </div>
 
   
-<div class="container">
-  <h1>About Us</h1>
-  <p>TradBarter is a global platform dedicated to revitalizing the age-old practice of bartering. We believe the <strong>true value</strong> lies within people and their abilities — not just in their <strong>skills</strong>, but also in the <strong>items</strong> and <strong>resources</strong> they have to offer. We empower individuals to leverage these inherent strengths — whether it's a talent, a service, or something tangible — to create opportunities for meaningful exchange that go beyond financial limitations.</p>
-  <p>In a world where <strong>skills</strong> and <strong>useful items</strong> often sit idle, TradBarter fosters a <strong>trusted</strong> community <strong>where people can trade what they have to get what they need</strong>. Built on the values of trust, sustainability, and human connection, we aim to help create a more resilient and cooperative world.</p>
-</div>
-
-
-  <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
-
-
-<script>
-function toggleMenu() {
-  document.getElementById("mobileNav").classList.toggle("active");
-}
-</script>
+<footer style="text-align: center; font-size: 14px; color: #777; padding: 20px; margin-top: 40px;">
+  © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+</footer>
 
 </body>
 </html>
