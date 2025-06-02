@@ -43,8 +43,66 @@
       margin-top: 40px;
     }
   </style>
+
+<style>
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px;
+  }
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #003366;
+    margin: 4px 0;
+    border-radius: 2px;
+  }
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      background-color: #e6f0fa;
+      padding: 10px 0;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .nav-links a {
+      padding: 10px 20px;
+      width: 100%;
+    }
+  }
+</style>
+<script>
+function toggleMenu() {
+  var menu = document.querySelector('.nav-links');
+  menu.classList.toggle('active');
+}
+</script>
 </head>
 <body>
+
+<div class="header-bar" style="display: flex; align-items: center; justify-content: space-between; background-color: #e6f0fa; padding: 10px 20px;">
+  <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo" style="height: 60px;"></a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links" style="display: flex; gap: 20px;">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="get-started.html">Get Started</a>
+    <a href="about-us.html">About Us</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html" class="login-link">Login</a>
+  </div>
+</div>
+
 
   <div class="header-bar">
     <a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
