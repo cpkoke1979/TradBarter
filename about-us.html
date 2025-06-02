@@ -42,19 +42,123 @@
       padding: 20px;
       margin-top: 40px;
     }
-  </style>
+  
+.menu-toggle {
+  display: none;
+}
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #003366;
+  margin: 4px 0;
+  display: block;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background-color: #e6f0fa;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  .nav-links a {
+    color: #003366;
+    text-decoration: none;
+    padding: 6px 10px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+
+.menu-toggle {
+  display: none;
+}
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #003366;
+  margin: 4px 0;
+  display: block;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background-color: #e6f0fa;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  .nav-links a {
+    color: #003366;
+    text-decoration: none;
+    padding: 6px 10px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+</style>
 </head>
 <body>
 
   <div class="header-bar">
     <a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
   
+
+
+  
 <div style="position: absolute; top: 10px; right: 20px; font-weight: bold;">
   <a href="index.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Home</a>
+  
+
+
   <a href="how-it-works.html" style="color: #003366; text-decoration: none; margin-left: 10px;">How It Works</a>
+  
+
+
   <a href="get-started.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Get Started</a>
+  
+
+
   <a href="about-us.html" style="color: #003366; text-decoration: none; margin-left: 10px;">About Us</a>
+  
+
+
   <a href="signup.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Sign Up</a>
+  
+
+
   <a href="login.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Login</a>
 </div>
 </div>
@@ -68,6 +172,16 @@
 
 
   <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+
+
+
+
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileNav').classList.toggle('active');
+}
+</script>
 
 </body>
 </html>
