@@ -176,9 +176,29 @@
 }
 
 
+
+
+
 @media (max-width: 768px) {
-  .header-bar .logo {
-    display: none !important;
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 6px 14px;
+  }
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    top: -2px;
+    left: 0;
+    margin: 0;
+  }
+  .logo-left {
+    margin-left: auto;
+  }
+  .logo-left .logo {
+    display: none !important; /* still hidden on mobile */
   }
 }
 
