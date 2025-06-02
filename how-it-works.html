@@ -176,9 +176,26 @@
 }
 
 
+
+
+
 @media (max-width: 768px) {
-  .header-bar .logo {
-    display: none !important;
+  .top-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+  }
+  .menu-toggle {
+    position: static;
+    margin: 0;
+  }
+  .logo-left {
+    margin-left: auto;
+  }
+  .logo-left .logo {
+    height: 60px;
+    display: block !important;
   }
 }
 
