@@ -92,9 +92,82 @@ footer {
   background-color: #005fa3;
 }
 
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f0fa;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+.logo-left .logo {
+  height: 80px;
+}
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+  color: #003366;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+.nav-links a.login-link {
+  background-color: #0077cc;
+  color: white;
+}
+.nav-links a.login-link:hover {
+  background-color: #005fa3;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+    font-size: 26px;
+    color: #003366;
+  }
+}
+
 </style>
 </head>
 <body>
+
+<div class="top-nav">
+  <div class="logo-left">
+    <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo" /></a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How it Works</a>
+    <a href="view-listings.html">Browse</a>
+    <a href="create-listing.html">Create</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-link">Login</a>
+  </div>
+</div>
+
 
 <div class="top-nav">
   <div class="logo-left">
@@ -123,6 +196,14 @@ footer {
 </div>
 
 <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("navMenu");
+  menu.classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
