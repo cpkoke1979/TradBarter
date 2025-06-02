@@ -207,55 +207,45 @@ footer {
 </style>
 
 <style>
-/* Hamburger Styles */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #003366;
-  margin: 4px 0;
-  border-radius: 2px;
-}
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-  .nav-links {
+  .logo-right {
     display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    padding: 10px 0;
   }
-  .nav-links.active {
-    display: flex;
+  .mobile-login {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
   }
-  .nav-links a {
-    padding: 10px 20px;
-    width: 100%;
+}
+@media (min-width: 769px) {
+  .mobile-login {
+    display: none;
   }
+}
+.mobile-login a {
+  background-color: #0077cc;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 15px;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+.mobile-login a:hover {
+  background-color: #005fa3;
 }
 </style>
-<script>
-function toggleMenu() {
-  const navLinks = document.querySelector('.nav-links');
-  navLinks.classList.toggle('active');
-}
-</script>
 </head>
 <body>
 
-<div class="top-nav">
-  <div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
+<div class="mobile-login">
+  <a href="login.html">Login</a>
 </div>
-<div class="logo-left">
+
+
+<div class="top-nav">
+  <div class="logo-left">
     <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo" /></a>
   </div>
   <div class="nav-links">
