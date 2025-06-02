@@ -43,136 +43,18 @@
       margin-top: 40px;
     }
   
-.menu-toggle {
-  display: none;
-}
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #003366;
-  margin: 4px 0;
-  display: block;
-  border-radius: 2px;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    background-color: #e6f0fa;
-    padding: 10px;
-    border-radius: 4px;
-    z-index: 1000;
-  }
-  .nav-links a {
-    color: #003366;
-    text-decoration: none;
-    padding: 6px 10px;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
-.menu-toggle {
-  display: none;
-}
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #003366;
-  margin: 4px 0;
-  display: block;
-  border-radius: 2px;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    background-color: #e6f0fa;
-    padding: 10px;
-    border-radius: 4px;
-    z-index: 1000;
-  }
-  .nav-links a {
-    color: #003366;
-    text-decoration: none;
-    padding: 6px 10px;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
 <style>
-.menu-toggle {
-  display: none;
+.top-nav {
+  background-color: #e6f0fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  position: relative;
 }
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #003366;
-  margin: 4px 0;
-  display: block;
-  border-radius: 2px;
+.logo-left .logo {
+  height: 60px;
 }
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    background-color: #e6f0fa;
-    padding: 10px;
-    border-radius: 4px;
-    z-index: 1000;
-  }
-  .nav-links a {
-    color: #003366;
-    text-decoration: none;
-    padding: 6px 10px;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-<style>
 .menu-toggle {
   display: none;
 }
@@ -184,81 +66,35 @@
   display: block;
   border-radius: 2px;
 }
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+.nav-links a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+}
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 12px;
-    right: 20px;
-    flex-direction: column;
-    z-index: 1001;
-  }
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 60px;
-    right: 10px;
-    background-color: #e6f0fa;
-    padding: 12px;
-    border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .nav-links a {
-    padding: 6px 12px;
-    color: #003366;
-    text-decoration: none;
-  }
-}
-</style>
-
-</style>
-
-
-<style>
-.menu-toggle {
-  display: none;
-}
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background-color: #003366;
-  margin: 4px 0;
-  display: block;
-  border-radius: 2px;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 12px;
     right: 20px;
-    flex-direction: column;
+    background-color: #e6f0fa;
+    padding: 10px;
+    border-radius: 6px;
     z-index: 1001;
   }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    background-color: #e6f0fa;
-    padding: 12px;
-    border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
   .nav-links.active {
     display: flex;
   }
-  .nav-links a {
-    padding: 6px 12px;
-    color: #003366;
-    text-decoration: none;
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1002;
   }
 }
 </style>
@@ -267,35 +103,32 @@
 </head>
 <body>
 
-  <div class="header-bar">
+  
+<div class="top-nav">
+  <div class="logo-left">
+    <a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
+  </div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-links" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="get-started.html">Get Started</a>
+    <a href="about-us.html">About Us</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a>
+  </div>
+</div>
+
+<div class="header-bar">
     <a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
   
 
-
-  
-<div style="position: absolute; top: 10px; right: 20px; font-weight: bold;">
-  <a href="index.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Home</a>
-  
-
-
-  <a href="how-it-works.html" style="color: #003366; text-decoration: none; margin-left: 10px;">How It Works</a>
-  
-
-
-  <a href="get-started.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Get Started</a>
-  
-
-
-  <a href="about-us.html" style="color: #003366; text-decoration: none; margin-left: 10px;">About Us</a>
-  
-
-
-  <a href="signup.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Sign Up</a>
-  
-
-
-  <a href="login.html" style="color: #003366; text-decoration: none; margin-left: 10px;">Login</a>
-</div>
 </div>
 
   
@@ -309,19 +142,9 @@
   <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
 
 
-
-
-
-
-
-
-
-
-
 <script>
 function toggleMenu() {
-  var nav = document.getElementById("mobileNav");
-  nav.classList.toggle("active");
+  document.getElementById("mobileNav").classList.toggle("active");
 }
 </script>
 
