@@ -1,81 +1,124 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contact - TradBarter™</title>
+<title>Contact Us - TradBarter</title>
+<link as="script" href="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" rel="preload"/>
+<link href="style.css" rel="stylesheet"/>
 <style>
+/* Add custom styles consistent with how-it-works */
 body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: #ffffff;
   color: #003366;
-  margin: 0;
-  padding: 0;
 }
-.header-bar {
-  background-color: #e6f0fa;
-  text-align: center;
-  padding: 3px;
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-.logo {
-  height: 140px;
-}
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-}
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 26px;
-}
-footer {
-  text-align: center;
-  font-size: 14px;
-  color: #777;
-  padding: 20px;
-  margin-top: 40px;
-}
-
-.login-button-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.login-button {
+button {
   background-color: #0077cc;
   color: white;
-  padding: 10px 18px;
-  font-size: 15px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-family: 'Segoe UI', sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.login-button:hover {
+button:hover {
   background-color: #005fa3;
 }
-
+.contact-form {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+}
+.success-message {
+  display: none;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 4px;
+  text-align: center;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+.social-icons img {
+  width: 32px;
+  height: 32px;
+}
 </style>
+<script>
+function toggleMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  navLinks.classList.toggle('active');
+}
+</script>
 </head>
-<body>
-
-<div class="login-button-container">
-  <a href="login.html" class="login-button">Login</a>
+<body><div class="color-block" style="background-color:#e6f0fa; color:#003366; padding:20px 0; text-align:center;"><a href="index.html" style="position: absolute; top: 20px; left: 30px; height: 80px;"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png" style="height: 80px; display: block; margin: 0 auto 15px;"/></a><div class="desktop-nav" style="position: absolute; top: 20px; right: 30px;"><a href="index.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Home</a><a href="how-it-works.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">How it Works</a><a href="view-listings.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Browse</a><a href="create-listing.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Create</a><a href="dashboard.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Dashboard</a><a href="contact.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif;">Contact</a><a href="login.html" style="margin-left: 15px; text-decoration: none; color: #003366; font-weight: bold; font-family: 'Segoe UI', sans-serif; background-color: #0077cc; color: white; padding: 6px 12px; border-radius: 6px;">Login</a></div><div class="header-text">
+</div></div>
+<div class="color-block" style="background-color:#e6f0fa; color:#003366; padding:30px 0; text-align:center;">
+<h1>Contact Us</h1>
+<p>We'd love to hear from you</p>
 </div>
-
-
-<div class="header-bar">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
+<div class="contact-form">
+<form action="https://formspree.io/f/mpwrzlqd" id="contact-form" method="POST">
+<label for="name">Full Name</label>
+<input id="name" name="name" required="" type="text"/>
+<label for="email">Email</label>
+<input id="email" name="email" required="" type="email"/>
+<label for="subject">Subject</label>
+<input id="subject" name="subject" required="" type="text"/>
+<label for="message">Message</label>
+<textarea id="message" name="message" required="" rows="6"></textarea>
+<button type="submit">Send Message</button>
+<div class="success-message" id="success-message">✅ Thank you! Your message has been sent.</div>
+</form>
+<div class="contact-info" style="text-align:center; margin-top:30px;">
+<p>Or reach us directly at:</p>
+<a href="mailto:info@tradbarter.com">info@tradbarter.com</a><br/>
+<a href="mailto:colin@tradbarter.com">colin@tradbarter.com</a>
+<div class="social-icons">
+<a href="#"><img alt="X" src="images/x-icon.png"/></a>
+<a href="#"><img alt="Facebook" src="images/facebook-icon.png"/></a>
+<a href="#"><img alt="Instagram" src="images/instagram-icon.png"/></a>
 </div>
-
-<div class="container">
-<h1>Contact Us page content with TradBarter styling</h1>
-<p>This is a placeholder for the contact us page content with tradbarter styling page content.</p>
 </div>
+</div>
+<footer style="text-align: center; padding: 20px; font-size: 14px; color: #777; margin-top: 40px;">© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
 
-<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+  const form = document.getElementById('contact-form');
+  const successMessage = document.getElementById('success-message');
 
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    if (response.ok) {
+      form.reset();
+      successMessage.style.display = 'block';
+    }
+  });
+</script>
 </body>
 </html>
