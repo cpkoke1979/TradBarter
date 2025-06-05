@@ -1,407 +1,149 @@
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>How It Works</title>
-<link as="script" href="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" rel="preload"/>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How It Works - TradBarter</title>
+  <link rel="stylesheet" href="static/styles.css" />
+  <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #ffffff;
       color: #003366;
+      text-align: center;
     }
-    .header-bar {
+
+    .top-nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
       background-color: #e6f0fa;
-      flex-wrap: wrap;
-      margin-bottom: 0;
-    }
-    .logo {
-      height: 180px;
-      margin-right: 40px;
-    }
-    .header-text {
-      max-width: 600px;
-      text-align: left;
-    }
-    .header-text h1 {
-      font-size: 42px;
-      margin: 0 0 10px;
-    }
-    .header-text p {
-      font-size: 24px;
-      margin: 0;
-    }
-    .steps {
-      max-width: 900px;
-      margin: 0 auto;
       padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      height: 80px;
+    }
+
+    .nav-links {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 15px;
       align-items: center;
-      transform: translateX(80px);
     }
-    .step {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px;
-      width: 100%;
-      max-width: 600px;
-    }
-    .emoji {
-      font-size: 48px;
-      width: 60px;
-      text-align: center;
-      margin-right: 15px;
-    }
-    .emoji i {
-      width: 48px;
-      height: 48px;
-      stroke: #003366;
-      stroke-width: 1.5;
-      transition: transform 0.3s ease;
-    }
-    .emoji:hover i {
-      transform: scale(1.2);
-    }
-    .step-text {
-      flex: 1;
-    }
-    .step-text h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-    .step-text p {
-      margin: 0;
+
+    .nav-links a {
+      text-decoration: none;
+      font-family: 'Segoe UI', sans-serif;
+      color: #003366;
+      font-weight: bold;
       font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
     }
-    .cta {
-      text-align: center;
-      margin: 40px 20px;
-    }
-    .cta button {
+
+    .nav-links a.login-link {
       background-color: #0077cc;
       color: white;
-      border: none;
-      padding: 14px 30px;
-      font-size: 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     }
-    .cta button:hover {
+
+    .nav-links a.login-link:hover {
       background-color: #005fa3;
     }
+
+    .header-block {
+      background-color: #e6f0fa;
+      padding: 40px 20px 10px;
+    }
+
+    .header-block h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .steps {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: left;
+    }
+
+    .step {
+      margin-bottom: 25px;
+    }
+
+    .step h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #003366;
+    }
+
+    .step p {
+      font-size: 16px;
+      margin: 0;
+    }
+
     footer {
       text-align: center;
       font-size: 14px;
       color: #777;
       padding: 20px;
     }
-    
-      .logo {
-        margin-right: 0;
-        margin-bottom: 20px;
-      }
-      .header-text {
-        text-align: center;
+
+    @media (max-width: 768px) {
+      .nav-links {
+        justify-content: center;
+        width: 100%;
       }
       .steps {
-        transform: none;
-      }
-      .step {
-        flex-direction: column;
-        align-items: center;
         text-align: center;
       }
-      .emoji {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
     }
-    @media (prefers-color-scheme: dark) {
-      html, body {
-        background-color: #ffffff !important;
-        color: #003366 !important;
-      }
-      header, footer {
-        background-color: white !important;
-        color: #003366 !important;
-      }
-    }
-  
-.top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #e6f0fa;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-}
-.logo-left .logo {
-  height: 80px;
-}
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
-.nav-links a {
-  text-decoration: none;
-  font-family: 'Segoe UI', sans-serif;
-  color: #003366;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 8px 14px;
-  border-radius: 6px;
-}
-.nav-links a.login-link {
-  background-color: #0077cc;
-  color: white;
-}
-.nav-links a.login-link:hover {
-  background-color: #005fa3;
-}
-
-
-
-
-
-
-@media (max-width: 768px) {
-  .top-nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    position: relative;
-    padding: 6px 14px;
-  }
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 6px;
-    right: 10px;
-    margin: 0;
-  }
-  .logo-left {
-    display: none !important; /* hides the logo block entirely */
-  }
-}
-
-
-@media (min-width: 769px) {
-  .header-bar .logo {
-    display: none !important;
-  }
-}
-
-
-
-
-
-
-}
-
-
-
-
-
-@media (max-width: 768px) {
-  body {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  html {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  .mobile-logo,
-  .top-nav,
-  .header-bar {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-
-
-
-
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    top: 16px !important;
-  }
-  .header-bar {
-    margin-top: 20px !important;
-  }
-  body, html {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  .top-nav,
-  .mobile-logo {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-
-
-@media (max-width: 768px) {
-  html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .header-bar {
-    margin: 0 !important;
-    padding-top: 10px;
-    background-color: #e6f0fa;
-  }
-
-  .top-nav {
-    z-index: 1002;
-  }
-
-  .mobile-logo {
-    z-index: 1003;
-  }
-
-  .menu-toggle {
-    top: 16px !important;
-    z-index: 1004;
-  }
-
-  .nav-links {
-    z-index: 1001;
-  }
-}
-
-</style><style>
-.steps {
-  margin-top: 30px !important;
-}
-</style>
-<style>
-/* Hamburger Styles */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #003366;
-  margin: 4px 0;
-  border-radius: 2px;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    padding: 10px 0;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .nav-links a {
-    padding: 10px 20px;
-    width: 100%;
-  }
-}
-</style>
-<script>
-function toggleMenu() {
-  const navLinks = document.querySelector('.nav-links');
-  navLinks.classList.toggle('active');
-}
-</script>
+  </style>
 </head>
 <body>
-<div class="top-nav">
-<div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<div class="logo-left">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
-</div>
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="view-listings.html">Browse</a>
-<a href="create-listing.html">Create</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="contact.html">Contact</a>
-<a class="login-link" href="login.html">Login</a>
-</div>
-</div>
-<div class="header-bar">
-<a href="index.html">
-<img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/>
-</a>
-<div class="header-text">
-<h1 style="margin-top: -25px;">How It Works</h1>
-<p style="margin-top: -15px;">5 Simple Steps to Start Trading</p>
-</div>
-</div>
-<section class="steps">
-<div class="step">
-<div class="emoji"><i data-lucide="search"></i></div>
-<div class="step-text">
-<h3>Step 1: Browse</h3>
-<p>Explore listings for goods and services you need.</p>
-</div>
-</div>
-<div class="step">
-<div class="emoji"><i data-lucide="handshake"></i></div>
-<div class="step-text">
-<h3>Step 2: Match</h3>
-<p>Find the right person or service to trade with.</p>
-</div>
-</div>
-<div class="step">
-<div class="emoji"><i data-lucide="message-circle"></i></div>
-<div class="step-text">
-<h3>Step 3: Message</h3>
-<p>Connect, chat, and discuss your trade.</p>
-</div>
-</div>
-<div class="step">
-<div class="emoji"><i data-lucide="check-circle"></i></div>
-<div class="step-text">
-<h3>Step 4: Agree</h3>
-<p>Confirm details and set the terms of your trade.</p>
-</div>
-</div>
-<div class="step">
-<div class="emoji"><i data-lucide="party-popper"></i></div>
-<div class="step-text">
-<h3>Step 5: Trade</h3>
-<p>Make the swap! Celebrate your win-win exchange.</p>
-</div>
-</div>
-</section>
-<div class="cta">
-<button onclick="location.href='signup.html'">Start Trading Now</button>
-</div>
-<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-    lucide.createIcons();
-  </script>
+  <div class="top-nav">
+    <div class="logo-left">
+      <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo"></a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="view-listings.html">Browse</a>
+      <a href="create-listing.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="signup.html">Sign Up</a>
+      <a class="login-link" href="login.html">Login</a>
+    </div>
+  </div>
+
+  <div class="header-block">
+    <h1>How It Works</h1>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <h2>1. Create Your Profile</h2>
+      <p>Set up your barter profile with details about your skills, services, and items available for trade.</p>
+    </div>
+    <div class="step">
+      <h2>2. Browse Listings</h2>
+      <p>Find listings from others in your area or beyond. Discover items or services you need.</p>
+    </div>
+    <div class="step">
+      <h2>3. Propose a Trade</h2>
+      <p>Message users directly and suggest a fair trade. You can negotiate or counter-offer with ease.</p>
+    </div>
+    <div class="step">
+      <h2>4. Agree & Trade</h2>
+      <p>Once both parties agree, carry out the swap. Leave reviews to build community trust.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+  </footer>
 </body>
 </html>

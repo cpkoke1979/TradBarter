@@ -1,394 +1,166 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sign Up - TradBarter™</title>
-<style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
-      color: #003366;
-      margin: 0;
-      padding: 0;
-    }
-    .header-bar {
-      background-color: #e6f0fa;
-      text-align: center;
-      padding: 3px;
-    }
-    .logo {
-      height: 140px;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    label {
-      font-weight: bold;
-    }
-    input, textarea {
-      padding: 3px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    input[type="file"] {
-      padding: 6px;
-    }
-    button {
-      background-color: #0077cc;
-      color: white;
-      border: none;
-      padding: 14px;
-      font-size: 18px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005fa3;
-    }
-    .note {
-      font-size: 14px;
-      color: #666;
-      margin-top: -10px;
-    }
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  
-
-.logo-left .logo {
-  height: 80px;
-}
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
-.nav-links a {
-  text-decoration: none;
-  font-family: 'Segoe UI', sans-serif;
-  color: #003366;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 8px 14px;
-  border-radius: 6px;
-}
-.nav-links a.login-link {
-  background-color: #0077cc;
-  color: white;
-}
-.nav-links a.login-link:hover {
-  background-color: #005fa3;
-}
-
-
-@media (max-width: 768px) {
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-  
-}
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-  
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    padding: 10px 0;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-  
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    padding: 10px 0;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
-
-
-
-.top-nav {
-  background-color: #e6f0fa;
-  position: relative;
-  height: 180px;
-  padding: 20px;
-}
-.logo-left {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  z-index: 1000;
-}
-.menu-toggle {
-  display: none;
-}
-.nav-links {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
-.create-account-header {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 26px;
-  color: #003366;
-  margin: 0;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 1001;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    top: 60px;
-    right: 0;
-    width: 100%;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-</style>
-
-<style>
-/* Hamburger Styles */
-
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #003366;
-  margin: 4px 0;
-  border-radius: 2px;
-}
-@media (max-width: 768px) {
-  
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    padding: 10px 0;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .nav-links a {
-    padding: 10px 20px;
-    width: 100%;
-  }
-}
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-  
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    padding: 10px 0;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
-
-
-
-.top-nav {
-  background-color: #e6f0fa;
-  position: relative;
-  height: 180px;
-  padding: 20px;
-}
-.logo-left {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  z-index: 1000;
-}
-.menu-toggle {
-  display: none;
-}
-.nav-links {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-}
-.create-account-header {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 26px;
-  color: #003366;
-  margin: 0;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 1001;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #e6f0fa;
-    top: 60px;
-    right: 0;
-    width: 100%;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-</style>
-<script>
-function toggleMenu() {
-  const navLinks = document.querySelector('.nav-links');
-  navLinks.classList.toggle('active');
-}
-</script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign Up - TradBarter™</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: #003366;
+            margin: 0;
+            padding: 0;
+        }
+        .header-bar {
+            background-color: #e6f0fa;
+            text-align: center;
+            padding: 3px;
+        }
+        .logo {
+            height: 140px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            padding: 3px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        input[type="file"] {
+            padding: 6px;
+        }
+        button {
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-top: -10px;
+        }
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            color: #003366;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 8px 14px;
+            border-radius: 6px;
+        }
+        .nav-links a.login-link {
+            background-color: #0077cc;
+            color: white;
+        }
+        .nav-links a.login-link:hover {
+            background-color: #005fa3;
+        }
+        .menu-toggle {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #e6f0fa;
+                padding: 10px 0;
+                width: 100%;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 10px 20px;
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </head>
 <body>
-
-<div class="top-nav">
-  <h1 class="create-account-header">Create Your Account</h1>
-  <div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<div class="logo-left">
-    <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo" /></a>
-  </div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="how-it-works.html">How it Works</a>
-    <a href="view-listings.html">Browse</a>
-    <a href="create-listing.html">Create</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="contact.html">Contact</a>
-    <a href="login.html" class="login-link">Login</a>
-  </div>
-</div>
-
-<div class="container">
-<form action="#" enctype="multipart/form-data" method="POST">
-<label for="name">Full Name</label>
-<input id="name" name="name" required="" type="text"/>
-<label for="email">Email</label>
-<input id="email" name="email" required="" type="email"/>
-<label for="password">Password</label>
-<input id="password" name="password" required="" type="password"/>
-<label for="confirm-password">Confirm Password</label>
-<input id="confirm-password" name="confirm-password" required="" type="password"/>
-<label for="kyc-doc">Upload ID Document</label>
-<input accept=".pdf,.jpg,.png" id="kyc-doc" name="kyc-doc" required="" type="file"/>
-<div class="note">Passport, driving licence, or utility bill accepted.</div>
-<button type="submit">Sign Up</button>
-</form>
-</div>
-<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+    <header>
+        <div class="header-bar">
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo" /></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="how-it-works.html">How it Works</a>
+                <a href="view-listings.html">Browse</a>
+                <a href="create-listing.html">Create</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html" class="login-link">Login</a>
+            </nav>
+        </div>
+        <h1 class="create-account-header">Create Your Account</h1>
+    </header>
+    <main class="container">
+        <form action="#" enctype="multipart/form-data" method="POST">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" required="" type="text"/>
+            <label for="email">Email</label>
+            <input id="email" name="email" required="" type="email"/>
+            <label for="password">Password</label>
+            <input id="password" name="password" required="" type="password"/>
+            <label for="confirm-password">Confirm Password</label>
+            <input id="confirm-password" name="confirm-password" required="" type="password"/>
+            <label for="kyc-doc">Upload ID Document</label>
+            <input accept=".pdf,.jpg,.png" id="kyc-doc" name="kyc-doc" required="" type="file"/>
+            <div class="note">Passport, driving licence, or utility bill accepted.</div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+    <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
 </body>
 </html>

@@ -38,26 +38,6 @@ footer {
   margin-top: 40px;
 }
 
-.login-button-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.login-button {
-  background-color: #0077cc;
-  color: white;
-  padding: 10px 18px;
-  font-size: 15px;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-family: 'Segoe UI', sans-serif;
-}
-.login-button:hover {
-  background-color: #005fa3;
-}
-
-
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -92,9 +72,6 @@ footer {
   background-color: #005fa3;
 }
 
-</style>
-
-<style>
 /* Hamburger Styles */
 .menu-toggle {
   display: none;
@@ -137,16 +114,16 @@ function toggleMenu() {
 </head>
 <body>
 
-<div class="top-nav">
+<header class="top-nav">
   <div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<div class="logo-left">
-    <a href="index.html"><img src="images/tradbarter_logo_left_aligned.png" alt="TradBarter Logo" class="logo" /></a>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-  <div class="nav-links">
+  <div class="logo-left">
+    <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo" /></a>
+  </div>
+  <nav class="nav-links">
     <a href="index.html">Home</a>
     <a href="how-it-works.html">How it Works</a>
     <a href="view-listings.html">Browse</a>
@@ -154,19 +131,13 @@ function toggleMenu() {
     <a href="dashboard.html">Dashboard</a>
     <a href="contact.html">Contact</a>
     <a href="login.html" class="login-link">Login</a>
-  </div>
-</div>
+  </nav>
+</header>
 
-
-
-<div class="header-bar">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
-</div>
-
-<div class="container">
-<h1>Terms & Conditions page content with TradBarter styling</h1>
-<p>This is a placeholder for the terms & conditions page content with tradbarter styling page content.</p>
-</div>
+<main class="container">
+  <h1>Terms & Conditions page content with TradBarter styling</h1>
+  <p>This is a placeholder for the terms & conditions page content with tradbarter styling page content.</p>
+</main>
 
 <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
 

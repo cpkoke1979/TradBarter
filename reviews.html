@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Reviews | TradBarter</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
+  <style>
+    .top-nav-bar {
+      background: #e6f0fa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 28px 16px 18px;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      margin-bottom: 0;
+    }
+    .top-nav-bar .logo {
+      height: 60px;
+    }
+    .top-nav-links {
+      display: flex;
+      gap: 17px;
+      align-items: center;
+    }
+    .top-nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .top-nav-links a.login-link {
+      background: #0077cc;
+      color: white;
+    }
+    .top-nav-links a.login-link:hover {
+      background: #005fa3;
+    }
+    .top-nav-links a:hover {
+      background: #d2e8fa;
+    }
+    .reviews-wrap {
+      max-width: 700px;
+      margin: 0 auto 0 auto;
+      background: #fff;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      padding: 30px 32px 40px 32px;
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .reviews-header .profile-pic {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      border: 3px solid #205090;
+      margin-bottom: 8px;
+      background: #eee;
+      object-fit: cover;
+    }
+    .reviews-header .profile-name {
+      font-size: 23px;
+      font-weight: 600;
+      color: #205090;
+      margin-bottom: 4px;
+    }
+    .reviews-header .stars {
+      color: #FFD600;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .reviews-header .rating-text {
+      color: #003366;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .review-list {
+      margin-top: 18px;
+      padding: 0;
+      list-style: none;
+    }
+    .review {
+      border-bottom: 1px solid #e6f0fa;
+      padding: 18px 0 12px 0;
+      margin-bottom: 4px;
+    }
+    .review:last-child {
+      border-bottom: none;
+    }
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 6px;
+    }
+    .reviewer-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #b6c6dd;
+      background: #e7e7ec;
+    }
+    .reviewer-name {
+      font-weight: 600;
+      color: #205090;
+      font-size: 16px;
+    }
+    .review-stars {
+      color: #FFD600;
+      font-size: 15px;
+    }
+    .review-date {
+      color: #999;
+      font-size: 13px;
+      margin-left: auto;
+    }
+    .review-comment {
+      margin-left: 54px;
+      color: #003366;
+      font-size: 15px;
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+    @media (max-width: 700px) {
+      .reviews-wrap { padding: 12px 5px 19px 5px; }
+      .reviews-header .profile-name { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-nav-bar">
+    <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo"></a>
+    <nav class="top-nav-links">
+      <a href="view-listings.html">Browse</a>
+      <a href="trade.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+      <a class="login-link" href="login.html">Login</a>
+    </nav>
+  </div>
+  <div class="reviews-wrap">
+    <div class="reviews-header">
+      <img src="static/x-icon.png" alt="Profile Pic" class="profile-pic"/>
+      <div class="profile-name">Colin Koke</div>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="rating-text">4.8 (21 reviews)</span></div>
+    </div>
+    <ul class="review-list">
+      <!-- Sample reviews - replace with dynamic data later -->
+      <li class="review">
+        <div class="review-top">
+          <img src="static/x-icon.png" alt="Reviewer" class="reviewer-pic"/>
+          <span class="reviewer-name">Emily L.</span>
+          <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="review-date">Apr 2025</span>
+        </div>
+        <div class="review-comment">
+          Great experience! Colin was quick to respond and the flat was spotless. Would definitely trade again.
+        </div>
+      </li>
+      <li class="review">
+        <div class="review-top">
+          <img src="static/x-icon.png" alt="Reviewer" class="reviewer-pic"/>
+          <span class="reviewer-name">Adeel S.</span>
+          <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          <span class="review-date">Mar 2025</span>
+        </div>
+        <div class="review-comment">
+          Trade was smooth. Colin was flexible with arrangements. Highly recommended.
+        </div>
+      </li>
+      <li class="review">
+        <div class="review-top">
+          <img src="static/x-icon.png" alt="Reviewer" class="reviewer-pic"/>
+          <span class="reviewer-name">Sara P.</span>
+          <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="review-date">Feb 2025</span>
+        </div>
+        <div class="review-comment">
+          Friendly, helpful and trustworthy. Looking forward to more swaps!
+        </div>
+      </li>
+      <!-- Add more reviews as needed -->
+    </ul>
+  </div>
+</body>
+</html>

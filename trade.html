@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Create - TradBarter™</title>
 <style>
 body {
@@ -19,36 +19,55 @@ body {
 }
 .logo {
   height: 140px;
+  width: auto;
 }
 .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 26px;
+  font-size: 2em;
+}
+p {
+  font-size: 1em;
 }
 footer {
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875em;
   color: #777;
   padding: 20px;
   margin-top: 40px;
+}
+@media screen and (max-width: 800px) {
+  .container {
+    width: 90%;
+  }
+  .logo {
+    height: 70px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  p {
+    font-size: 0.875em;
+  }
 }
 </style>
 </head>
 <body>
 
-<div class="header-bar">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="images/tradbarter_logo_left_aligned.png"/></a>
-</div>
+<header class="header-bar">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+</header>
 
-<div class="container">
+<main class="container">
 <h1>Create Listing page content with TradBarter styling</h1>
 <p>This is a placeholder for the create listing page content with tradbarter styling page content.</p>
-</div>
+</main>
 
 <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
 

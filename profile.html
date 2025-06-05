@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile | TradBarter</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    .top-nav-bar {
+      background: #e6f0fa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 28px 16px 18px;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      margin-bottom: 0;
+    }
+    .top-nav-bar .logo {
+      height: 60px;
+    }
+    .top-nav-links {
+      display: flex;
+      gap: 17px;
+      align-items: center;
+    }
+    .top-nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .top-nav-links a.login-link {
+      background: #0077cc;
+      color: white;
+    }
+    .top-nav-links a.login-link:hover {
+      background: #005fa3;
+    }
+    .top-nav-links a:hover {
+      background: #d2e8fa;
+    }
+    .profile-wrap {
+      max-width: 650px;
+      margin: 0 auto 0 auto;
+      background: #fff;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      padding: 0 28px 32px 28px;
+    }
+    @media (max-width: 800px) {
+      .top-nav-bar { flex-direction: column; gap: 7px; padding: 12px 7px 8px 7px;}
+      .top-nav-bar .logo { height: 44px; }
+      .profile-wrap { padding: 0 4px 22px 4px; }
+    }
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .profile-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .profile-pic-col {
+      flex: 0 0 120px;
+      text-align: center;
+    }
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #205090;
+      margin-bottom: 10px;
+      background: #eee;
+    }
+    .profile-rating {
+      margin: 5px 0 4px 0;
+      font-size: 16px;
+      color: #205090;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stars {
+      color: #FFD600;
+      font-size: 19px;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .see-reviews-link {
+      font-size: 14px;
+      color: #0077cc;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 2px;
+      margin-bottom: 8px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .see-reviews-link:hover {
+      color: #003366;
+    }
+    .profile-fields {
+      flex: 1 1 300px;
+    }
+    .field-label {
+      font-weight: 600;
+      color: #205090;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 7px 11px;
+      border-radius: 5px;
+      border: 1px solid #b6c6dd;
+      font-size: 15px;
+      font-family: inherit;
+      margin-bottom: 10px;
+      background: #f7faff;
+    }
+    textarea { resize: vertical; }
+    .profile-section-title {
+      font-weight: 600;
+      color: #205090;
+      font-size: 17px;
+      margin: 20px 0 7px 0;
+    }
+    .profile-columns {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .profile-col {
+      flex: 1 1 200px;
+      background: #f5f9fd;
+      border-radius: 10px;
+      padding: 15px 14px 12px;
+      min-width: 180px;
+    }
+    ul.edit-list {
+      padding-left: 18px;
+      margin: 0 0 6px 0;
+    }
+    .edit-list input {
+      margin-bottom: 5px;
+      background: #fff;
+      border: 1px solid #b6c6dd;
+    }
+    .add-btn {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 4px 11px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 5px;
+      margin-bottom: 4px;
+    }
+    .add-btn:hover {
+      background: #005fa3;
+    }
+    .profile-actions {
+      text-align: right;
+      margin-top: 18px;
+    }
+    .profile-actions button {
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .profile-actions button:hover {
+      background: #005fa3;
+    }
+    @media (max-width: 800px) {
+      .profile-wrap { padding: 0 8px 22px 8px; }
+      .profile-columns { flex-direction: column; gap: 10px; }
+    }
+  </style>
+  <script>
+    // Basic JS for dynamic add/remove list items in skills/items
+    function addField(sectionId) {
+      const ul = document.getElementById(sectionId);
+      const li = document.createElement('li');
+      li.innerHTML = '<input type="text" name="' + sectionId + '[]" /> <button type="button" onclick="this.parentNode.remove()">Remove</button>';
+      ul.appendChild(li);
+    }
+  </script>
+</head>
+<body>
+  <div class="top-nav-bar">
+    <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo"></a>
+    <nav class="top-nav-links">
+      <a href="how-it-works.html">How it Works</a>
+      <a href="view-listings.html">Browse</a>
+      <a href="trade.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+      <a href="about-us.html">About Us</a>
+      <a class="login-link" href="login.html">Login</a>
+    </nav>
+  </div>
+  <div style="background: #e6f0fa; text-align: center; padding: 10px 0;">
+  <h1 style="margin: 0; font-size: 26px; color: #003366;">Profile</h1>
+</div>
+  <div class="profile-wrap">
+    <form class="profile-form">
+      <div class="profile-row">
+        <div class="profile-pic-col">
+          <img src="static/x-icon.png" alt="User Picture" class="profile-pic"/>
+          <div class="profile-rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:#777; font-size:15px; font-weight:400;">4.8</span></div>
+            <a class="see-reviews-link" href="reviews.html">(21 reviews)</a>
+          </div>
+          <label class="field-label" for="profile-pic">Change Photo</label>
+          <input type="file" id="profile-pic" name="profile-pic" accept="image/*">
+        </div>
+        <div class="profile-fields">
+          <label class="field-label" for="profile-name">Name</label>
+          <input type="text" id="profile-name" name="profile-name" value="Colin Koke">
+          <label class="field-label" for="profile-location">Location</label>
+          <input type="text" id="profile-location" name="profile-location" value="Liverpool, UK">
+          <label class="field-label" for="profile-bio">About</label>
+          <textarea id="profile-bio" name="profile-bio" rows="3">Airline pilot, property developer, and passionate about bartering for goods.</textarea>
+        </div>
+      </div>
+      <div class="profile-columns">
+        <div class="profile-col">
+          <div class="profile-section-title">Skills / Services Offered</div>
+          <ul class="edit-list" id="skills-offered">
+            <li><input type="text" name="skills-offered[]" value="Pilot Training"/></li>
+            <li><input type="text" name="skills-offered[]" value="Property Management"/></li>
+            <li><input type="text" name="skills-offered[]" value="Mentoring"/></li>
+          </ul>
+          <button type="button" class="add-btn" onclick="addField('skills-offered')">+ Add</button>
+        </div>
+        <div class="profile-col">
+          <div class="profile-section-title">Skills / Services Wanted</div>
+          <ul class="edit-list" id="skills-wanted">
+            <li><input type="text" name="skills-wanted[]" value="Social Media Marketing"/></li>
+            <li><input type="text" name="skills-wanted[]" value="French Translation"/></li>
+          </ul>
+          <button type="button" class="add-btn" onclick="addField('skills-wanted')">+ Add</button>
+        </div>
+      </div>
+      <div class="profile-columns">
+        <div class="profile-col">
+          <div class="profile-section-title">Items Available for Trade</div>
+          <ul class="edit-list" id="items-offered">
+            <li><input type="text" name="items-offered[]" value="2-Bedroom Flat, Liverpool"/></li>
+            <li><input type="text" name="items-offered[]" value="iPad Mini"/></li>
+          </ul>
+          <button type="button" class="add-btn" onclick="addField('items-offered')">+ Add</button>
+        </div>
+        <div class="profile-col">
+          <div class="profile-section-title">Items Wanted</div>
+          <ul class="edit-list" id="items-wanted">
+            <li><input type="text" name="items-wanted[]" value="GoPro Camera"/></li>
+            <li><input type="text" name="items-wanted[]" value="Extra Luggage"/></li>
+          </ul>
+          <button type="button" class="add-btn" onclick="addField('items-wanted')">+ Add</button>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button type="submit">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+
