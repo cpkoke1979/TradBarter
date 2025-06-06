@@ -119,7 +119,21 @@
         display: none;
       }
     }
-  </style>
+  
+.logo {
+  display: block !important;
+  height: 50px;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    display: block !important;
+    height: 40px;
+    margin-left: 10px;
+  }
+}
+</style>
 <script>
     function toggleMenu() {
       const nav = document.querySelector('.nav-links');
@@ -140,7 +154,6 @@
 <div class="nav-links">
 <a href="how-it-works.html">How it Works</a>
 <a href="browse.html">Browse</a>
-
 <a href="dashboard.html">Dashboard</a>
 <a href="contact.html">Contact</a>
 <a href="about-us.html">About Us</a>
