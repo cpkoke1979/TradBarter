@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -13,7 +12,6 @@
       background-color: #ffffff;
       color: #003366;
     }
-
     .top-nav {
       display: flex;
       justify-content: space-between;
@@ -22,17 +20,14 @@
       padding: 10px 20px;
       flex-wrap: wrap;
     }
-
     .logo-left img.logo {
       height: 80px;
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .menu-toggle span {
       height: 3px;
       width: 25px;
@@ -40,14 +35,12 @@
       margin: 4px 0;
       border-radius: 2px;
     }
-
     .nav-links {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       align-items: center;
     }
-
     .nav-links a {
       text-decoration: none;
       color: #003366;
@@ -56,121 +49,166 @@
       padding: 8px 14px;
       border-radius: 6px;
     }
-
     .nav-links a.login-link {
       background-color: #0077cc;
       color: white;
     }
-
     .nav-links a.login-link:hover {
       background-color: #005fa3;
     }
-
     .header-container {
       background-color: #e6f0fa;
       padding: 30px 10px;
       text-align: center;
       color: #003366;
     }
-
     .header-container h1 {
       font-size: 32px;
       margin-bottom: 10px;
     }
-
     .page-content {
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
     }
-
     footer {
       text-align: center;
       font-size: 14px;
       color: #777;
       padding: 20px 10px;
     }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #e6f0fa;
-        margin-top: 10px;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-      }
-
-      .logo-left img.logo {
-        display: none;
-      }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
     }
-  
-.logo {
-  display: block !important;
-  height: 50px;
-  max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .logo {
-    display: block !important;
-    height: 40px;
-    margin-left: 10px;
-  }
-}
+    button {
+      background-color: #0077cc;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .char-counter {
+      font-size: 14px;
+      color: #666;
+      text-align: right;
+    }
+    .preview-box {
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: left;
+    }
 </style>
 <script>
     function toggleMenu() {
       const nav = document.querySelector('.nav-links');
       nav.classList.toggle('active');
     }
-  </script>
+
+    function updateCharCount(el, counterId, max) {
+      const count = el.value.length;
+      document.getElementById(counterId).textContent = `${count}/${max}`;
+    }
+
+    function showPreview() {
+      const offer = document.getElementById('offer').value;
+      const value = document.getElementById('value').value;
+      const want = document.getElementById('want').value;
+      const category = document.getElementById('category').value;
+      const location = document.getElementById('location').value;
+      const description = document.getElementById('description').value;
+
+      document.getElementById('preview-offer').textContent = offer;
+      document.getElementById('preview-value').textContent = '£' + value;
+      document.getElementById('preview-want').textContent = want;
+      document.getElementById('preview-category').textContent = category;
+      document.getElementById('preview-location').textContent = location;
+      document.getElementById('preview-description').textContent = description;
+      document.getElementById('preview-box').style.display = 'block';
+    }
+</script>
 </head>
 <body>
 <div class="top-nav">
-<div class="logo-left">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
-</div>
-<div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<div class="nav-links">
-<a href="how-it-works.html">How it Works</a>
-<a href="browse.html">Browse</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="contact.html">Contact</a>
-<a href="about-us.html">About Us</a>
-<a class="login-link" href="login.html">Login</a>
-</div>
+  <div class="logo-left">
+    <a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+  </div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="nav-links">
+    <a href="how-it-works.html">How it Works</a>
+    <a href="browse.html">Browse</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="contact.html">Contact</a>
+    <a href="about-us.html">About Us</a>
+    <a class="login-link" href="login.html">Login</a>
+  </div>
 </div>
 <div class="header-container">
-<h1>Create Listing</h1>
+  <h1>Create a Trade</h1>
 </div>
 <div class="page-content">
-<main class="container">
-<h1>Create Listing page content with TradBarter styling</h1>
-<p>This is a placeholder for the create listing page content with tradbarter styling page content.</p>
-</main>
+  <form onsubmit="event.preventDefault(); showPreview();" style="max-width: 700px; margin: 0 auto; text-align: left;">
+    <label for="offer">What You're Offering</label>
+    <input type="text" id="offer" name="offer" placeholder="e.g. Gardening help, Electric drill" required />
+
+    <label for="value">Approximate Value</label>
+    <div style="display: flex; align-items: center; gap: 6px;">
+      <span style="font-size: 18px;">£</span>
+      <input type="number" id="value" name="value" placeholder="e.g. 50" min="0" step="any" required style="flex: 1;" />
+    </div>
+
+    <label for="want">What You Want in Return</label>
+    <input type="text" id="want" name="want" placeholder="e.g. Piano lessons, GoPro camera" required />
+
+    <label for="category">Category</label>
+    <select id="category" name="category" required>
+      <option value="">Select a category</option>
+      <option value="item">Item</option>
+      <option value="service">Service</option>
+    </select>
+
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" placeholder="e.g. Liverpool, UK" required />
+
+    <label for="image">Upload Image (optional)</label>
+    <input type="file" id="image" name="image" accept="image/*" />
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="5" placeholder="Add any details about your trade listing..." oninput="updateCharCount(this, 'desc-count', 500)" maxlength="500"></textarea>
+    <div class="char-counter" id="desc-count">0/500</div>
+
+    <button type="submit" style="margin-top: 20px;">Preview Listing</button>
+  </form>
+
+  <div id="preview-box" class="preview-box" style="display:none;">
+    <h3>Listing Trade</h3>
+    <p><strong>Offering:</strong> <span id="preview-offer"></span></p>
+    <p><strong>Value:</strong> <span id="preview-value"></span></p>
+    <p><strong>Looking for:</strong> <span id="preview-want"></span></p>
+    <p><strong>Category:</strong> <span id="preview-category"></span></p>
+    <p><strong>Location:</strong> <span id="preview-location"></span></p>
+    <p><strong>Description:</strong><br><span id="preview-description"></span></p>
+  </div>
 </div>
 <footer>
-    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
-  </footer>
+  © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+</footer>
 </body>
 </html>
