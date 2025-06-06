@@ -1,182 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login - TradBarter™</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fdfdfd;
-            color: #003366;
-            margin: 0;
-            padding: 0;
-        }
-        .header-bar {
-            background-color: #e6f0fa;
-            text-align: center;
-            padding: 3px;
-        }
-        .logo {
-            height: 140px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #fff8f8;
-            border: 2px dashed red;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 26px;
-            background-color: #ffe;
-            color: #000;
-        }
-        p {
-            background-color: #eef;
-            color: #000;
-        }
-        footer {
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-            padding: 20px;
-            margin-top: 40px;
-        }
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #e6f0fa;
-            padding: 10px 20px;
-            flex-wrap: wrap;
-        }
-        .logo-left .logo {
-            height: 80px;
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-family: 'Segoe UI', sans-serif;
-            color: #003366;
-            font-weight: bold;
-            font-size: 16px;
-            padding: 8px 14px;
-            border-radius: 6px;
-        }
-        .nav-links a.login-link {
-            background-color: #0077cc;
-            color: white;
-        }
-        .nav-links a.login-link:hover {
-            background-color: #005fa3;
-        }
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            margin-left: auto;
-            padding: 10px;
-        }
-        .menu-toggle span {
-            height: 3px;
-            width: 25px;
-            background: #003366;
-            margin: 4px 0;
-            border-radius: 2px;
-        }
-        .mobile-login {
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                background-color: #e6f0fa;
-                padding: 10px 0;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links a {
-                padding: 10px 20px;
-                width: 100%;
-            }
-            .mobile-login {
-                display: block;
-                position: absolute;
-                top: 15px;
-                right: 20px;
-            }
-            .logo-header {
-                display: none;
-            }
-            .container {
-                border: 2px solid green;
-            }
-        }
-        .mobile-login a {
-            background-color: #0077cc;
-            color: white;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 15px;
-            text-decoration: none;
-            font-family: 'Segoe UI', sans-serif;
-        }
-        .mobile-login a:hover {
-            background-color: #005fa3;
-        }
-    </style>
-    <script>
-        function toggleMenu() {
-            var menu = document.querySelector('.nav-links');
-            menu.classList.toggle('active');
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TradBarter™</title>
+  <link rel="icon" type="image/png" href="static/x-icon.png"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e6f0fa;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-left img.logo {
+      height: 80px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .nav-links a.login-link {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .nav-links a.login-link:hover {
+      background-color: #005fa3;
+    }
+
+    .header-container {
+      background-color: #e6f0fa;
+      padding: 30px 10px;
+      text-align: center;
+      color: #003366;
+    }
+
+    .header-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .logo-left img.logo {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
 </head>
 <body>
-    <div class="mobile-login">
-        <a href="login.html">Login</a>
+
+  <div class="top-nav">
+    <div class="logo-left">
+      <a href="index.html"><img class="logo" src="static/tradbarter-logo.png" alt="TradBarter Logo"/></a>
     </div>
-    <div class="top-nav">
-        <div class="logo-left">
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <a href="index.html"><img src="static/tradbarter_logo.png" alt="TradBarter Logo" class="logo logo-header" /></a>
-        </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="how-it-works.html">How it Works</a>
-            <a href="view-listings.html">Browse</a>
-            <a href="trade.html">Trade</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="contact.html">Contact</a>
-            <a href="login.html" class="login-link">Login</a>
-        </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <div class="header-bar">
-        <a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How it Works</a>
+      <a href="browse.html">Browse</a>
+      <a href="trade.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+      <a href="about-us.html">About Us</a>
+      <a class="login-link" href="login.html">Login</a>
     </div>
-    <div class="container">
-        <h1>Login to TradBarter</h1>
-        <p>Access your account below.</p>
-        <p>[Login form will be implemented here]</p>
-    </div>
-    <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+  </div>
+
+  <div class="header-container">
+    <h1>Login</h1>
+  </div>
+
+  <div class="page-content">
+    
+<h2 style="text-align: center; margin-bottom: 30px;">Login to TradBarter</h2>
+<main class="container" style="max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div class="container">
+<h1>Login to TradBarter</h1>
+<p>Access your account below.</p>
+<p>[Login form will be implemented here]</p>
+</div>
+</main>
+
+  </div>
+
+  <footer>
+    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+  </footer>
+
 </body>
 </html>

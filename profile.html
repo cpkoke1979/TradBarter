@@ -3,9 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User Profile | TradBarter</title>
-  <link rel="stylesheet" href="/static/styles.css" />
+  <title>TradBarter™</title>
+  <link rel="icon" type="image/png" href="static/x-icon.png"/>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e6f0fa;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-left img.logo {
+      height: 80px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .nav-links a.login-link {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .nav-links a.login-link:hover {
+      background-color: #005fa3;
+    }
+
+    .header-container {
+      background-color: #e6f0fa;
+      padding: 30px 10px;
+      text-align: center;
+      color: #003366;
+    }
+
+    .header-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .logo-left img.logo {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
+<style>
     .top-nav-bar {
       background: #e6f0fa;
       display: flex;
@@ -191,21 +311,19 @@
       .profile-wrap { padding: 0 8px 22px 8px; }
       .profile-columns { flex-direction: column; gap: 10px; }
     }
-  </style>
-  <script>
-    // Basic JS for dynamic add/remove list items in skills/items
-    function addField(sectionId) {
-      const ul = document.getElementById(sectionId);
-      const li = document.createElement('li');
-      li.innerHTML = '<input type="text" name="' + sectionId + '[]" /> <button type="button" onclick="this.parentNode.remove()">Remove</button>';
-      ul.appendChild(li);
-    }
-  </script>
-</head>
+  </style></head>
 <body>
-  <div class="top-nav-bar">
-    <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo"></a>
-    <nav class="top-nav-links">
+
+  <div class="top-nav">
+    <div class="logo-left">
+      <a href="index.html"><img class="logo" src="static/tradbarter-logo.png" alt="TradBarter Logo"/></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
       <a href="how-it-works.html">How it Works</a>
       <a href="view-listings.html">Browse</a>
       <a href="trade.html">Trade</a>
@@ -213,74 +331,82 @@
       <a href="contact.html">Contact</a>
       <a href="about-us.html">About Us</a>
       <a class="login-link" href="login.html">Login</a>
-    </nav>
+    </div>
   </div>
-  <div style="background: #e6f0fa; text-align: center; padding: 10px 0;">
-  <h1 style="margin: 0; font-size: 26px; color: #003366;">Profile</h1>
+
+  <div class="header-container">
+    <h1>Your Profile</h1>
+  </div>
+
+  <div class="page-content">
+    <div class="profile-wrap">
+<form class="profile-form">
+<div class="profile-row">
+<div class="profile-pic-col">
+<img alt="User Picture" class="profile-pic" src="static/x-icon.png">
+<div class="profile-rating">
+<div class="stars">★★★★★ <span style="color:#777; font-size:15px; font-weight:400;">4.8</span></div>
+<a class="see-reviews-link" href="reviews.html">(21 reviews)</a>
 </div>
-  <div class="profile-wrap">
-    <form class="profile-form">
-      <div class="profile-row">
-        <div class="profile-pic-col">
-          <img src="static/x-icon.png" alt="User Picture" class="profile-pic"/>
-          <div class="profile-rating">
-            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:#777; font-size:15px; font-weight:400;">4.8</span></div>
-            <a class="see-reviews-link" href="reviews.html">(21 reviews)</a>
-          </div>
-          <label class="field-label" for="profile-pic">Change Photo</label>
-          <input type="file" id="profile-pic" name="profile-pic" accept="image/*">
-        </div>
-        <div class="profile-fields">
-          <label class="field-label" for="profile-name">Name</label>
-          <input type="text" id="profile-name" name="profile-name" value="Colin Koke">
-          <label class="field-label" for="profile-location">Location</label>
-          <input type="text" id="profile-location" name="profile-location" value="Liverpool, UK">
-          <label class="field-label" for="profile-bio">About</label>
-          <textarea id="profile-bio" name="profile-bio" rows="3">Airline pilot, property developer, and passionate about bartering for goods.</textarea>
-        </div>
-      </div>
-      <div class="profile-columns">
-        <div class="profile-col">
-          <div class="profile-section-title">Skills / Services Offered</div>
-          <ul class="edit-list" id="skills-offered">
-            <li><input type="text" name="skills-offered[]" value="Pilot Training"/></li>
-            <li><input type="text" name="skills-offered[]" value="Property Management"/></li>
-            <li><input type="text" name="skills-offered[]" value="Mentoring"/></li>
-          </ul>
-          <button type="button" class="add-btn" onclick="addField('skills-offered')">+ Add</button>
-        </div>
-        <div class="profile-col">
-          <div class="profile-section-title">Skills / Services Wanted</div>
-          <ul class="edit-list" id="skills-wanted">
-            <li><input type="text" name="skills-wanted[]" value="Social Media Marketing"/></li>
-            <li><input type="text" name="skills-wanted[]" value="French Translation"/></li>
-          </ul>
-          <button type="button" class="add-btn" onclick="addField('skills-wanted')">+ Add</button>
-        </div>
-      </div>
-      <div class="profile-columns">
-        <div class="profile-col">
-          <div class="profile-section-title">Items Available for Trade</div>
-          <ul class="edit-list" id="items-offered">
-            <li><input type="text" name="items-offered[]" value="2-Bedroom Flat, Liverpool"/></li>
-            <li><input type="text" name="items-offered[]" value="iPad Mini"/></li>
-          </ul>
-          <button type="button" class="add-btn" onclick="addField('items-offered')">+ Add</button>
-        </div>
-        <div class="profile-col">
-          <div class="profile-section-title">Items Wanted</div>
-          <ul class="edit-list" id="items-wanted">
-            <li><input type="text" name="items-wanted[]" value="GoPro Camera"/></li>
-            <li><input type="text" name="items-wanted[]" value="Extra Luggage"/></li>
-          </ul>
-          <button type="button" class="add-btn" onclick="addField('items-wanted')">+ Add</button>
-        </div>
-      </div>
-      <div class="profile-actions">
-        <button type="submit">Save Changes</button>
-      </div>
-    </form>
+<label class="field-label" for="profile-pic">Change Photo</label>
+<input accept="image/*" id="profile-pic" name="profile-pic" type="file"/>
+</img></div>
+<div class="profile-fields">
+<label class="field-label" for="profile-name">Name</label>
+<input id="profile-name" name="profile-name" type="text" value="Colin Koke"/>
+<label class="field-label" for="profile-location">Location</label>
+<input id="profile-location" name="profile-location" type="text" value="Liverpool, UK"/>
+<label class="field-label" for="profile-bio">About</label>
+<textarea id="profile-bio" name="profile-bio" rows="3">Airline pilot, property developer, and passionate about bartering for goods.</textarea>
+</div>
+</div>
+<div class="profile-columns">
+<div class="profile-col">
+<div class="profile-section-title">Skills / Services Offered</div>
+<ul class="edit-list" id="skills-offered">
+<li><input name="skills-offered[]" type="text" value="Pilot Training"/></li>
+<li><input name="skills-offered[]" type="text" value="Property Management"/></li>
+<li><input name="skills-offered[]" type="text" value="Mentoring"/></li>
+</ul>
+<button class="add-btn" onclick="addField('skills-offered')" type="button">+ Add</button>
+</div>
+<div class="profile-col">
+<div class="profile-section-title">Skills / Services Wanted</div>
+<ul class="edit-list" id="skills-wanted">
+<li><input name="skills-wanted[]" type="text" value="Social Media Marketing"/></li>
+<li><input name="skills-wanted[]" type="text" value="French Translation"/></li>
+</ul>
+<button class="add-btn" onclick="addField('skills-wanted')" type="button">+ Add</button>
+</div>
+</div>
+<div class="profile-columns">
+<div class="profile-col">
+<div class="profile-section-title">Items Available for Trade</div>
+<ul class="edit-list" id="items-offered">
+<li><input name="items-offered[]" type="text" value="2-Bedroom Flat, Liverpool"/></li>
+<li><input name="items-offered[]" type="text" value="iPad Mini"/></li>
+</ul>
+<button class="add-btn" onclick="addField('items-offered')" type="button">+ Add</button>
+</div>
+<div class="profile-col">
+<div class="profile-section-title">Items Wanted</div>
+<ul class="edit-list" id="items-wanted">
+<li><input name="items-wanted[]" type="text" value="GoPro Camera"/></li>
+<li><input name="items-wanted[]" type="text" value="Extra Luggage"/></li>
+</ul>
+<button class="add-btn" onclick="addField('items-wanted')" type="button">+ Add</button>
+</div>
+</div>
+<div class="profile-actions">
+<button type="submit">Save Changes</button>
+</div>
+</form>
+</div>
   </div>
+
+  <footer>
+    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+  </footer>
+
 </body>
 </html>
-

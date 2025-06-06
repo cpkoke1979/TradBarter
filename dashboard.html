@@ -1,11 +1,132 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard | TradBarter</title>
-  <link rel="stylesheet" href="/static/styles.css" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradBarter™</title>
+<link href="static/x-icon.png" rel="icon" type="image/png"/>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e6f0fa;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-left img.logo {
+      height: 80px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .nav-links a.login-link {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .nav-links a.login-link:hover {
+      background-color: #005fa3;
+    }
+
+    .header-container {
+      background-color: #e6f0fa;
+      padding: 30px 10px;
+      text-align: center;
+      color: #003366;
+    }
+
+    .header-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .logo-left img.logo {
+        display: none;
+      }
+    }
+  </style>
+<script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
+<style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -94,60 +215,69 @@
     .quick-actions button:hover {
       background: #519cde;
     }
-  </style>
-</head>
+  </style></head>
 <body>
-  <div class="top-nav-bar">
-    <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo"></a>
-    <nav class="top-nav-links">
-      <a href="view-listings.html">Browse</a>
-      <a href="trade.html">Trade</a>
-      <a href="#">Messages</a>
-      <a href="profile.html">Profile</a>
-    </nav>
-  </div>
-  <div style="background: #cbe3fc; text-align: center; padding: 10px 0;">
-  <h1 style="margin: 0; font-size: 26px; color: #003366;">Dashboard</h1>
+<div class="top-nav">
+<div class="logo-left">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
 </div>
-  <div class="dashboard-container">
-    <div class="dashboard-header">Hello Colin, here’s your activity today</div>
-
-    <div class="card">
-      <h3>Your Listings</h3>
-      <div class="listing-item">
-        <span>🔧 Home Repair</span>
-        <span><a href="#">Edit</a> | <a href="#">Delete</a></span>
-      </div>
-      <div class="listing-item">
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="nav-links">
+<a href="how-it-works.html">How it Works</a>
+<a href="browse.html">Browse</a>
+<a href="trade.html">Trade</a>
+<a href="contact.html">Contact</a>
+<a href="about-us.html">About Us</a>
+<a class="login-link" href="login.html">Login</a>
+</div>
+</div>
+<div class="header-container">
+<h1>Dashboard</h1>
+</div>
+<div class="page-content">
+<div class="dashboard-container">
+<div class="dashboard-header">Hello Colin, here’s your activity today</div>
+<div class="card">
+<h3>Your Listings</h3>
+<div class="listing-item">
+<span>🔧 Home Repair</span>
+<span><a href="#" style="background-color: #e6f0fa; padding: 4px 8px; border-radius: 6px; text-decoration: none; color: #003366;">Edit</a> | <a href="#" style="background-color: #e6f0fa; padding: 4px 8px; border-radius: 6px; text-decoration: none; color: #003366;">Delete</a></span>
+</div>
+<div class="listing-item">
         🚴 Bicycle
-        <span><a href="#">Edit</a> | <a href="#">Delete</a></span>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <div class="card">
-        <h3>Trade Requests</h3>
-        <p>Incoming <span class="badge">2</span> <span class="badge" style="background:#66b3ff;">1</span></p>
-      </div>
-      <div class="card">
-        <h3>Messages</h3>
-        <p>Is your bike still available?</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Stats</h3>
-      <p>💼 Completed Trades: 5<br/>🌟 Rating: 4.8</p>
-    </div>
-
-    <div class="card">
-      <h3>Quick Actions</h3>
-      <div class="quick-actions">
-        <button>+ Create Listing</button>
-        <button>👤 Update Profile</button>
-        <button>👁 View Trades</button>
-      </div>
-    </div>
-  </div>
+        <span><a href="#" style="background-color: #e6f0fa; padding: 4px 8px; border-radius: 6px; text-decoration: none; color: #003366;">Edit</a> | <a href="#" style="background-color: #e6f0fa; padding: 4px 8px; border-radius: 6px; text-decoration: none; color: #003366;">Delete</a></span>
+</div>
+</div>
+<div class="subsection">
+<div class="card">
+<h3>Trade Requests</h3>
+<p>Incoming <span class="badge">2</span> <span class="badge" style="background:#66b3ff;">1</span></p>
+</div>
+<div class="card">
+<h3>Messages</h3>
+<p>Is your bike still available?</p>
+</div>
+</div>
+<div class="card">
+<h3>Stats</h3>
+<p>💼 Completed Trades: 5<br/>🌟 Rating: 4.8</p>
+</div>
+<div class="card">
+<h3 style="; margin-bottom: 20px;">Quick Actions</h3>
+<div class="quick-actions">
+<button>+ Create Listing</button>
+<button>👤 Update Profile</button>
+<button>👁 View Trades</button>
+</div>
+</div>
+</div>
+</div>
+<footer>
+    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+  </footer>
 </body>
 </html>

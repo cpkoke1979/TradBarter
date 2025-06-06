@@ -1,75 +1,163 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Create - TradBarter™</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradBarter™</title>
+<link href="static/x-icon.png" rel="icon" type="image/png"/>
 <style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #ffffff;
-  color: #003366;
-  margin: 0;
-  padding: 0;
-}
-.header-bar {
-  background-color: #e6f0fa;
-  text-align: center;
-  padding: 3px;
-}
-.logo {
-  height: 140px;
-  width: auto;
-}
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  box-sizing: border-box;
-}
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-p {
-  font-size: 1em;
-}
-footer {
-  text-align: center;
-  font-size: 0.875em;
-  color: #777;
-  padding: 20px;
-  margin-top: 40px;
-}
-@media screen and (max-width: 800px) {
-  .container {
-    width: 90%;
-  }
-  .logo {
-    height: 70px;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-  p {
-    font-size: 0.875em;
-  }
-}
-</style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e6f0fa;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-left img.logo {
+      height: 80px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .nav-links a.login-link {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .nav-links a.login-link:hover {
+      background-color: #005fa3;
+    }
+
+    .header-container {
+      background-color: #e6f0fa;
+      padding: 30px 10px;
+      text-align: center;
+      color: #003366;
+    }
+
+    .header-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .logo-left img.logo {
+        display: none;
+      }
+    }
+  </style>
+<script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
 </head>
 <body>
-
-<header class="header-bar">
+<div class="top-nav">
+<div class="logo-left">
 <a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
-</header>
+</div>
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="nav-links">
+<a href="how-it-works.html">How it Works</a>
+<a href="browse.html">Browse</a>
 
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+<a href="about-us.html">About Us</a>
+<a class="login-link" href="login.html">Login</a>
+</div>
+</div>
+<div class="header-container">
+<h1>Create Listing</h1>
+</div>
+<div class="page-content">
 <main class="container">
 <h1>Create Listing page content with TradBarter styling</h1>
 <p>This is a placeholder for the create listing page content with tradbarter styling page content.</p>
 </main>
-
-<footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
-
+</div>
+<footer>
+    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+  </footer>
 </body>
 </html>

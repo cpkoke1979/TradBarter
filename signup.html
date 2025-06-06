@@ -1,10 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sign Up - TradBarter™</title>
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TradBarter™</title>
+  <link rel="icon" type="image/png" href="static/x-icon.png"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e6f0fa;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-left img.logo {
+      height: 80px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .nav-links a.login-link {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .nav-links a.login-link:hover {
+      background-color: #005fa3;
+    }
+
+    .header-container {
+      background-color: #e6f0fa;
+      padding: 30px 10px;
+      text-align: center;
+      color: #003366;
+    }
+
+    .header-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .logo-left img.logo {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
+<style>
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #ffffff;
@@ -116,51 +237,56 @@
                 width: 100%;
             }
         }
-    </style>
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-    </script>
-</head>
+    </style></head>
 <body>
-    <header>
-        <div class="header-bar">
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <a href="index.html"><img src="static/tradbarter-logo.png" alt="TradBarter Logo" class="logo" /></a>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="how-it-works.html">How it Works</a>
-                <a href="view-listings.html">Browse</a>
-                <a href="create-listing.html">Create</a>
-                <a href="dashboard.html">Dashboard</a>
-                <a href="contact.html">Contact</a>
-                <a href="login.html" class="login-link">Login</a>
-            </nav>
-        </div>
-        <h1 class="create-account-header">Create Your Account</h1>
-    </header>
-    <main class="container">
-        <form action="#" enctype="multipart/form-data" method="POST">
-            <label for="name">Full Name</label>
-            <input id="name" name="name" required="" type="text"/>
-            <label for="email">Email</label>
-            <input id="email" name="email" required="" type="email"/>
-            <label for="password">Password</label>
-            <input id="password" name="password" required="" type="password"/>
-            <label for="confirm-password">Confirm Password</label>
-            <input id="confirm-password" name="confirm-password" required="" type="password"/>
-            <label for="kyc-doc">Upload ID Document</label>
-            <input accept=".pdf,.jpg,.png" id="kyc-doc" name="kyc-doc" required="" type="file"/>
-            <div class="note">Passport, driving licence, or utility bill accepted.</div>
-            <button type="submit">Sign Up</button>
-        </form>
-    </main>
-    <footer>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</footer>
+
+  <div class="top-nav">
+    <div class="logo-left">
+      <a href="index.html"><img class="logo" src="static/tradbarter-logo.png" alt="TradBarter Logo"/></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="how-it-works.html">How it Works</a>
+      <a href="browse.html">Browse</a>
+      <a href="trade.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+      <a href="about-us.html">About Us</a>
+      <a class="login-link" href="login.html">Login</a>
+    </div>
+  </div>
+
+  <div class="header-container">
+    <h1>Sign Up</h1>
+  </div>
+
+  <div class="page-content">
+    
+<h2 style="text-align: center; margin-bottom: 30px;">Create Your Account</h2>
+<main class="container" style="max-width: 600px; margin: 0 auto; padding: 20px;">
+<form action="#" enctype="multipart/form-data" method="POST">
+<label for="name">Full Name</label>
+<input id="name" name="name" required="" type="text"/>
+<label for="email">Email</label>
+<input id="email" name="email" required="" type="email"/>
+<label for="password">Password</label>
+<input id="password" name="password" required="" type="password"/>
+<label for="confirm-password">Confirm Password</label>
+<input id="confirm-password" name="confirm-password" required="" type="password"/>
+<label for="kyc-doc">Upload ID Document</label>
+<input accept=".pdf,.jpg,.png" id="kyc-doc" name="kyc-doc" required="" type="file"/>
+<div class="note">Passport, driving licence, or utility bill accepted.</div>
+<button type="submit">Sign Up</button>
+</form></main>
+  </div>
+
+  <footer>
+    © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+  </footer>
+
 </body>
 </html>

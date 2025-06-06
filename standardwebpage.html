@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TradBarter™</title>
-<link href="static/x-icon.png" rel="icon" type="image/png"/>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TradBarter™</title>
+  <link rel="icon" type="image/png" href="static/x-icon.png"/>
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -120,7 +119,7 @@
       }
     }
   </style>
-<script>
+  <script>
     function toggleMenu() {
       const nav = document.querySelector('.nav-links');
       nav.classList.toggle('active');
@@ -128,50 +127,38 @@
   </script>
 </head>
 <body>
-<div class="top-nav">
-<div class="logo-left">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
-</div>
-<div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<div class="nav-links">
 
-<a href="browse.html">Browse</a>
-<a href="trade.html">Trade</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="contact.html">Contact</a>
-<a href="about-us.html">About Us</a>
-<a class="login-link" href="login.html">Login</a>
-</div>
-</div>
-<div class="header-container">
-<h1>How It Works</h1>
-</div>
-<div class="page-content">
-<div class="how-it-works-steps" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
-<div style="margin-bottom: 40px;">
-<h2 style="margin-bottom: 10px;">1. Create Your Profile</h2>
-<p style="margin: 0;">Set up your barter profile with details about your skills, services, and items available for trade.</p>
-</div>
-<div style="margin-bottom: 40px;">
-<h2 style="margin-bottom: 10px;">2. Browse Listings</h2>
-<p style="margin: 0;">Find listings from others in your area or beyond. Discover items or services you need.</p>
-</div>
-<div style="margin-bottom: 40px;">
-<h2 style="margin-bottom: 10px;">3. Propose a Trade</h2>
-<p style="margin: 0;">Message users directly and suggest a fair trade. You can negotiate or counter-offer with ease.</p>
-</div>
-<div style="margin-bottom: 20px;">
-<h2 style="margin-bottom: 10px;">4. Agree &amp; Trade</h2>
-<p style="margin: 0;">Once both parties agree, carry out the swap. Leave reviews to build community trust.</p>
-</div>
-</div>
-</div>
-<footer>
+  <div class="top-nav">
+    <div class="logo-left">
+      <a href="index.html"><img class="logo" src="static/tradbarter-logo.png" alt="TradBarter Logo"/></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="how-it-works.html">How it Works</a>
+      <a href="view-listings.html">Browse</a>
+      <a href="trade.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+      <a href="about-us.html">About Us</a>
+      <a class="login-link" href="login.html">Login</a>
+    </div>
+  </div>
+
+  <div class="header-container">
+    <h1>[[ PAGE TITLE HERE ]]</h1>
+  </div>
+
+  <div class="page-content">
+    <p>[[ Insert your page-specific content here ]]</p>
+  </div>
+
+  <footer>
     © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
   </footer>
+
 </body>
 </html>
