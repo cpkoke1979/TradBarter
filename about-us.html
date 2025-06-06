@@ -7,18 +7,129 @@
 <title>TradBarter™</title>
 <link href="static/x-icon.png" rel="icon" type="image/png"/>
 <style>
-.desktop-only {
-  display: block;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e6f0fa;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-left img.logo {
+      height: 80px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .nav-links a.login-link {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .nav-links a.login-link:hover {
+      background-color: #005fa3;
+    }
+
+    .header-container {
+      background-color: #e6f0fa;
+      padding: 30px 10px;
+      text-align: center;
+      color: #003366;
+    }
+
+    .header-container h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .logo-left img.logo {
+        display: none;
+      }
+    }
+  
+.logo {
+  height: 60px;
+  max-width: 100%;
+  object-fit: contain;
 }
-.mobile-only {
-  display: none;
-}
+
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: block;
+  .logo {
+    height: 40px;
+    margin-left: 10px;
   }
 }
 </style>
@@ -126,8 +237,10 @@
     }
   </style></head>
 <body>
-<div class="top-nav"><div class="logo-left desktop-only"><a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a></div><div class="logo-left mobile-only"><a href="index.html"><img alt="TradBarter Logo" src="static/tradbarter-logo.png"/></a></div><img alt="TradBarter Logo" class="mobile-logo" src="static/tradbarter-logo.png"/>
-<div class="logo-left"></div>
+<div class="top-nav">
+<div class="logo-left">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+</div>
 <div class="menu-toggle" onclick="toggleMenu()">
 <span></span>
 <span></span>
