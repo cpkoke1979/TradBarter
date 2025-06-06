@@ -7,18 +7,18 @@
 <title>TradBarter™</title>
 <link href="static/x-icon.png" rel="icon" type="image/png"/>
 <style>
-.desktop-logo {
-  display: inline-block;
+.desktop-only {
+  display: block;
 }
-.mobile-logo {
+.mobile-only {
   display: none;
 }
 @media (max-width: 768px) {
-  .desktop-logo {
+  .desktop-only {
     display: none;
   }
-  .mobile-logo {
-    display: inline-block;
+  .mobile-only {
+    display: block;
   }
 }
 </style>
@@ -126,8 +126,8 @@
     }
   </style></head>
 <body>
-<div class="top-nav"><img alt="TradBarter Logo" class="mobile-logo" src="static/tradbarter-logo.png"/>
-<div class="logo-left"><a class="desktop-logo" href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a><a class="mobile-logo" href="index.html"><img alt="TradBarter Logo" src="static/tradbarter-logo.png"/></a></div>
+<div class="top-nav"><div class="logo-left desktop-only"><a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a></div><div class="logo-left mobile-only"><a href="index.html"><img alt="TradBarter Logo" src="static/tradbarter-logo.png"/></a></div><img alt="TradBarter Logo" class="mobile-logo" src="static/tradbarter-logo.png"/>
+<div class="logo-left"></div>
 <div class="menu-toggle" onclick="toggleMenu()">
 <span></span>
 <span></span>
