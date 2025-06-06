@@ -1,12 +1,32 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About Us</title>
+<title>TradBarter™</title>
 <link href="static/x-icon.png" rel="icon" type="image/png"/>
+<style>
+@media (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+  .mobile-logo {
+    display: inline-block;
+    height: 50px;
+    margin-left: 10px;
+  }
+}
+.mobile-logo {
+  display: none;
+}
+</style>
+<script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
 <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -103,26 +123,7 @@
         display: none;
       }
     }
-  
-.logo {
-  height: 60px;
-  max-width: 100%;
-  object-fit: contain;
-}
-@media (max-width: 768px) {
-  .logo {
-    height: 40px;
-    margin-left: 10px;
-  }
-}
-</style>
-<script>
-    function toggleMenu() {
-      const nav = document.querySelector('.nav-links');
-      nav.classList.toggle('active');
-    }
-  </script>
-</head>
+  </style></head>
 <body>
 <div class="top-nav">
 <div class="logo-left">
@@ -147,7 +148,9 @@
 <h1>About Us</h1>
 </div>
 <div class="page-content">
+<div class="page-content">
 <div class="cta" style="max-width: 600px; margin: 40px auto; padding: 10px; line-height: 1.7; font-size: 18px; text-align: justify;"><p style="margin-bottom: 20px;">TradBarter is a global platform dedicated to revitalizing the age-old practice of bartering. We believe the true value lies within people and their abilities — not just in their skills, but also in the items and resources they have to offer. We empower individuals to leverage these inherent strengths — whether it's a talent, a service, or something tangible — to create opportunities for meaningful exchange that go beyond financial limitations.</p><p style="margin-bottom: 20px;">In a world where skills and useful items often sit idle, TradBarter fosters a trusted community where people can trade what they have to get what they need. Built on the values of trust, sustainability, and human connection, we aim to help create a more resilient and cooperative world.</p></div>
+</div>
 </div>
 <footer>
     © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
