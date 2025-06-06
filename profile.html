@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TradBarter™</title>
-  <link rel="icon" type="image/png" href="static/x-icon.png"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradBarter™</title>
+<link href="static/x-icon.png" rel="icon" type="image/png"/>
+<style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -118,8 +119,22 @@
         display: none;
       }
     }
-  </style>
-  <script>
+  
+.logo {
+  display: block !important;
+  height: 50px;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    display: block !important;
+    height: 40px;
+    margin-left: 10px;
+  }
+}
+</style>
+<script>
     function toggleMenu() {
       const nav = document.querySelector('.nav-links');
       nav.classList.toggle('active');
@@ -313,44 +328,41 @@
     }
   </style></head>
 <body>
-
-  <div class="top-nav">
-    <div class="logo-left">
-      <a href="index.html"><img class="logo" src="static/tradbarter-logo.png" alt="TradBarter Logo"/></a>
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-links">
-      <a href="how-it-works.html">How it Works</a>
-      <a href="view-listings.html">Browse</a>
-      <a href="trade.html">Trade</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="contact.html">Contact</a>
-      <a href="about-us.html">About Us</a>
-      <a class="login-link" href="login.html">Login</a>
-    </div>
-  </div>
-
-  <div class="header-container">
-    <h1>Your Profile</h1>
-  </div>
-
-  <div class="page-content">
-    <div class="profile-wrap">
+<div class="top-nav">
+<div class="logo-left">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+</div>
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="nav-links">
+<a href="how-it-works.html">How it Works</a>
+<a href="view-listings.html">Browse</a>
+<a href="trade.html">Trade</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+<a href="about-us.html">About Us</a>
+<a class="login-link" href="login.html">Login</a>
+</div>
+</div>
+<div class="header-container">
+<h1>Your Profile</h1>
+</div>
+<div class="page-content">
+<div class="profile-wrap">
 <form class="profile-form">
 <div class="profile-row">
 <div class="profile-pic-col">
-<img alt="User Picture" class="profile-pic" src="static/x-icon.png">
+<img alt="User Picture" class="profile-pic" src="static/x-icon.png"/>
 <div class="profile-rating">
 <div class="stars">★★★★★ <span style="color:#777; font-size:15px; font-weight:400;">4.8</span></div>
 <a class="see-reviews-link" href="reviews.html">(21 reviews)</a>
 </div>
 <label class="field-label" for="profile-pic">Change Photo</label>
 <input accept="image/*" id="profile-pic" name="profile-pic" type="file"/>
-</img></div>
+</div>
 <div class="profile-fields">
 <label class="field-label" for="profile-name">Name</label>
 <input id="profile-name" name="profile-name" type="text" value="Colin Koke"/>
@@ -402,11 +414,9 @@
 </div>
 </form>
 </div>
-  </div>
-
-  <footer>
+</div>
+<footer>
     © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
   </footer>
-
 </body>
 </html>
