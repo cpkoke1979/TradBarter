@@ -215,7 +215,28 @@
     .quick-actions button:hover {
       background: #519cde;
     }
-  </style></head>
+  </style>
+<style>
+.quick-action-button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 8px 10px 8px 0;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.quick-action-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+</style>
+</head>
 <body>
 <div class="top-nav">
 <div class="logo-left">
@@ -267,11 +288,8 @@
 <p>💼 Completed Trades: 5<br/>🌟 Rating: 4.8</p>
 </div>
 <div class="card">
-<h3 style="; margin-bottom: 20px;">Quick Actions</h3>
+<h3 style="; margin-bottom: 20px;">Quick Actions</h3><div class="dashboard-actions"><a class="quick-action-button" href="trade.html">📤 Post Listing</a><a class="quick-action-button" href="my-listings.html">📄 My Listings</a><a class="quick-action-button" href="profile.html">👤 Profile</a></div>
 <div class="quick-actions">
-<button>+ Create Listing</button>
-<button>👤 Update Profile</button>
-<button>👁 View Trades</button>
 </div>
 </div>
 </div>

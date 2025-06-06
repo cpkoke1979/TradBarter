@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TradBarter™</title>
-  <link rel="icon" type="image/png" href="static/x-icon.png"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradBarter™</title>
+<link href="static/x-icon.png" rel="icon" type="image/png"/>
+<style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -118,8 +119,19 @@
         display: none;
       }
     }
-  </style>
-  <script>
+  
+@media (max-width: 768px) {
+  .mobile-logo {
+    display: block;
+    height: 50px;
+    margin: 10px auto;
+  }
+}
+.mobile-logo {
+  display: none;
+}
+</style>
+<script>
     function toggleMenu() {
       const nav = document.querySelector('.nav-links');
       nav.classList.toggle('active');
@@ -223,40 +235,35 @@
     }
   </style></head>
 <body>
-
-  <div class="top-nav">
-    <div class="logo-left">
-      <a href="index.html"><img class="logo" src="static/tradbarter-logo.png" alt="TradBarter Logo"/></a>
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-links">
-      <a href="how-it-works.html">How it Works</a>
-      <a href="browse.html">Browse</a>
-      <a href="trade.html">Trade</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="contact.html">Contact</a>
-      <a href="about-us.html">About Us</a>
-      <a class="login-link" href="login.html">Login</a>
-    </div>
-  </div>
-
-  <div class="header-container">
-    <h1>About Us</h1>
-  </div>
-
-  <div class="page-content">
-    <div class="page-content">
+<div class="top-nav"><img alt="TradBarter Logo" class="mobile-logo" src="static/tradbarter-logo.png"/>
+<div class="logo-left">
+<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+</div>
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="nav-links">
+<a href="how-it-works.html">How it Works</a>
+<a href="browse.html">Browse</a>
+<a href="trade.html">Trade</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+<a href="about-us.html">About Us</a>
+<a class="login-link" href="login.html">Login</a>
+</div>
+</div>
+<div class="header-container">
+<h1>About Us</h1>
+</div>
+<div class="page-content">
+<div class="page-content">
 <div class="cta" style="max-width: 600px; margin: 40px auto; padding: 10px; line-height: 1.7; font-size: 18px; text-align: justify;"><p style="margin-bottom: 20px;">TradBarter is a global platform dedicated to revitalizing the age-old practice of bartering. We believe the true value lies within people and their abilities — not just in their skills, but also in the items and resources they have to offer. We empower individuals to leverage these inherent strengths — whether it's a talent, a service, or something tangible — to create opportunities for meaningful exchange that go beyond financial limitations.</p><p style="margin-bottom: 20px;">In a world where skills and useful items often sit idle, TradBarter fosters a trusted community where people can trade what they have to get what they need. Built on the values of trust, sustainability, and human connection, we aim to help create a more resilient and cooperative world.</p></div>
 </div>
-  </div>
-
-  <footer>
+</div>
+<footer>
     © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
   </footer>
-
 </body>
 </html>
