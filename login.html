@@ -140,6 +140,12 @@
       nav.classList.toggle('active');
     }
   </script>
+<script>
+function showForm(formType) {
+  document.getElementById('login-form').style.display = formType === 'login' ? 'block' : 'none';
+  document.getElementById('signup-form').style.display = formType === 'signup' ? 'block' : 'none';
+}
+</script>
 </head>
 <body>
 <div class="top-nav">
@@ -158,19 +164,29 @@
 <a href="dashboard.html">Dashboard</a>
 <a href="contact.html">Contact</a>
 <a href="about-us.html">About Us</a>
-<a class="login-link" href="login.html">Login</a>
+<a class="login-link" href="signup.html">Sign Up</a>
 </div>
 </div>
 <div class="header-container">
 <h1>Login</h1>
 </div>
 <div class="page-content">
-<h2 style="text-align: center; margin-bottom: 30px;">Login to TradBarter</h2>
 <main class="container" style="max-width: 600px; margin: 0 auto; padding: 20px;">
-<div class="container">
-<h1>Login to TradBarter</h1>
-<p>Access your account below.</p>
-<p>[Login form will be implemented here]</p>
+
+<div id="login-form" style="display: block;">
+<form>
+<input placeholder="Email" required="" style="margin-bottom: 10px; width: 100%; padding: 12px;" type="email"/>
+<input placeholder="Password" required="" style="margin-bottom: 10px; width: 100%; padding: 12px;" type="password"/>
+<button style="width: 100%; padding: 12px; background-color: #0077cc; color: white; border: none; border-radius: 6px;" type="submit">Login</button>
+</form>
+</div>
+<div id="signup-form" style="display: none;">
+<form>
+<input placeholder="Full Name" required="" style="margin-bottom: 10px; width: 100%; padding: 12px;" type="text"/>
+<input placeholder="Email" required="" style="margin-bottom: 10px; width: 100%; padding: 12px;" type="email"/>
+<input placeholder="Password" required="" style="margin-bottom: 10px; width: 100%; padding: 12px;" type="password"/>
+<button style="width: 100%; padding: 12px; background-color: #0077cc; color: white; border: none; border-radius: 6px;" type="submit">Sign Up</button>
+</form>
 </div>
 </main>
 </div>
