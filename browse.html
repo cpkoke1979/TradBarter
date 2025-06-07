@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
+<!-- saved from url=(0055)file:///Users/colinkoke/Desktop/TradBarter/browse1.html -->
+<html lang="en"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>TradBarter™</title>
-<link href="static/x-icon.png" rel="icon" type="image/png"/>
+<link href="file:///Users/colinkoke/Desktop/TradBarter/static/x-icon.png" rel="icon" type="image/png"/>
 <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -13,7 +12,6 @@
       background-color: #ffffff;
       color: #003366;
     }
-
     .top-nav {
       display: flex;
       justify-content: space-between;
@@ -22,17 +20,12 @@
       padding: 10px 20px;
       flex-wrap: wrap;
     }
-
-    .logo-left img.logo {
-      height: 80px;
-    }
-
+    .logo-left img.logo { height: 80px; }
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .menu-toggle span {
       height: 3px;
       width: 25px;
@@ -40,14 +33,12 @@
       margin: 4px 0;
       border-radius: 2px;
     }
-
     .nav-links {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       align-items: center;
     }
-
     .nav-links a {
       text-decoration: none;
       color: #003366;
@@ -56,47 +47,84 @@
       padding: 8px 14px;
       border-radius: 6px;
     }
-
     .nav-links a.login-link {
       background-color: #0077cc;
       color: white;
     }
-
     .nav-links a.login-link:hover {
       background-color: #005fa3;
     }
-
     .header-container {
       background-color: #e6f0fa;
       padding: 30px 10px;
       text-align: center;
-      color: #003366;
     }
-
     .header-container h1 {
       font-size: 32px;
       margin-bottom: 10px;
     }
-
     .page-content {
-      max-width: 800px;
+      max-width: 100%;
       margin: 40px auto;
       padding: 0 20px;
-      text-align: center;
+      overflow-x: auto;
     }
-
+    .filter-bar {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      padding-bottom: 20px;
+      overflow-x: auto;
+    }
+    .filter-bar input[type="text"],
+    .filter-bar select,
+    .filter-bar input[type="number"] {
+      padding: 10px;
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+    .filter-bar input[type="number"] {
+      width: 100px;
+    }
+    .listing {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      width: 47%;
+    }
+    .matched {
+      background-color: #d4edda;
+      color: #155724;
+      text-align: center;
+      padding: 5px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .listing h2 { margin-top: 10px; }
+    .listing p strong {
+      display: inline-block;
+      width: 100px;
+    }
+    .propose-button {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
     footer {
       text-align: center;
       font-size: 14px;
       color: #777;
       padding: 20px 10px;
     }
-
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
+      .menu-toggle { display: flex; }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -104,185 +132,149 @@
         background-color: #e6f0fa;
         margin-top: 10px;
       }
-
-      .nav-links.active {
-        display: flex;
-      }
-
+      .nav-links.active { display: flex; }
       .nav-links a {
         width: 100%;
         text-align: center;
         padding: 10px 0;
       }
-
-      .logo-left img.logo {
-        display: none;
-      }
+      .logo-left img.logo { display: none; }
+      .listing { width: 100%; }
     }
-  
-.logo {
-  display: block !important;
-  height: 50px;
-  max-width: 100%;
-}
-@media (max-width: 768px) {
-  .logo {
-    display: block !important;
-    height: 40px;
-    margin-left: 10px;
-  }
-}
-</style>
+  </style>
 <script>
     function toggleMenu() {
-      const nav = document.querySelector('.nav-links');
-      nav.classList.toggle('active');
+      document.querySelector('.nav-links').classList.toggle('active');
     }
   </script>
 </head>
 <body>
 <div class="top-nav">
 <div class="logo-left">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
+<a href="file:///Users/colinkoke/Desktop/TradBarter/index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
 </div>
 <div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
+<span></span><span></span><span></span>
 </div>
 <div class="nav-links">
-<a href="how-it-works.html">How it Works</a>
-<a href="trade.html">Trade</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="contact.html">Contact</a>
-<a href="about-us.html">About Us</a>
-<a class="login-link" href="login.html">Login</a>
+<a href="file:///Users/colinkoke/Desktop/TradBarter/how-it-works.html">How it Works</a>
+<a href="file:///Users/colinkoke/Desktop/TradBarter/trade.html">Trade</a>
+<a href="file:///Users/colinkoke/Desktop/TradBarter/dashboard.html">Dashboard</a>
+<a href="file:///Users/colinkoke/Desktop/TradBarter/contact.html">Contact</a>
+<a href="file:///Users/colinkoke/Desktop/TradBarter/about-us.html">About Us</a>
+<a class="login-link" href="file:///Users/colinkoke/Desktop/TradBarter/login.html">Login</a>
 </div>
 </div>
 <div class="header-container">
 <h1>Browse Trades</h1>
 </div>
 <div class="page-content">
-<div style="max-width: 900px; margin: auto;"><div style="display: flex; gap: 10px; margin-bottom: 30px; justify-content: space-between; flex-wrap: wrap;">
-<input placeholder="Search listings..." style="flex: 2; padding: 10px; min-width: 200px;" type="text"/>
-<select style="flex: 1; padding: 10px; min-width: 150px;"><option value="all">All Categories</option><option value="skills">Skills/Service</option><option value="items">Items</option></select>
-<select style="flex: 1; padding: 10px; min-width: 150px;"><option value="all-locations">All Locations</option><option value="london">London</option><option value="birmingham">Birmingham</option><option value="manchester">Manchester</option><option value="liverpool">Liverpool</option><option value="leeds">Leeds</option><option value="glasgow">Glasgow</option><option value="sheffield">Sheffield</option><option value="edinburgh">Edinburgh</option><option value="bristol">Bristol</option><option value="cardiff">Cardiff</option><option value="newcastle">Newcastle</option><option value="belfast">Belfast</option></select>
-<select id="distance-filter"><option value="0">0 miles</option><option value="5">5 miles</option><option value="10">10 miles</option><option value="20">20 miles</option><option value="30">30 miles</option><option value="50">50 miles</option><option value="100">100 miles</option><option value="200">200 miles</option></select></div><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-top: 20px;"><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Guitar Lessons" src="static/guitar.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Guitar Lessons</h2>
-<p>Offering acoustic guitar lessons for language tutoring.</p>
-<p><strong>They want:</strong> Spanish Lessons</p>
-<p><strong>You offer:</strong> Music Teaching</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<div style="background-color: #d4edda; color: #155724; text-align: center; padding: 5px; font-weight: bold; border-radius: 8px; margin-bottom: 10px;">Matched with your profile!</div><img alt="Logo Design" src="static/design.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Logo Design</h2>
+<div class="filter-bar">
+<input placeholder="Search listings..." type="text"/>
+<select>
+<option value="all">All Categories</option>
+<option value="skills">Skills/Service</option>
+<option value="items">Items</option>
+</select>
+<select>
+<option value="all-locations">All Locations</option>
+<option value="london">London</option>
+<option value="manchester">Manchester</option>
+<option value="edinburgh">Edinburgh</option>
+</select>
+<select>
+<option value="0">0 miles</option>
+<option value="10">10 miles</option>
+<option value="20">20 miles</option>
+<option value="50">50 miles</option>
+</select>
+<input placeholder="Min £" type="number"/>
+<input placeholder="Max £" type="number"/>
+<select>
+<option value="any">Any Mode</option>
+<option value="online">Online Only</option>
+<option value="inperson">In-Person</option>
+</select>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+<div class="listing">
+<div class="matched">Matched with your profile!</div>
+<h2>Logo Design</h2>
+<p><strong>Offering:</strong> Graphic Design</p>
+<p><strong>Looking For:</strong> Plumbing</p>
 <p>Can trade logo design services for plumbing help.</p>
-<p><strong>They want:</strong> Plumbing</p>
-<p><strong>You offer:</strong> Graphic Design</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Tutoring" src="static/math.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Math Tutoring</h2>
-<p>Trade maths tutoring sessions for web design help.</p>
-<p><strong>They want:</strong> Web Design</p>
-<p><strong>You offer:</strong> Tutoring</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<div style="background-color: #d4edda; color: #155724; text-align: center; padding: 5px; font-weight: bold; border-radius: 8px; margin-bottom: 10px;">Matched with your profile!</div><img alt="Baking" src="static/baking.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Home Baking</h2>
-<p>Baking services in exchange for cleaning assistance.</p>
-<p><strong>They want:</strong> Cleaning</p>
-<p><strong>You offer:</strong> Baking</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<div style="background-color: #d4edda; color: #155724; text-align: center; padding: 5px; font-weight: bold; border-radius: 8px; margin-bottom: 10px;">Matched with your profile!</div><img alt="Photography" src="static/photography.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Photography Session</h2>
-<p>Offering portrait photos for car repair work.</p>
-<p><strong>They want:</strong> Car Repair</p>
-<p><strong>You offer:</strong> Photography</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Gardening" src="static/gardening.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Gardening Services</h2>
-<p>Willing to maintain your garden in exchange for piano lessons.</p>
-<p><strong>They want:</strong> Piano Lessons</p>
-<p><strong>You offer:</strong> Gardening</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 1" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 1</h2>
-<p>This is a description for sample listing 1.</p>
-<p>They want: Item 1</p>
-<p>You offer: Service 1</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 2" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 2</h2>
-<p>This is a description for sample listing 2.</p>
-<p>They want: Item 2</p>
-<p>You offer: Service 2</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 3" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 3</h2>
-<p>This is a description for sample listing 3.</p>
-<p>They want: Item 3</p>
-<p>You offer: Service 3</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 4" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 4</h2>
-<p>This is a description for sample listing 4.</p>
-<p>They want: Item 4</p>
-<p>You offer: Service 4</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 5" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 5</h2>
-<p>This is a description for sample listing 5.</p>
-<p>They want: Item 5</p>
-<p>You offer: Service 5</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 6" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 6</h2>
-<p>This is a description for sample listing 6.</p>
-<p>They want: Item 6</p>
-<p>You offer: Service 6</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 7" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 7</h2>
-<p>This is a description for sample listing 7.</p>
-<p>They want: Item 7</p>
-<p>You offer: Service 7</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 8" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 8</h2>
-<p>This is a description for sample listing 8.</p>
-<p>They want: Item 8</p>
-<p>You offer: Service 8</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 9" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 9</h2>
-<p>This is a description for sample listing 9.</p>
-<p>They want: Item 9</p>
-<p>You offer: Service 9</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div><div style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); width: 47%;">
-<img alt="Sample 10" src="static/browse-icon.png" style="height: 24px; vertical-align: middle;"/>
-<h2 style="margin-top: 10px;">Sample Listing 10</h2>
-<p>This is a description for sample listing 10.</p>
-<p>They want: Item 10</p>
-<p>You offer: Service 10</p>
-<button style="background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px;">Propose Trade</button>
-</div></div></div>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<h2>Guitar Lessons</h2>
+<p><strong>Offering:</strong> Music Teaching</p>
+<p><strong>Looking For:</strong> Spanish Lessons</p>
+<p>Offering acoustic guitar lessons for language tutoring.</p>
+<div class="rating">★★★★☆ (4.0) — 12 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<div class="matched">Matched with your profile!</div>
+<h2>Math Tutoring</h2>
+<p><strong>Offering:</strong> Tutoring</p>
+<p><strong>Looking For:</strong> Web Design</p>
+<p>Trade maths tutoring sessions for help with web projects.</p>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<div class="matched">Matched with your profile!</div>
+<h2>Language Exchange</h2>
+<p><strong>Offering:</strong> French Lessons</p>
+<p><strong>Looking For:</strong> English Practice</p>
+<p>Offering native French lessons for English conversation.</p>
+<div class="rating">★★★★★ (5.0) — 7 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<h2>Bike Repair</h2>
+<p><strong>Offering:</strong> Bicycle Maintenance</p>
+<p><strong>Looking For:</strong> Fresh Produce</p>
+<p>Can fix up bikes in exchange for home-grown vegetables.</p>
+<div class="rating">★★★★☆ (4.5) — 18 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<div class="matched">Matched with your profile!</div>
+<h2>Photography</h2>
+<p><strong>Offering:</strong> Event Photography</p>
+<p><strong>Looking For:</strong> Website Help</p>
+<p>I’ll photograph your party if you help fix my website.</p>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<h2>Haircut at Home</h2>
+<p><strong>Offering:</strong> Hair Styling</p>
+<p><strong>Looking For:</strong> Laundry Services</p>
+<p>Mobile barber offering trades for laundry pickup/dropoff.</p>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<h2>Pet Sitting</h2>
+<p><strong>Offering:</strong> Pet Sitting</p>
+<p><strong>Looking For:</strong> Guitar Coaching</p>
+<p>Watch your pets while you teach me guitar basics.</p>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<div class="matched">Matched with your profile!</div>
+<h2>Copywriting</h2>
+<p><strong>Offering:</strong> Blog &amp; Ad Copy</p>
+<p><strong>Looking For:</strong> Accounting Advice</p>
+<p>I’ll write catchy business copy if you sort my taxes.</p>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+<div class="listing">
+<h2>Cooking Lessons</h2>
+<p><strong>Offering:</strong> Italian Cooking</p>
+<p><strong>Looking For:</strong> Car Valeting</p>
+<p>Will teach authentic Italian dishes in exchange for car cleaning.</p>
+<div class="rating">★★★★☆ (4.3) — 9 reviews</div><button class="propose-button">Propose Trade</button>
+</div>
+</div>
 </div>
 <footer>
     © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
   </footer>
-</body>
-</html>
+</body></html>
