@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,59 +122,36 @@
     color: #777;
     padding: 20px 10px;
   }
+
+  /* ✅ Mobile Hamburger Menu Fix */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #e6f0fa;
+      margin-top: 10px;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .nav-links a {
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .logo-left img.logo {
+      display: none;
+    }
+  }
 </style>
 <script>
   function toggleMenu() {
     const nav = document.querySelector('.nav-links');
     nav.classList.toggle('active');
-  }
-
-  function updateCharCount(el, counterId, max) {
-    const count = el.value.length;
-    document.getElementById(counterId).textContent = `${count}/${max}`;
-  }
-
-  function showPreview() {
-    const offer = document.getElementById('offer').value;
-    const value = document.getElementById('value').value;
-    const want = document.getElementById('want').value;
-    const category = document.getElementById('category').value;
-    const location = document.getElementById('location').value;
-    const description = document.getElementById('description').value;
-    const privateTrade = document.getElementById('private').value === 'yes';
-    const urgent = document.getElementById('urgent').value === 'yes';
-    const counter = document.getElementById('counter').value === 'yes';
-
-    document.getElementById('preview-offer').textContent = offer;
-    document.getElementById('preview-value').textContent = '£' + value;
-    document.getElementById('preview-want').textContent = want;
-    document.getElementById('preview-category').textContent = category;
-    document.getElementById('preview-location').textContent = location;
-    document.getElementById('preview-description').textContent = description;
-    document.getElementById('preview-extra').textContent =
-      (privateTrade ? 'Private, ' : '') +
-      (urgent ? 'Urgent, ' : '') +
-      (counter ? 'Accepts counter-offers' : '').replace(/,\s*$/, '');
-
-    document.getElementById('preview-box').style.display = 'block';
-
-    const jsonOutput = {
-      offer, value, want, category, location, description,
-      privateTrade, urgent, counter
-    };
-    document.getElementById('json-output').textContent = JSON.stringify(jsonOutput, null, 2);
-  }
-
-  function previewImage() {
-    const file = document.getElementById('image').files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('image-preview').src = e.target.result;
-        document.getElementById('image-preview').style.display = 'block';
-      };
-      reader.readAsDataURL(file);
-    }
   }
 </script>
 </head>
@@ -198,6 +176,7 @@
   <h1>Create a Trade</h1>
 </div>
 <div class="page-content">
+  
   <form onsubmit="event.preventDefault(); showPreview();" style="max-width: 700px; margin: 0 auto;">
     <label for="offer">What You're Offering</label>
     <input type="text" id="offer" name="offer" required />
@@ -230,32 +209,31 @@
     <div class="char-counter" id="desc-count">0/500</div>
 
     <div class="checkbox-group" style="margin-top: 30px;">
-  <h3 style="margin-bottom: 16px; color: #003366; font-size: 20px;">Trade Preferences</h3>
-  <label for="private">Make this listing private</label>
-  <select id="private" name="private">
-    <option value="">Select...</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
+      <h3 style="margin-bottom: 16px; color: #003366; font-size: 20px;">Trade Preferences</h3>
 
-  <label for="urgent">Mark as urgent</label>
-  <select id="urgent" name="urgent">
-    <option value="">Select...</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
+      <label for="private">Make this listing private</label>
+      <select id="private" name="private">
+        <option value="">Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
 
-  <label for="counter">Accept counter-offers</label>
-  <select id="counter" name="counter">
-    <option value="">Select...</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-</div>
-    
-    
-  </div>
-  <button type="submit" style="margin: 30px auto 0; display: block;">Preview Listing</button>
+      <label for="urgent">Mark as urgent</label>
+      <select id="urgent" name="urgent">
+        <option value="">Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label for="counter">Accept counter-offers</label>
+      <select id="counter" name="counter">
+        <option value="">Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+
+    <button type="submit" style="margin: 30px auto 0; display: block;">Preview Listing</button>
   </form>
 
   <div id="preview-box" class="preview-box">
@@ -269,7 +247,10 @@
     <p><strong>Tags:</strong> <span id="preview-extra"></span></p>
     <pre id="json-output" style="margin-top:20px; background:#f0f0f0; padding:10px; border-radius:6px;"></pre>
   </div>
+
 </div>
 <footer>
   © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
 </footer>
+</body>
+</html>
