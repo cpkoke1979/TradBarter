@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TradBarter™</title>
-<link href="static/x-icon.png" rel="icon" type="image/png"/>
-<style>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>TradBarter™</title>
+  <link rel="icon" href="static/x-icon.png" type="image/png" />
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #ffffff;
       color: #003366;
     }
-
     .top-nav {
       display: flex;
       justify-content: space-between;
@@ -22,17 +20,14 @@
       padding: 10px 20px;
       flex-wrap: wrap;
     }
-
     .logo-left img.logo {
       height: 80px;
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .menu-toggle span {
       height: 3px;
       width: 25px;
@@ -40,14 +35,12 @@
       margin: 4px 0;
       border-radius: 2px;
     }
-
     .nav-links {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       align-items: center;
     }
-
     .nav-links a {
       text-decoration: none;
       color: #003366;
@@ -56,70 +49,35 @@
       padding: 8px 14px;
       border-radius: 6px;
     }
-
     .nav-links a.login-link {
       background-color: #0077cc;
       color: white;
     }
-
     .nav-links a.login-link:hover {
       background-color: #005fa3;
     }
-
     .header-container {
       background-color: #e6f0fa;
       padding: 30px 10px;
       text-align: center;
       color: #003366;
     }
-
     .header-container h1 {
       font-size: 32px;
       margin-bottom: 10px;
     }
-
     .page-content {
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
     }
-
     footer {
       text-align: center;
       font-size: 14px;
       color: #777;
       padding: 20px 10px;
     }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #e6f0fa;
-        margin-top: 10px;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-      }
-
-      .logo-left img.logo {
-        display: none;
-      }
-    }
-  
     .propose-button {
       background-color: #007bff;
       color: white;
@@ -136,8 +94,43 @@
     .propose-button:hover {
       background-color: #005fa3;
     }
-</style>
-<script>
+    .social-icons {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .social-icons img {
+      width: 32px;
+      height: 32px;
+      margin: 0 8px;
+      vertical-align: middle;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #e6f0fa;
+        margin-top: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .logo-left img.logo {
+        display: block;
+        height: 40px;
+        margin-left: 10px;
+      }
+    }
+  </style>
+  <script>
     function toggleMenu() {
       const nav = document.querySelector('.nav-links');
       nav.classList.toggle('active');
@@ -145,49 +138,55 @@
   </script>
 </head>
 <body>
-<div class="top-nav">
-<div class="logo-left">
-<a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
-</div>
-<div class="menu-toggle" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<div class="nav-links">
-<a href="how-it-works.html">How it Works</a>
-<a href="browse.html">Browse</a>
-<a href="trade.html">Trade</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="contact.html">Contact</a>
-<a href="about-us.html">About Us</a>
-<a class="login-link" href="login.html">Login</a>
-</div>
-</div>
-<div class="header-container">
-<h1>How It Works</h1>
-</div>
-<div class="page-content">
-<div class="how-it-works-steps" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
-<div style="margin-bottom: 20px;">
-<h2 style="margin-bottom: 10px;">1. Create Your Profile</h2>
-<p style="margin: 0;">Set up your free barter profile with details about your skills, services, and items available for trade. You’ll also be asked to verify your identity by uploading a document, which helps ensure a safe and trusted community.</p>
-</div>
-<div style="margin-bottom: 20px;">
-<h2 style="margin-bottom: 10px;">2. Browse Listings</h2>
-<p style="margin: 0;">Explore all available listings from across the platform — no login required. You’ll see what people are offering and what they’re looking for. Once you log in, the platform will highlight matched listings—showing you users who have exactly what you want and want what you have. These personalised matches help you find ideal trading partners faster and with more accuracy.</p>
-</div>
-<div style="margin-bottom: 20px;">
-<h2 style="margin-bottom: 10px;">3. Propose a Trade</h2>
-<p style="margin: 0;">Message users directly using our built-in tools and suggest a fair trade. You can negotiate or counter-offer with ease. Discuss whether the exchange will be online, in-person, or via local drop-off—whatever suits both parties.</p>
-</div>
-<div style="margin-bottom: 20px;">
-<h2 style="margin-bottom: 10px;">4. Agree &amp; Trade</h2>
-<p style="margin: 0;">Once both parties agree, carry out the swap in your preferred way. After completion, leave a review to help build a strong, trusted community. Ratings and honest feedback ensure fairness and encourage positive growth across the platform.</p>
-</div>
-<a class="propose-button" href="signup.html">Get Started</a></div>
-</div>
-<footer>
+  <div class="top-nav">
+    <div class="logo-left">
+      <a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png" /></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="how-it-works.html">How it Works</a>
+      <a href="browse.html">Browse</a>
+      <a href="trade.html">Trade</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+      <a href="about-us.html">About Us</a>
+      <a class="login-link" href="login.html">Login</a>
+    </div>
+  </div>
+  <div class="header-container">
+    <h1>How It Works</h1>
+  </div>
+  <div class="page-content">
+    <div class="how-it-works-steps" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
+      <div style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 10px;">1. Create Your Profile</h2>
+        <p style="margin: 0;">Set up your free barter profile with details about your skills, services, and items available for trade. You’ll also be asked to verify your identity by uploading a document, which helps ensure a safe and trusted community.</p>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 10px;">2. Browse Listings</h2>
+        <p style="margin: 0;">Explore all available listings from across the platform — no login required. You’ll see what people are offering and what they’re looking for. Once you log in, the platform will highlight matched listings—showing you users who have exactly what you want and want what you have. These personalised matches help you find ideal trading partners faster and with more accuracy.</p>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 10px;">3. Propose a Trade</h2>
+        <p style="margin: 0;">Message users directly using our built-in tools and suggest a fair trade. You can negotiate or counter-offer with ease. Discuss whether the exchange will be online, in-person, or via local drop-off—whatever suits both parties.</p>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 10px;">4. Agree &amp; Trade</h2>
+        <p style="margin: 0;">Once both parties agree, carry out the swap in your preferred way. After completion, leave a review to help build a strong, trusted community. Ratings and honest feedback ensure fairness and encourage positive growth across the platform.</p>
+      </div>
+      <a class="propose-button" href="signup.html">Get Started</a>
+    </div>
+  </div>
+  <div class="social-icons">
+    <a href="https://x.com/tradbarter" target="_blank"><img src="static/x-icon.png" alt="X"></a>
+    <a href="https://facebook.com/tradbarter" target="_blank"><img src="static/facebook-icon.png" alt="Facebook"></a>
+    <a href="https://instagram.com/tradbarter" target="_blank"><img src="static/instagram-icon.png" alt="Instagram"></a>
+  </div>
+  <footer>
     © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
   </footer>
 </body>
