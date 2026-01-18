@@ -28,6 +28,11 @@
       line-height:1.5;
     }
 
+    /* Smooth anchor scrolling + sticky-nav offset */
+    html{ scroll-behavior: smooth; }
+    [id]{ scroll-margin-top: 120px; }
+
+
     /* Top nav */
     .top-nav{ position:relative;
       display:flex;
@@ -378,7 +383,7 @@
 <span></span><span></span><span></span>
 </button>
 <nav aria-label="Primary" class="nav-links">
-  <a href="how-it-works.html">How it Works</a>
+  <a href="#how-it-works">How it Works</a>
   <a href="browse.html">Browse</a>
   <a class="nav-login" href="login.html">Login</a>
   <a class="nav-cta" href="signup.html">Sign Up</a>
@@ -450,7 +455,7 @@
 </div>
 </section>
 
-<section class="section">
+<section class="section" id="how-it-works">
   <h2 class="section-title">Money isn’t the problem. Access is.</h2>
   <div class="card" style="max-width:900px; margin:0 auto;">
     <p style="color:var(--muted); font-size:16px; margin-bottom:10px;">
