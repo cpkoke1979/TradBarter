@@ -656,6 +656,30 @@
 </footer>
 
 
+
+<script>
+  function toggleMenu(){
+    const nav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.menu-toggle');
+    if(!nav) return;
+    const isOpen = nav.classList.toggle('active');
+    if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  // Close menu after tapping a link (mobile)
+  document.addEventListener('click', function(e){
+    const nav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.menu-toggle');
+    if(!nav || !btn) return;
+
+    const clickedLink = e.target && e.target.closest && e.target.closest('.nav-links a');
+    if(clickedLink && nav.classList.contains('active')){
+      nav.classList.remove('active');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+</script>
+
 <script>
   (function() {
     const q = document.getElementById('q');
