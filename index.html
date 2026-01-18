@@ -1,270 +1,451 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>TradBarter™</title>
+
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #ffffff;
-    color: #003366;
-  }
-  .top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e6f0fa;
-    padding: 10px 20px;
-    flex-wrap: wrap;
-  }
-  .logo-left .logo {
-    height: 80px;
-  }
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .menu-toggle span {
-    height: 3px;
-    width: 25px;
-    background: #003366;
-    margin: 4px 0;
-    border-radius: 2px;
-  }
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-  }
-  .nav-links a {
-    text-decoration: none;
-    font-family: 'Segoe UI', sans-serif;
-    color: #003366;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 8px 14px;
-    border-radius: 6px;
-  }
-  .nav-links a.login-link {
-    background-color: #0077cc;
-    color: white;
-  }
-  .nav-links a.login-link:hover {
-    background-color: #005fa3;
-  }
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    flex-wrap: wrap;
-    text-align: left;
-    background-color: #e6f0fa;
-  }
-  .logo {
-    height: 140px;
-    margin-right: 20px;
-  }
-  .header-text {
-    max-width: 600px;
-    transition: all 0.3s ease-in-out;
-  }
-  .header-text h1 {
-    font-size: 36px;
-    margin: 0 0 12px 0;
-  }
-  .header-text p {
-    font-size: 22px;
-    margin: 0;
-  }
-  .main-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding: 20px 20px 10px;
-  }
-  .mockup {
-    height: 320px;
-    transition: transform 0.3s ease-in-out;
-  }
-  .mockup:hover {
-    transform: scale(1.03);
-  }
-  .button-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .button {
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    font-size: 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
-  }
-  .button:hover {
-    background-color: #005fa3;
-    transform: translateY(-2px);
-  }
-  .how-it-works {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    transition: all 0.3s ease-in-out;
-  }
-  .step {
-    flex: 1 1 300px;
-    display: flex;
-    align-items: flex-start;
-    margin: 10px;
-  }
-  .step img {
-    height: 80px;
-    margin-right: 20px;
-    image-rendering: crisp-edges;
-  }
-  .step-text h3 {
-    margin: 0;
-    font-size: 20px;
-  }
-  .step-text p {
-    margin: 5px 0 0;
-    font-size: 16px;
-  }
-  .social-icons {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .social-icons img {
-    width: 32px;
-    height: 32px;
-    margin: 0 10px;
-  }
-  footer {
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-    padding: 20px;
-  }
-  @media (max-width: 768px) {
-    .mockup {
-      height: 220px;
+    :root{
+      --navy:#0B2E59;
+      --light:#E6F0FA;
+      --orange:#F7941D;
+      --text:#0B2E59;
+      --muted:#4B6B87;
+      --card:#ffffff;
+      --border:#D3E5F7;
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      --radius: 12px;
     }
-    .step {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      background:#ffffff;
+      color:var(--text);
+      line-height:1.5;
     }
-    .step img {
-      margin-bottom: 10px;
-      margin-right: 0;
+
+    /* Top nav */
+    .top-nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 20px;
+      background:var(--light);
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid var(--border);
     }
-    .menu-toggle {
-      display: flex;
+
+    .brand{
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 320px;
     }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: #e6f0fa;
-      padding: 10px 0;
+
+     .brand img{
+      height:128px;
+      flex-shrink:0;
+      width:auto;
+      max-width:none;
+      display:block;
+      object-fit:contain;
     }
-    .nav-links.active {
-      display: flex;
+
+    .menu-toggle{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      padding:8px;
+      border-radius:10px;
     }
-    .nav-links a {
-      padding: 10px 20px;
-      width: 100%;
+    .menu-toggle:focus{ outline: 2px solid rgba(247,148,29,0.35); outline-offset: 2px; }
+    .menu-toggle span{
+      height:3px;
+      width:26px;
+      background:var(--navy);
+      margin:4px 0;
+      border-radius:3px;
     }
-    .header-container .logo {
-      display: none !important;
+
+    .nav-links{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
-  }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--navy);
+      font-weight:700;
+      font-size:15px;
+      padding:10px 12px;
+      border-radius:10px;
+    }
+    .nav-links a:hover{ background: rgba(11,46,89,0.07); }
+
+    .nav-links a.cta{
+      background:var(--orange);
+      color:#ffffff;
+    }
+    .nav-links a.cta:hover{ background:#e88610; }
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(180deg, var(--light), #ffffff 65%);
+      padding:42px 18px 26px;
+    }
+
+    .hero-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .hero h1{
+      font-size:42px;
+      letter-spacing:-0.02em;
+      line-height:1.15;
+      margin-bottom:12px;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:var(--muted);
+      margin-bottom:18px;
+      max-width: 52ch;
+    }
+
+    .hero p.scope{
+      font-size:14px;
+      color:var(--muted);
+      margin-top:-10px;
+      margin-bottom:18px;
+      opacity:0.95;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid transparent;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+    }
+
+    .btn-primary{ background:var(--orange); color:#fff; }
+    .btn-primary:hover{ background:#e88610; transform: translateY(-1px); }
+
+    .btn-secondary{ background:var(--navy); color:#fff; }
+    .btn-secondary:hover{ background:#062241; transform: translateY(-1px); }
+
+    .btn-ghost{
+      background:transparent;
+      color:var(--navy);
+      border-color: rgba(11,46,89,0.18);
+      box-shadow:none;
+    }
+    .btn-ghost:hover{ background: rgba(11,46,89,0.06); }
+
+    .mockup-wrap{
+      display:flex;
+      justify-content:center;
+    }
+
+    .mockup{
+      width:100%;
+      transform: translateY(4px);
+      max-width:260px;
+      max-height:300px;
+      height:auto;
+      object-fit:contain;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.16));
+    }
+
+    /* Sections */
+    .section{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 18px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:26px;
+      margin-bottom:18px;
+      letter-spacing:-0.01em;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .how-card{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .icon{
+      width:44px;
+      height:44px;
+      flex: 0 0 44px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background: rgba(11,46,89,0.06);
+      border:1px solid rgba(11,46,89,0.10);
+    }
+
+    .icon svg{
+      width:26px;
+      height:26px;
+      stroke: var(--navy); /* consistent */
+    }
+
+    .how-card h3{
+      font-size:18px;
+      margin-bottom:6px;
+    }
+
+    .how-card p{
+      font-size:15px;
+      color:var(--muted);
+    }
+
+    .cta-band{
+      background: var(--navy);
+      color:#fff;
+      border-radius: 18px;
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .cta-band p{ color: rgba(255,255,255,0.88); max-width: 60ch; }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      font-size:13px;
+      color:#6b7f92;
+      padding:22px 12px 28px;
+    }
+
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-top:14px;
+    }
+    .social a{
+      display:inline-flex;
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(11,46,89,0.12);
+      background:#fff;
+    }
+    .social img{ width:22px; height:22px; }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns: 1fr; text-align:center; }
+      .hero p{ margin-left:auto; margin-right:auto; }
+      .hero-actions{ justify-content:center; }
+      .mockup{ max-width:260px; max-height:300px; }
+      .cards{ grid-template-columns: 1fr; }
+      .how-card{ align-items:center; }
+    }
+
+    @media (max-width: 768px){
+      .brand img{ height:104px; }
+      .menu-toggle{ display:flex; }
+      .nav-links{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        padding:10px 0 4px;
+        gap:6px;
+      }
+      .nav-links.active{ display:flex; }
+      .nav-links a{ text-align:center; }
+    }
+
+    @media (max-width: 600px){
+      .brand{ min-width: 0; }
+      .brand img{ height:88px; }
+      .mockup-wrap{ display:none; } /* mockup hidden on small mobile */
+      .hero{ padding-top:30px; }
+      .hero h1{ font-size:34px; }
+    }
+  
+.nav-login{padding:10px 14px;border-radius:10px;color:var(--navy);text-decoration:none;font-weight:700;}
+.nav-login:hover{background:rgba(11,46,89,0.06);}
+.nav-cta{padding:10px 14px;border-radius:12px;background:var(--orange);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 6px 18px rgba(247,148,29,0.25);}
+.nav-cta:hover{filter:brightness(0.97);}
+    footer{ text-align:center; font-size:14px; color:#5A7187; padding:22px 16px; border-top:1px solid var(--border); background:#fff; }
+    .footer-links{ margin-top:8px; display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; }
+    .footer-links a{ color:var(--navy); text-decoration:none; font-weight:600; font-size:13px; opacity:0.85; }
+    .footer-links a:hover{ opacity:1; text-decoration:underline; }
+    .footer-links .dot{ opacity:0.35; }
+
 </style>
 <script>
-function toggleMenu() {
-  var menu = document.querySelector('.nav-links');
-  menu.classList.toggle('active');
-}
-</script>
-</head>
+    function toggleMenu(){
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
+<link href="static/brand/tradbarter-logo-mark.svg" rel="icon" type="image/svg+xml"/></head>
 <body>
 <div class="top-nav">
-  <div class="logo-left">
-    <a href="index.html"><img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/></a>
-  </div>
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <div class="nav-links">
-    <a href="how-it-works.html">How it Works</a>
-    <a href="browse.html">Browse</a>
-    <a href="trade.html">Trade</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="contact.html">Contact</a>
-    <a href="about-us.html">About Us</a>
-    <a class="login-link" href="login.html">Login</a>
-  </div>
+<div class="brand" style="flex:0 0 auto">
+<a aria-label="TradBarter home" href="index.html">
+<picture>
+  <source srcset="static/brand/tradbarter-logo-horizontal.svg" type="image/svg+xml"/>
+  <img alt="TradBarter" src="static/brand/tradbarter-logo-horizontal.png"/>
+</picture>
+</a>
 </div>
-<div class="header-container">
-  <img alt="TradBarter Logo" class="logo" src="static/tradbarter-logo.png"/>
-  <div class="header-text">
-    <h1>The Global Skill and Goods Exchange Platform</h1>
-    <p>Trade What You Have. Get What You Need.</p>
-  </div>
+<button aria-label="Open menu" class="menu-toggle" onclick="toggleMenu()" type="button">
+<span></span><span></span><span></span>
+</button>
+<nav aria-label="Primary" class="nav-links">
+  <a href="how-it-works.html">How it Works</a>
+  <a href="browse.html">Browse</a>
+  <a class="nav-login" href="login.html">Login</a>
+  <a class="nav-cta" href="signup.html">Sign Up</a>
+</nav>
 </div>
-<div class="main-section">
-  <img alt="App Mock-up" class="mockup" loading="lazy" src="static/app-mockup.png"/>
-  <div class="button-stack">
-    <button class="button" onclick="location.href='how-it-works.html'">How it Works</button>
-    <button class="button" onclick="location.href='signup.html'">Sign Up</button>
-  </div>
+<header class="hero">
+<div class="hero-inner">
+<div>
+<h1>The UK Marketplace for Local Skills &amp; Small Jobs</h1>
+<p>Swap skills, services, and everyday help locally — without cash.</p>
+      <p class="scope">Starting with home services, repairs, and everyday skills.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="signup.html">Sign Up</a>
+<a class="btn btn-secondary" href="browse.html">Browse Listings</a>
+<a class="btn btn-ghost" href="how-it-works.html">How it Works</a>
 </div>
-<section class="how-it-works">
-  <div class="step">
-    <a href="browse.html"><img alt="Browse" src="static/browse-icon.png"/></a>
-    <div class="step-text">
-      <h3>Browse Listings</h3>
-      <p>Find goods or services that match your needs near you.</p>
-    </div>
-  </div>
-  <div class="step">
-    <a href="trade.html"><img alt="Propose" src="static/propose-icon.png"/></a>
-    <div class="step-text">
-      <h3>Propose a Trade</h3>
-      <p>Offer what you have and negotiate terms directly with others.</p>
-    </div>
-  </div>
-  <div class="step">
-    <a href="dashboard.html"><img alt="Agree" src="static/agree-icon.png"/></a>
-    <div class="step-text">
-      <h3>Agree &amp; Trade</h3>
-      <p>Make the swap with trust and transparency. Everyone wins.</p>
-    </div>
-  </div>
+</div>
+<div class="mockup-wrap">
+<picture>
+  <source srcset="static/app-mockup-transparent.png" type="image/png"/>
+  <img alt="TradBarter app preview" class="mockup" loading="lazy" src="static/app-mockup.png"/>
+</picture>
+</div>
+</div>
+</header>
+<section class="section">
+<h2 class="section-title">How it Works</h2>
+<div class="cards">
+<div class="card how-card">
+<div aria-hidden="true" class="icon">
+<!-- Lucide: search -->
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="7"></circle>
+<path d="M21 21l-4.3-4.3"></path>
+</svg>
+</div>
+<div>
+<h3>Browse Listings</h3>
+<p>Find local skills and small jobs near you — across the UK.</p>
+</div>
+</div>
+<div class="card how-card">
+<div aria-hidden="true" class="icon">
+<!-- Lucide: repeat -->
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 2l4 4-4 4"></path>
+<path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+<path d="M7 22l-4-4 4-4"></path>
+<path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+</svg>
+</div>
+<div>
+<h3>Propose a Trade</h3>
+<p>Offer what you’ve got and negotiate the terms directly — simple and transparent.</p>
+</div>
+</div>
+<div class="card how-card">
+<div aria-hidden="true" class="icon">
+<!-- Lucide: check-circle -->
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+<path d="M22 4 12 14.01l-3-3"></path>
+</svg>
+</div>
+<div>
+<h3>Agree &amp; Trade</h3>
+<p>Confirm the swap and complete the exchange with clarity and trust.</p>
+</div>
+</div>
+</div>
 </section>
-<div class="social-icons">
-  <a href="https://x.com/tradbarter" target="_blank"><img src="static/x-icon.png" alt="X"></a>
-  <a href="https://facebook.com/tradbarter" target="_blank"><img src="static/facebook-icon.png" alt="Facebook"></a>
-  <a href="https://instagram.com/tradbarter" target="_blank"><img src="static/instagram-icon.png" alt="Instagram"></a>
+<section class="section">
+<div class="cta-band">
+<div>
+<h2 style="font-size:22px; margin-bottom:6px;">Ready to post your first listing?</h2>
+<p>Create your account and start swapping help and small jobs locally — without the usual marketplace friction.</p>
 </div>
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<a class="btn btn-primary" href="signup.html">Sign Up</a>
+
+</div>
+</div>
+</section>
 <footer>
-  © 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.
+<div>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</div>
+<div class="footer-links">
+  <a href="about-us.html">About Us</a>
+  <span class="dot">•</span>
+  <a href="contact.html">Contact</a>
+</div>
+<div aria-label="Social links" class="social">
+<a href="https://x.com/tradbarter" rel="noreferrer" target="_blank"><img alt="X" src="static/social/x.png"/></a>
+<a href="https://facebook.com/tradbarter" rel="noreferrer" target="_blank"><img alt="Facebook" src="static/social/facebook.png"/></a>
+<a href="https://instagram.com/tradbarter" rel="noreferrer" target="_blank"><img alt="Instagram" src="static/social/instagram.png"/></a>
+</div>
 </footer>
 </body>
 </html>
