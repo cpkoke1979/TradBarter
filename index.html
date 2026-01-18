@@ -28,7 +28,7 @@
     }
 
     /* Top nav */
-    .top-nav{
+    .top-nav{ position:relative;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -296,6 +296,13 @@
     }
 
     @media (max-width: 768px){
+      .top-nav{ flex-wrap:wrap; }
+      .brand{ flex:1 1 auto; min-width:0; }
+      .menu-toggle{ margin-left:auto; }
+      .nav-links{ position:absolute; left:0; right:0; top:100%; background:var(--light); border-bottom:1px solid var(--border); box-shadow: 0 12px 22px rgba(0,0,0,0.10); padding:12px 16px 16px; }
+      .nav-links a{ width:100%; text-align:center; }
+      .nav-links a.nav-cta{ width:100%; }
+
       .brand img{ height:104px; }
       .menu-toggle{ display:flex; }
       .nav-links{
@@ -380,7 +387,6 @@
 <div class="hero-actions">
 <a class="btn btn-primary" href="signup.html">Sign Up</a>
 <a class="btn btn-secondary" href="browse.html">Browse Listings</a>
-<a class="btn btn-ghost" href="how-it-works.html">How it Works</a>
 </div>
 </div>
 <div class="mockup-wrap">
