@@ -409,7 +409,7 @@
 .filter-card .filters{
   width: 100%;
   display: grid;
-  grid-template-columns: 2.2fr 1.1fr 1.3fr 1fr auto;
+  grid-template-columns: 2.2fr 1.4fr;
   gap: 12px;
   align-items: end;
   margin: 0;
@@ -455,14 +455,6 @@
 .filter-card .field select:focus{
   border-color: rgba(0,0,0,0.22) !important;
   box-shadow: 0 0 0 4px rgba(0,0,0,0.06);
-}
-
-.filter-card .filters .btn.btn-primary{
-  min-width: 120px;
-  height: 46px;
-  border-radius: 14px;
-  justify-self: end;
-  align-self: end;
 }
 
 .filter-card .pills{
@@ -511,57 +503,23 @@
         <p class="scope">Browse first. Sign up only when you’re ready to contact someone.</p>
 
         <div class="filter-card">
+<div class="filter-card">
 <div class="filters">
           <div class="field" style="flex:1; min-width:240px;">
             <label for="q">Search</label>
-            <input id="q" type="text" placeholder="e.g. plumbing, painting, fence repair…" />
-          </div>
-
-          <div class="field">
-            <label for="cat">Category</label>
-            <select id="cat">
-              <option value="">All</option>
-              <option>Plumbing</option>
-              <option>Electrical</option>
-              <option>Painting</option>
-              <option>Gardening</option>
-              <option>DIY & Repairs</option>
-              <option>Assembly</option>
-              <option>Cleaning</option>
-              <option>Moving help</option>
-            </select>
+            <input id="q" type="text" placeholder="Search: leak, tap, flat-pack, fence repair…" />
           </div>
 
           <div class="field">
             <label for="where">Location</label>
-            <input id="where" type="text" placeholder="Postcode or town (e.g. PR8, Liverpool)" />
+            <input id="where" type="text" placeholder="Postcode or town (e.g. PR, PR8, Liverpool)" />
           </div>
 
-          <div class="field">
-            <label for="when">When</label>
-            <select id="when">
-              <option value="">Anytime</option>
-              <option>Weekdays</option>
-              <option>Evenings</option>
-              <option>Weekends</option>
-            </select>
           </div>
 
-          <div class="field" style="min-width:120px;">
-            <label>&nbsp;</label>
-            <button class="btn btn-primary" type="button">Apply</button>
-          </div>
-        </div>
-
-        <div class="pills" aria-label="Quick filters">
-          <span class="pill">Most recent</span>
-          <span class="pill">Verified only</span>
-          <span class="pill">Needs help</span>
-          <span class="pill">Offers help</span>
-          <span class="pill">Under 2 hours</span>
         </div>
 </div>
-</div>
+      </div>
     </div>
   </header>
 
@@ -697,37 +655,57 @@
 </div>
 </footer>
 
+
 <script>
   (function() {
     const q = document.getElementById('q');
-    const cat = document.getElementById('cat');
     const where = document.getElementById('where');
-    const when = document.getElementById('when');
-    const applyBtn = document.querySelector('.filters .btn.btn-primary');
     const cards = Array.from(document.querySelectorAll('.cards .card'));
 
     function normalize(s) { return (s || '').toLowerCase(); }
 
     function apply() {
-      const qv = normalize(q.value);
-      const cv = normalize(cat.value);
-      const wv = normalize(where.value);
-      const tv = normalize(when.value);
+      const qv = normalize(q && q.value);
+      const wv = normalize(where && where.value);
 
       cards.forEach(card => {
-        const text = normalize(card.innerText);
-        const matchesQ = !qv || text.includes(qv);
-        const matchesC = !cv || text.includes(cv);
-        const matchesW = !wv || text.includes(wv);
-        const matchesT = !tv || text.includes(tv);
-        card.style.display = (matchesQ && matchesC && matchesW && matchesT) ? '' : 'none';
+        // Search should match only:
+        //  - post title (h3)
+        //  - "Trade for:" line (first p in card)
+        const titleEl = card.querySelector('h3');
+        const tradeEl = card.querySelector('p');
+        const searchText = normalize((titleEl ? titleEl.innerText : '') + ' ' + (tradeEl ? tradeEl.innerText : ''));
+
+        // Location should match listing meta (postcode/town). Fallback to full card text.
+        const metaEl = card.querySelector('.listing-meta');
+        const locationText = normalize(metaEl ? metaEl.innerText : card.innerText);
+
+        const matchesQ = !qv || searchText.includes(qv);
+
+        // Loose location matching: prefix/town substring match
+        let matchesW = true;
+        if (wv) {
+          matchesW = locationText.includes(wv);
+          if (!matchesW) {
+            const first = wv.split(/\s+/)[0];
+            if (first && first.length >= 2) matchesW = locationText.includes(first);
+          }
+        }
+
+        card.style.display = (matchesQ && matchesW) ? '' : 'none';
       });
     }
 
-    applyBtn && applyBtn.addEventListener('click', apply);
-    [q, cat, where, when].forEach(el => el && el.addEventListener('change', apply));
-    q && q.addEventListener('keyup', (e) => { if (e.key === 'Enter') apply(); });
+    // Auto-filter as you type / change
+    q && q.addEventListener('input', apply);
+    where && where.addEventListener('input', apply);
+    q && q.addEventListener('change', apply);
+    where && where.addEventListener('change', apply);
+
+    // Initial pass
+    apply();
   })();
 </script>
+
 </body>
 </html>
