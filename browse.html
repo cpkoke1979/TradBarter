@@ -532,6 +532,57 @@
   font-size: 12px;
   white-space: nowrap;
 }
+
+/* card-standardise-v1 */
+.card{
+  display:flex;
+  flex-direction:column;
+}
+.card h3{
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+  min-height: 56px; /* keeps titles aligned */
+}
+.trade-for{
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+  min-height: 44px; /* keeps swap line aligned */
+}
+.listing-meta{
+  margin-top: 10px;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  justify-content: space-between;
+  min-height: 34px; /* keeps meta aligned */
+}
+.meta-loc{
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meta-posted{
+  flex: 0 0 auto;
+  white-space: nowrap;
+  color: var(--muted);
+  font-weight: 700;
+}
+.meta-trust{
+  flex: 0 0 auto;
+}
+.trust-pill{ /* keep existing pill look but ensure consistent */
+  white-space: nowrap;
+}
+.card-actions{
+  margin-top:auto;
+  padding-top: 12px;
+}
 </style>
 </head>
 <body>
@@ -586,43 +637,43 @@
 <div class="card">
 <div class="badge">Assembly</div>
 <h3 style="margin-top:10px; margin-bottom:6px;">Flat-pack wardrobe assembly (IKEA style)</h3>
-<p style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
-<div class="listing-meta"><span>📍 Southport (PR8) • Local</span><span class="posted" data-posted="2026-01-19">Posted: —</span><span class="trust-pill">Verified</span></div>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
+<div class="listing-meta"><span class="meta-loc">📍 Southport (PR8) • Local</span><span class="posted meta-posted" data-posted="2026-01-19">Posted: —</span><span class="trust-pill meta-trust">Verified</span></div>
 <div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
 </div>
 <div class="card">
 <div class="badge">Plumbing</div>
 <h3 style="margin-top:10px; margin-bottom:6px;">Small plumbing jobs (leaks, taps, toilets)</h3>
-<p style="margin:0; color:var(--muted);">Trade for: Painting a room / prep + rolling</p>
-<div class="listing-meta"><span>📍 Liverpool (L1–L20) • Local</span><span class="posted" data-posted="2026-01-18">Posted: —</span><span class="trust-pill">Community rated</span></div>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Painting a room / prep + rolling</p>
+<div class="listing-meta"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span><span class="posted meta-posted" data-posted="2026-01-18">Posted: —</span><span class="trust-pill meta-trust">Community rated</span></div>
 <div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
 </div>
 <div class="card">
 <div class="badge">DIY &amp; Repairs</div>
 <h3 style="margin-top:10px; margin-bottom:6px;">Fence panel repair / replace 2 panels</h3>
-<p style="margin:0; color:var(--muted);">Trade for: Deep clean (kitchen + bathroom)</p>
-<div class="listing-meta"><span>📍 Manchester (M1–M20) • Local</span><span class="posted" data-posted="2026-01-17">Posted: —</span><span class="trust-pill">New</span></div>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Deep clean (kitchen + bathroom)</p>
+<div class="listing-meta"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span><span class="posted meta-posted" data-posted="2026-01-17">Posted: —</span><span class="trust-pill meta-trust">New</span></div>
 <div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
 </div>
 <div class="card">
 <div class="badge">Gardening</div>
 <h3 style="margin-top:10px; margin-bottom:6px;">Gardening (mow, edges, light pruning)</h3>
-<p style="margin:0; color:var(--muted);">Trade for: Help fitting curtain poles / shelves</p>
-<div class="listing-meta"><span>📍 Preston (PR1–PR5) • Local</span><span class="posted" data-posted="2026-01-16">Posted: —</span><span class="trust-pill">Verified</span></div>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help fitting curtain poles / shelves</p>
+<div class="listing-meta"><span class="meta-loc">📍 Preston (PR1–PR5) • Local</span><span class="posted meta-posted" data-posted="2026-01-16">Posted: —</span><span class="trust-pill meta-trust">Verified</span></div>
 <div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
 </div>
 <div class="card">
 <div class="badge">Electrical</div>
 <h3 style="margin-top:10px; margin-bottom:6px;">Minor electrics (replace sockets / light fitting)</h3>
-<p style="margin:0; color:var(--muted);">Trade for: 3 hours moving help / lifting / van assist</p>
-<div class="listing-meta"><span>📍 Wirral (CH41–CH49) • Local</span><span class="posted" data-posted="2026-01-15">Posted: —</span><span class="trust-pill">Community rated</span></div>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: 3 hours moving help / lifting / van assist</p>
+<div class="listing-meta"><span class="meta-loc">📍 Wirral (CH41–CH49) • Local</span><span class="posted meta-posted" data-posted="2026-01-15">Posted: —</span><span class="trust-pill meta-trust">Community rated</span></div>
 <div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
 </div>
 <div class="card">
 <div class="badge">Painting</div>
 <h3 style="margin-top:10px; margin-bottom:6px;">Painting &amp; decorating (1–2 rooms)</h3>
-<p style="margin:0; color:var(--muted);">Trade for: Help with a small repair list (hooks, shelves, silicone, etc.)</p>
-<div class="listing-meta"><span>📍 Leeds (LS1–LS10) • Local</span><span class="posted" data-posted="2026-01-13">Posted: —</span><span class="trust-pill">New</span></div>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with a small repair list (hooks, shelves, silicone, etc.)</p>
+<div class="listing-meta"><span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span><span class="posted meta-posted" data-posted="2026-01-13">Posted: —</span><span class="trust-pill meta-trust">New</span></div>
 <div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
 </div>
 </div>
