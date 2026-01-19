@@ -516,12 +516,12 @@
   }
 }
 
-/* Card CTA alignment */
+/* browse-card-standard */
 .card{ display:flex; flex-direction:column; }
-.card-actions{ margin-top:auto; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
-.card-actions .btn{ display:inline-flex; align-items:center; justify-content:center; }
-
-/* Posted + trust pill */
+.card-actions{ margin-top:auto; display:flex; }
+.card-actions .btn{ width: fit-content; }
+.listing-meta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.posted{ color: var(--muted); font-weight: 700; white-space: nowrap; }
 .trust-pill{
   display:inline-flex; align-items:center;
   padding:6px 10px; border-radius:999px;
@@ -532,7 +532,6 @@
   font-size: 12px;
   white-space: nowrap;
 }
-.posted{ color: var(--muted); font-weight: 700; white-space: nowrap; }
 </style>
 </head>
 <body>
