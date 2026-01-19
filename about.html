@@ -352,7 +352,35 @@
 @media (max-width: 820px){ .two-col{ grid-template-columns:1fr; } }
 .bullets{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
 .bullets li{ margin: 8px 0; }
-  </style>
+  
+
+/* === About grid control === */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+}
+@media (max-width: 820px){
+  .cards{ grid-template-columns: 1fr; }
+}
+
+
+.small-cta{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+.small-cta .btn{ min-width: 220px; justify-content:center; }
+@media (max-width: 820px){
+  .small-cta{ flex-direction:column; max-width: 360px; }
+  .small-cta .btn{ width: 100%; min-width: 0; }
+}
+</style>
 </head>
 <body>
 <div class="top-nav">
@@ -424,7 +452,7 @@
             “Do everything for everyone” platforms feel empty and confusing at the start.
             A focused niche creates density — more relevant posts in one place — which creates outcomes, which creates trust, which creates growth.
           </p>
-          <div class="cards" style="grid-template-columns: repeat(3, minmax(0,1fr));">
+          <div class="cards">
             <div class="card">
               <h3 style="margin-top: 0;">High-frequency needs</h3>
               <p style="color: var(--muted); margin: 0;">Everyone has repairs, painting, flat-pack, garden work, cleaning.</p>
@@ -445,7 +473,7 @@
           <p style="color: var(--muted);">
             Barter only scales if people feel safe and the platform stays clean. That’s why TradBarter is built around structure and trust — not endless feeds.
           </p>
-          <div class="cards" style="grid-template-columns: repeat(3, minmax(0,1fr));">
+          <div class="cards">
             <div class="card">
               <h3 style="margin-top: 0;">Trade threads</h3>
               <p style="color: var(--muted); margin: 0;">Messages are tied to a specific post. No lost DMs.</p>
