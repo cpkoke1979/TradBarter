@@ -316,7 +316,7 @@
 
       .brand img{ height:104px; }
       .menu-toggle{ display:flex; }
-      .menu-toggle{ transform: translateY(-2px); }
+      .menu-toggle{ transform: translateY(-3px); }
       .brand a{ display:flex; align-items:center; }
       .nav-links{
         display:none;
@@ -348,6 +348,19 @@
     .footer-links a:hover{ opacity:1; text-decoration:underline; }
     .footer-links .dot{ opacity:0.35; }
 
+
+
+/* hamburger-align-fix */
+@media (max-width: 820px){
+  .brand a{ display:flex; align-items:center; }
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height: 1;
+    transform: translateY(-3px);
+  }
+}
 </style>
 <script>
   function toggleMenu(){
