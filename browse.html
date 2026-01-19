@@ -514,6 +514,24 @@
     transform: translateY(-5px);
   }
 }
+
+    .trust-pill{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,46,89,0.14);
+      background: rgba(11,46,89,0.04);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .posted{
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
 </style>
 </head>
 <body>
@@ -579,8 +597,8 @@
       <p style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
       <div class="listing-meta">
         <span>📍 Southport (PR8) • Local</span>
-        <span>🕒 Weekend</span>
-        <span>✅ Verified ID</span>
+        <span class="posted" data-posted="2026-01-19">Posted: —</span>
+        <span class="trust-pill">Verified</span>
       </div>
       <div class="card-actions">
         <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
@@ -592,10 +610,11 @@
     <div class="card">
       <div class="badge">Plumbing</div>
       <h3 style="margin-top:10px; margin-bottom:6px;">Small plumbing jobs (leaks, taps, toilets)</h3>
-      <p style="margin:0; color:var(--muted);">Trade for: Painting a room / prep + rolling</p>
-      <div class="listing-meta">
+      <p style="margin:0; color:var(--muted);"><div class="listing-meta">
         <span>📍 Liverpool (L1–L20) • Local</span>
-        <span>🕒 Evenings</span>
+        <span class="posted" data-posted="2026-01-18">Posted: —</span>
+        <span class="trust-pill">Community rated</span>
+      </div>n>
         <span>✅ Community rated</span>
       </div>
       <div class="card-actions">
@@ -607,10 +626,11 @@
 
     <div class="card">
       <div class="badge">DIY & Repairs</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Fence panel repair / replace 2 panels</h3>
-      <p style="margin:0; color:var(--muted);">Trade for: Deep clean (kitchen + bathroom)</p>
-      <div class="listing-meta">
+      <h3 style="margin-top:10px; margin-bottom:6px;">Fence panel repair / replace 2 pa<div class="listing-meta">
         <span>📍 Manchester (M1–M20) • Local</span>
+        <span class="posted" data-posted="2026-01-17">Posted: —</span>
+        <span class="trust-pill">New</span>
+      </div>chester (M1–M20) • Local</span>
         <span>🕒 Flexible</span>
         <span>✅ New member</span>
       </div>
@@ -623,9 +643,11 @@
 
     <div class="card">
       <div class="badge">Gardening</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Gardening (mow, edges, light pruning)</h3>
-      <p style="margin:0; color:var(--muted);">Trade for: Help fitting curtain poles / shelves</p>
-      <div class="listing-meta">
+      <h3 style="margin-top:10px; margin-bo<div class="listing-meta">
+        <span>📍 Preston (PR1–PR5) • Local</span>
+        <span class="posted" data-posted="2026-01-16">Posted: —</span>
+        <span class="trust-pill">Verified</span>
+      </div>    <div class="listing-meta">
         <span>📍 Preston (PR1–PR5) • Local</span>
         <span>🕒 Weekdays</span>
         <span>✅ Verified ID</span>
@@ -639,8 +661,11 @@
 
     <div class="card">
       <div class="badge">Electrical</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Minor electrics (replace sockets / light fitting)</h3>
-      <p style="margin:0; color:var(--muted);">Trade for: 3 hours moving help / lifting / van assist</p>
+      <h<div class="listing-meta">
+        <span>📍 Wirral (CH41–CH49) • Local</span>
+        <span class="posted" data-posted="2026-01-15">Posted: —</span>
+        <span class="trust-pill">Community rated</span>
+      </div>3 hours moving help / lifting / van assist</p>
       <div class="listing-meta">
         <span>📍 Wirral (CH41–CH49) • Local</span>
         <span>🕒 Weekend</span>
@@ -653,10 +678,11 @@
     </div>
 
 
-    <div class="card">
-      <div class="badge">Painting</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Painting & decorating (1–2 rooms)</h3>
-      <p style="margin:0; color:var(--muted);">Trade for: Help with a small repair list (hooks, shelves, silicone, etc.)</p>
+    <div class="ca<div class="listing-meta">
+        <span>📍 Leeds (LS1–LS10) • Local</span>
+        <span class="posted" data-posted="2026-01-13">Posted: —</span>
+        <span class="trust-pill">New</span>
+      </div>"margin:0; color:var(--muted);">Trade for: Help with a small repair list (hooks, shelves, silicone, etc.)</p>
       <div class="listing-meta">
         <span>📍 Leeds (LS1–LS10) • Local</span>
         <span>🕒 Flexible</span>
@@ -771,6 +797,32 @@
 
     // Initial pass
     apply();
+  })();
+</script>
+
+
+<script>
+  // Posted time labels (relative)
+  (function(){
+    function daysBetween(a,b){
+      const ms = 24*60*60*1000;
+      return Math.floor((a - b)/ms);
+    }
+    function labelFromDays(d){
+      if(d <= 0) return "Posted: Today";
+      if(d === 1) return "Posted: 1 day ago";
+      if(d < 7) return "Posted: " + d + " days ago";
+      const w = Math.floor(d/7);
+      if(w === 1) return "Posted: 1 week ago";
+      return "Posted: " + w + " weeks ago";
+    }
+    const now = new Date();
+    document.querySelectorAll('.posted[data-posted]').forEach(el=>{
+      const iso = el.getAttribute('data-posted');
+      const dt = new Date(iso + "T00:00:00");
+      const d = daysBetween(now, dt);
+      el.textContent = labelFromDays(d);
+    });
   })();
 </script>
 
