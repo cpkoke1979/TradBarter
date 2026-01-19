@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>TradBarter™ — Browse</title>
+<style>:root {
+  --header-bg: #cfe3f4; /* dedicated header colour */
+      --navy:#0B2E59;
+      --light:#DBEAF7;
+      --orange:#F7941D;
+      --text:#0B2E59;
+      --muted:#4B6B87;
+      --card:#ffffff;
+      --border:#D3E5F7;
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      --radius: 12px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      background:#ffffff;
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    /* Top nav */
+    .top-nav{ position:relative;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 20px;
+      background:linear-gradient(to bottom, #cfe3f4 0%, #bcd6ee 100%);
+      position:sticky;
+      top:0;
+      z-index: 100;
+      border-bottom:1px solid var(--border);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      \
+
+  border-bottom: 2px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+    .brand{
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 320px;
+    }
+
+     .brand img{
+      height:128px;
+      flex-shrink:0;
+      width:auto;
+      max-width:none;
+      display:block;
+      object-fit:contain;
+    }
+
+    .menu-toggle{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      padding:6px;
+      border-radius:8px;
+    }
+    .menu-toggle:focus{ outline: 2px solid rgba(247,148,29,0.35); outline-offset: 2px; }
+    .menu-toggle span{
+      height:2px;
+      width:22px;
+      background:var(--navy);
+      margin:3px 0;
+      border-radius:2px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--navy);
+      font-weight:700;
+      font-size:15px;
+      padding:10px 12px;
+      border-radius:8px;
+    }
+    .nav-links a:hover{ background: rgba(11,46,89,0.07); }
+
+    .nav-links a.cta{
+      background:var(--orange);
+      color:#ffffff;
+    }
+    .nav-links a.cta:hover{ background:#e88610; }
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(180deg, var(--light), #ffffff 65%);
+      padding:42px 18px 26px;
+    }
+
+    .hero-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .hero h1{
+      font-size:42px;
+      letter-spacing:-0.02em;
+      line-height:1.15;
+      margin-bottom:12px;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:var(--muted);
+      margin-bottom:18px;
+      max-width: 52ch;
+    }
+
+    .hero p.scope{
+      font-size:14px;
+      color:var(--muted);
+      margin-top:-10px;
+      margin-bottom:18px;
+      opacity:0.95;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid transparent;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+    }
+
+    .btn-primary{ background:var(--orange); color:#fff; }
+    .btn-primary:hover{ background:#e88610; transform: translateY(-1px); }
+
+    .btn-secondary{ background:var(--navy); color:#fff; }
+    .btn-secondary:hover{ background:#062241; transform: translateY(-1px); }
+
+    .btn-ghost{
+      background:transparent;
+      color:var(--navy);
+      border-color: rgba(11,46,89,0.18);
+      box-shadow:none;
+    }
+    .btn-ghost:hover{ background: rgba(11,46,89,0.06); }
+
+    .mockup-wrap{
+      display:flex;
+      justify-content:center;
+    }
+
+    .mockup{
+      width:100%;
+      transform: translateY(4px);
+      max-width:260px;
+      max-height:300px;
+      height:auto;
+      object-fit:contain;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.16));
+    }
+
+    /* Sections */
+    .section{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 18px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:26px;
+      margin-bottom:18px;
+      letter-spacing:-0.01em;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .how-card{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .icon{
+      width:44px;
+      height:44px;
+      flex: 0 0 44px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background: rgba(11,46,89,0.06);
+      border:1px solid rgba(11,46,89,0.10);
+    }
+
+    .icon svg{
+      width:22px;
+      height:26px;
+      stroke: var(--navy); /* consistent */
+    }
+
+    .how-card h3{
+      font-size:18px;
+      margin-bottom:6px;
+    }
+
+    .how-card p{
+      font-size:15px;
+      color:var(--muted);
+    }
+
+    .cta-band{
+      background: var(--navy);
+      color:#fff;
+      border-radius: 18px;
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .cta-band p{ color: rgba(255,255,255,0.88); max-width: 60ch; }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      font-size:13px;
+      color:#6b7f92;
+      padding:22px 12px 28px;
+    }
+
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-top:14px;
+    }
+    .social a{
+      display:inline-flex;
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(11,46,89,0.12);
+      background:#fff;
+    }
+    .social img{ width:22px; height:22px; }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns: 1fr; text-align:center; }
+      .hero p{ margin-left:auto; margin-right:auto; }
+      .hero-actions{ justify-content:center; }
+      .mockup{ max-width:260px; max-height:300px; }
+      .cards{ grid-template-columns: 1fr; }
+      .how-card{ align-items:center; }
+    }
+
+    @media (max-width: 768px){
+      .top-nav{ flex-wrap:wrap; }
+      .brand{ flex:1 1 auto; min-width:0; }
+      .menu-toggle{ margin-left:auto; }
+      .nav-links{ position:absolute; left:0; right:0; top:100%; background:linear-gradient(to bottom, #cfe3f4 0%, #bcd6ee 100%); border-bottom:1px solid var(--border); box-shadow: 0 12px 22px rgba(0,0,0,0.10); padding:12px 16px 16px; }
+      .nav-links a{ width:100%; text-align:center; }
+      .nav-links a.nav-cta{ width:100%; }
+
+      .brand img{ height:104px; }
+      .menu-toggle{ display:flex; }
+      .menu-toggle{ transform: translateY(-5px); }
+      .brand a{ display:flex; align-items:center; }
+      .nav-links{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        padding:10px 0 4px;
+        gap:6px;
+      }
+      .nav-links.active{ display:flex; }
+      .nav-links a{ text-align:center; }
+    }
+
+    @media (max-width: 600px){
+      .brand{ min-width: 0; }
+      .brand img{ height:104px; }
+      .mockup-wrap{ display:none; } /* mockup hidden on small mobile */
+      .hero{ padding-top:30px; }
+      .hero h1{ font-size:34px; }
+    }
+  
+.nav-login{padding:10px 14px;border-radius:8px;color:var(--navy);text-decoration:none;font-weight:700;}
+.nav-login:hover{background:rgba(11,46,89,0.06);}
+.nav-cta{padding:10px 14px;border-radius:12px;background:var(--orange);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 6px 18px rgba(247,148,29,0.25);}
+.nav-cta:hover{filter:brightness(0.97);}
+    footer{ text-align:center; font-size:14px; color:#5A7187; padding:22px 16px; border-top:1px solid var(--border); background:#fff; }
+    .footer-links{ margin-top:8px; display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; }
+    .footer-links a{ color:var(--navy); text-decoration:none; font-weight:600; font-size:13px; opacity:0.85; }
+    .footer-links a:hover{ opacity:1; text-decoration:underline; }
+    .footer-links .dot{ opacity:0.35; }
+
+
+/* Browse page additions */
+.hero.browse-hero { padding: 34px 0 18px; }
+.filters { display:flex; gap:12px; flex-wrap:wrap; align-items:end; margin-top:14px; }
+.field { display:flex; flex-direction:column; gap:6px; min-width:180px; }
+.field label { font-size:12px; color:var(--muted); }
+.field input, .field select {
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  outline:none;
+}
+.field input::placeholder { color: rgba(255,255,255,0.45); }
+.pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.pill {
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+.listing-meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; color: var(--muted); font-size:13px; }
+.badge {
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  padding:6px 10px; border-radius:999px; font-size:12px;
+}
+.card-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+.btn.btn-ghost { background: transparent; border:1px solid rgba(255,255,255,0.18); }
+.notice {
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  border-radius:16px;
+  padding:14px 16px;
+  color: var(--muted);
+  max-width:1100px;
+  margin:0 auto 18px;
+}
+
+  
+/* Filters container (reduce floaty look) */
+.filter-card{
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  border-radius:16px;
+  padding:16px;
+  max-width:1100px;
+  margin-top:14px;
+}
+.filter-card .filters{ margin-top:0; }
+.filter-card .pills{ margin-top:12px; }
+
+/* === Browse filter UX polish (v3) === */
+.filter-card{
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px;
+  max-width: 1100px;
+  margin-top: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.filter-card .filters{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.2fr 1.4fr;
+  gap: 12px;
+  align-items: end;
+  margin: 0;
+}
+
+@media (max-width: 980px){
+  .filter-card .filters{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px){
+  .filter-card .filters{ grid-template-columns: 1fr; }
+}
+
+.filter-card .field{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-card .field label{
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.filter-card .field input,
+.filter-card .field select{
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  background: #fff !important;
+  color: var(--text) !important;
+  padding: 10px 12px !important;
+  border-radius: 14px !important;
+  outline: none;
+}
+
+.filter-card .field input::placeholder{
+  color: rgba(0,0,0,0.45);
+}
+
+.filter-card .field input:focus,
+.filter-card .field select:focus{
+  border-color: rgba(0,0,0,0.22) !important;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.06);
+}
+
+.filter-card .pills{
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-card .pill{
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.03);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+
+/* hamburger-align-fix */
+@media (max-width: 820px){
+  .brand a{ display:flex; align-items:center; }
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height: 1;
+    transform: translateY(-5px);
+  }
+}
+
+
+/* hamburger-align-fix-v2 (visual centering) */
+@media (max-width: 820px){
+  /* ensure header row centers visually */
+  header .nav-inner,
+  header .nav-bar,
+  header .topbar,
+  header .nav-row{
+    align-items: center;
+  }
+
+  /* logo container */
+  .brand, .logo, .navbar-brand{ display:flex; align-items:center; }
+  .brand a, .logo a{ display:flex; align-items:center; }
+
+  /* hamburger button */
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transform: translateY(-5px);
+  }
+}
+
+
+.card{ display:flex; flex-direction:column; }
+.card-actions{ margin-top:auto; display:flex; }
+.card-actions .btn{ width: fit-content; }
+.listing-meta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.posted{ color: var(--muted); font-weight: 700; white-space: nowrap; }
+.trust-pill{
+  display:inline-flex; align-items:center;
+  padding:6px 10px; border-radius:999px;
+  border:1px solid rgba(11,46,89,0.14);
+  background: rgba(11,46,89,0.04);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* meta-bar-v1: fixed positions for card meta */
+.card{
+  display:flex;
+  flex-direction:column;
+}
+.card h3{
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+  min-height: 56px;
+}
+.trade-for{
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+  min-height: 44px;
+}
+
+.meta-bar{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "loc posted"
+    "trust trust";
+  gap: 8px 12px;
+  min-height: 56px;
+}
+.meta-left{ grid-area: loc; min-width:0; }
+.meta-right{ grid-area: posted; justify-self:end; }
+.meta-bottom{ grid-area: trust; }
+
+.meta-loc{
+  display:block;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meta-posted{
+  white-space: nowrap;
+  color: var(--muted);
+  font-weight: 700;
+}
+.trust-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(11,46,89,0.14);
+  background: rgba(11,46,89,0.04);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.card-actions{
+  margin-top:auto;
+  padding-top: 12px;
+  display:flex;
+}
+
+/* trust-variants-v1 */
+.trust-pill.trust-verified{
+  background: rgba(16, 185, 129, 0.10);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.trust-pill.trust-rated{
+  background: rgba(59, 130, 246, 0.10);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+.trust-pill.trust-new{
+  background: rgba(245, 158, 11, 0.10);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+</style>
+</head>
+<body>
+<div class="top-nav">
+<div class="brand" style="flex:0 0 auto">
+<a aria-label="TradBarter home" href="/">
+<picture>
+<source srcset="/static/img/tradbarter-logo-horizontal.svg" type="image/svg+xml"/>
+<img alt="TradBarter" src="/static/img/tradbarter-logo-horizontal.png"/>
+</picture>
+</a>
+</div>
+<button aria-expanded="false" aria-label="Open menu" class="menu-toggle" onclick="toggleMenu()" type="button">
+<span></span><span></span><span></span>
+</button>
+<nav aria-label="Primary" class="nav-links">
+<a href="/#how-it-works">How it Works</a>
+<a href="/about">About</a>
+<a class="nav-login" href="/account?mode=login">Login</a>
+<a class="nav-cta" href="/account?mode=signup">Sign Up</a>
+</nav>
+</div>
+<main>
+<header class="hero browse-hero">
+<div class="hero-inner">
+<div>
+<h1>Browse local trades</h1>
+<p>Home services and practical everyday help — no cash required.</p>
+<p class="scope">Browse first. Sign up only when you’re ready to contact someone.</p>
+<div class="filter-card">
+<div class="filter-card">
+<div class="filters">
+<div class="field" style="flex:1; min-width:240px;">
+<label for="q">Search</label>
+<input id="q" placeholder="Search: leak, tap, flat-pack, fence repair…" type="text"/>
+</div>
+<div class="field">
+<label for="where">Location</label>
+<input id="where" placeholder="Postcode or town (e.g. PR, PR8, Liverpool)" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="section" style="padding-top:22px;">
+<div class="notice" style="margin-top:16px;">
+<strong style="color:var(--text);">Tip:</strong> Click any trade to see details. If you want to message, you’ll be asked to sign up.
+    </div>
+<div class="cards"><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Flat-pack wardrobe assembly (IKEA style)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Southport (PR8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Fix leaking tap + reseal basin</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help moving a sofa / lifting</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Fence panel replacement (2 panels)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Deep clean (kitchen + bathroom)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Lawn mow + edging (front + back)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help fitting curtain poles / shelves</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Preston (PR1–PR5) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Replace 2 light fittings + check switch</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: 3 hours moving help / van assist</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Wirral (CH41–CH49) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Paint 1 room (prep + rolling)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Small repair list help (hooks, shelves)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Hang 2 internal doors (existing frames)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Garden strim / tidy</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Bolton (BL1–BL6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Deep clean kitchen (no oven)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Flat-pack assembly (small)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Wigan (WN1–WN6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Hedge trim (up to 10m)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with tip run / disposal</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Chorley (PR6–PR7) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.6★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Mount TV on wall + hide cables</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Dog walking (x3)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Salford (M5–M50) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Unblock sink / slow drain</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Paint touch-ups (1–2 hours)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Stockport (SK1–SK8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.6★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Build IKEA desk + chair</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Basic tech help (Wi‑Fi/printer)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 St Helens (WA9–WA11) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">End-of-tenancy clean (1 bed flat)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Gardening (mow + tidy)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Fix squeaky floorboards + 2 door latches</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help assembling flat-pack</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Bury (BL8–BL9) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-10">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.7★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Weeding + tidy borders (2 hours)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Window cleaning (front)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Oldham (OL1–OL9) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-09">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Replace 3 fence slats + screws</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Car wash + interior vacuum</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Rochdale (OL11–OL16) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-07">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Paint hallway + stairs (light prep)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help moving boxes (2 hours)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-05">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Change 4 sockets (like-for-like)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Flat-pack assembly (small)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Leigh (WN7) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Replace shower head + reseal tray</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Gardening hedge trim</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Preston (PR1–PR5) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.7★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Install 2 curtain rails</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Dog sitting (half day)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Blackburn (BB1–BB2) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Weekly clean (2 hours)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with DIY (drilling/holding)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Southport (PR8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.6★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Clear leaves + compost tidy</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Paint one wall / feature wall</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Sefton (L30–L38) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Assemble bunk bed</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help lifting + moving (stairs)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Fix loose kitchen cupboard doors</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Clean windows + frames</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Bleed radiators + check pressure</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help building shelves</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Bolton (BL1–BL6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Prep + paint skirting (1 room)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Garden tidy (2 hours)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Wigan (WN1–WN6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 5.0★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Fit new smoke alarm + test</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Deep clean bathroom</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Salford (M5–M50) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.8★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Carpet clean (living room)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Flat-pack assembly</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Mow + strim small garden</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with tip run</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 St Helens (WA9–WA11) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div><div class="card">
+<h3 style="margin-top:10px; margin-bottom:6px;">Put up 3 shelves (straight + level)</h3>
+<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Basic plumbing help (tap)</p>
+<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Stockport (SK1–SK8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
+</div></div>
+</section>
+<section class="section">
+<div class="cta-band">
+<div>
+<h2 style="font-size:22px; margin-bottom:6px;">Want to post your own?</h2>
+<p>List what you need (or what you offer) and get local help without paying cash.</p>
+</div>
+<div>
+<a class="btn btn-primary" href="/account?mode=signup&amp;next=/create-listing">Create a free listing</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</div>
+<div class="footer-links">
+<a href="/about">About Us</a>
+<span class="dot">•</span>
+<a href="/contact">Contact</a>
+</div>
+<div aria-label="Social links" class="social">
+<a href="https://x.com/tradbarter" rel="noreferrer" target="_blank"><img alt="X" src="/static/img/x.png"/></a>
+<a href="https://facebook.com/tradbarter" rel="noreferrer" target="_blank"><img alt="Facebook" src="/static/img/facebook.png"/></a>
+<a href="https://instagram.com/tradbarter" rel="noreferrer" target="_blank"><img alt="Instagram" src="/static/img/instagram.png"/></a>
+</div>
+</footer>
+<script>
+  function toggleMenu(){
+    const nav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.menu-toggle');
+    if(!nav) return;
+    const isOpen = nav.classList.toggle('active');
+    if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  // Close menu after tapping a link (mobile)
+  document.addEventListener('click', function(e){
+    const nav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.menu-toggle');
+    if(!nav || !btn) return;
+
+    const clickedLink = e.target && e.target.closest && e.target.closest('.nav-links a');
+    if(clickedLink && nav.classList.contains('active')){
+      nav.classList.remove('active');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+</script>
+<script>
+  (function() {
+    const q = document.getElementById('q');
+    const where = document.getElementById('where');
+    const cards = Array.from(document.querySelectorAll('.cards .card'));
+
+    function normalize(s) { return (s || '').toLowerCase(); }
+
+    function apply() {
+      const qv = normalize(q && q.value);
+      const wv = normalize(where && where.value);
+
+      cards.forEach(card => {
+        // Search should match only:
+        //  - post title (h3)
+        //  - "Trade for:" line (first p in card)
+        const titleEl = card.querySelector('h3');
+        const tradeEl = card.querySelector('p');
+        const searchText = normalize((titleEl ? titleEl.innerText : '') + ' ' + (tradeEl ? tradeEl.innerText : ''));
+
+        // Location should match listing meta (postcode/town). Fallback to full card text.
+        const metaEl = card.querySelector('.listing-meta');
+        const locationText = normalize(metaEl ? metaEl.innerText : card.innerText);
+
+        const matchesQ = !qv || searchText.includes(qv);
+
+        // Loose location matching: prefix/town substring match
+        let matchesW = true;
+        if (wv) {
+          matchesW = locationText.includes(wv);
+          if (!matchesW) {
+            const first = wv.split(/\s+/)[0];
+            if (first && first.length >= 2) matchesW = locationText.includes(first);
+          }
+        }
+
+        card.style.display = (matchesQ && matchesW) ? '' : 'none';
+      });
+    }
+
+    // Auto-filter as you type / change
+    q && q.addEventListener('input', apply);
+    where && where.addEventListener('input', apply);
+    q && q.addEventListener('change', apply);
+    where && where.addEventListener('change', apply);
+
+    // Initial pass
+    apply();
+  })();
+</script>
+<script>
+  // Posted time labels (relative)
+  (function(){
+    function daysBetween(a,b){
+      const ms = 24*60*60*1000;
+      return Math.floor((a - b)/ms);
+    }
+    function labelFromDays(d){
+      if(d <= 0) return "Posted: Today";
+      if(d === 1) return "Posted: 1 day ago";
+      if(d < 7) return "Posted: " + d + " days ago";
+      const w = Math.floor(d/7);
+      if(w === 1) return "Posted: 1 week ago";
+      return "Posted: " + w + " weeks ago";
+    }
+    const now = new Date();
+    document.querySelectorAll('.posted[data-posted]').forEach(el=>{
+      const iso = el.getAttribute('data-posted');
+      const dt = new Date(iso + "T00:00:00");
+      const d = daysBetween(now, dt);
+      el.textContent = labelFromDays(d);
+    });
+  })();
+</script></body>
+</html>
