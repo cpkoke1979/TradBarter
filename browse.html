@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TradBarter™ — Browse</title>
-  <style>:root {
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>TradBarter™ — Browse</title>
+<style>:root {
   --header-bg: #cfe3f4; /* dedicated header colour */
       --navy:#0B2E59;
       --light:#DBEAF7;
@@ -515,42 +516,23 @@
   }
 }
 
-    .trust-pill{
-      display:inline-flex;
-      align-items:center;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(11,46,89,0.14);
-      background: rgba(11,46,89,0.04);
-      color: var(--navy);
-      font-weight: 800;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-    .posted{
-      color: var(--muted);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-
 /* Card CTA alignment */
-.card{
-  display:flex;
-  flex-direction:column;
+.card{ display:flex; flex-direction:column; }
+.card-actions{ margin-top:auto; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.card-actions .btn{ display:inline-flex; align-items:center; justify-content:center; }
+
+/* Posted + trust pill */
+.trust-pill{
+  display:inline-flex; align-items:center;
+  padding:6px 10px; border-radius:999px;
+  border:1px solid rgba(11,46,89,0.14);
+  background: rgba(11,46,89,0.04);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 12px;
+  white-space: nowrap;
 }
-.card-actions{
-  margin-top:auto;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.card-actions .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
+.posted{ color: var(--muted); font-weight: 700; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -558,177 +540,112 @@
 <div class="brand" style="flex:0 0 auto">
 <a aria-label="TradBarter home" href="index.html">
 <picture>
-  <source srcset="static/brand/tradbarter-logo-horizontal.svg" type="image/svg+xml"/>
-  <img alt="TradBarter" src="static/brand/tradbarter-logo-horizontal.png"/>
+<source srcset="static/brand/tradbarter-logo-horizontal.svg" type="image/svg+xml"/>
+<img alt="TradBarter" src="static/brand/tradbarter-logo-horizontal.png"/>
 </picture>
 </a>
 </div>
-<button aria-label="Open menu" aria-expanded="false" class="menu-toggle" onclick="toggleMenu()" type="button">
+<button aria-expanded="false" aria-label="Open menu" class="menu-toggle" onclick="toggleMenu()" type="button">
 <span></span><span></span><span></span>
 </button>
 <nav aria-label="Primary" class="nav-links">
-  <a href="how-it-works.html">How it Works</a>
-        <a href="about.html">About</a>
+<a href="how-it-works.html">How it Works</a>
+<a href="about.html">About</a>
 <a class="nav-login" href="account.html?mode=login">Login</a>
-  <a class="nav-cta" href="account.html?mode=signup">Sign Up</a>
+<a class="nav-cta" href="account.html?mode=signup">Sign Up</a>
 </nav>
 </div>
-
 <main>
-  <header class="hero browse-hero">
-    <div class="hero-inner">
-      <div>
-        <h1>Browse local trades</h1>
-        <p>Home services and practical everyday help — no cash required.</p>
-        <p class="scope">Browse first. Sign up only when you’re ready to contact someone.</p>
-
-        <div class="filter-card">
+<header class="hero browse-hero">
+<div class="hero-inner">
+<div>
+<h1>Browse local trades</h1>
+<p>Home services and practical everyday help — no cash required.</p>
+<p class="scope">Browse first. Sign up only when you’re ready to contact someone.</p>
+<div class="filter-card">
 <div class="filter-card">
 <div class="filters">
-          <div class="field" style="flex:1; min-width:240px;">
-            <label for="q">Search</label>
-            <input id="q" type="text" placeholder="Search: leak, tap, flat-pack, fence repair…" />
-          </div>
-
-          <div class="field">
-            <label for="where">Location</label>
-            <input id="where" type="text" placeholder="Postcode or town (e.g. PR, PR8, Liverpool)" />
-          </div>
-
-          </div>
-
-        </div>
+<div class="field" style="flex:1; min-width:240px;">
+<label for="q">Search</label>
+<input id="q" placeholder="Search: leak, tap, flat-pack, fence repair…" type="text"/>
 </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="section" style="padding-top:22px;">
-    <div class="notice" style="margin-top:16px;">
-      <strong style="color:var(--text);">Tip:</strong> Click any trade to see details. If you want to message, you’ll be asked to sign up.
-    </div>
-
-    <div class="cards">
-
-    <div class="card">
-      <div class="badge">Assembly</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Flat-pack wardrobe assembly (IKEA style)</h3>
-      <p style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
-      <div class="listing-meta">
-        <span>📍 Southport (PR8) • Local</span>
-        <span class="posted" data-posted="2026-01-19">Posted: —</span>
-        <span class="trust-pill">Verified</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
+<div class="field">
+<label for="where">Location</label>
+<input id="where" placeholder="Postcode or town (e.g. PR, PR8, Liverpool)" type="text"/>
 </div>
-    </div>
-
-
-    <div class="card">
-      <div class="badge">Plumbing</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Small plumbing jobs (leaks, taps, toilets)</h3>
-      <div class="listing-meta">
-        <span>📍 Liverpool (L1–L20) • Local</span>
-        <span class="posted" data-posted="2026-01-18">Posted: —</span>
-        <span class="trust-pill">Community rated</span>
-      </div>n>
-        <span>✅ Community rated</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
 </div>
-    </div>
-
-
-    <div class="card">
-      <div class="badge">DIY & Repairs</div>
-      <h3 style="margin-top:10px; margin-bottom:6px;">Fence panel repair / replace 2 pa<div class="listing-meta">
-        <span>📍 Manchester (M1–M20) • Local</span>
-        <span class="posted" data-posted="2026-01-17">Posted: —</span>
-        <span class="trust-pill">New</span>
-      </div>chester (M1–M20) • Local</span>
-        <span>🕒 Flexible</span>
-        <span>✅ New member</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
 </div>
-    </div>
-
-
-    <div class="card">
-      <div class="badge">Gardening</div>
-      <h3 style="margin-top:10px; margin-bo<div class="listing-meta">
-        <span>📍 Preston (PR1–PR5) • Local</span>
-        <span class="posted" data-posted="2026-01-16">Posted: —</span>
-        <span class="trust-pill">Verified</span>
-      </div>    <div class="listing-meta">
-        <span>📍 Preston (PR1–PR5) • Local</span>
-        <span>🕒 Weekdays</span>
-        <span>✅ Verified ID</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
 </div>
-    </div>
-
-
-    <div class="card">
-      <div class="badge">Electrical</div>
-      <h<div class="listing-meta">
-        <span>📍 Wirral (CH41–CH49) • Local</span>
-        <span class="posted" data-posted="2026-01-15">Posted: —</span>
-        <span class="trust-pill">Community rated</span>
-      </div>3 hours moving help / lifting / van assist</p>
-      <div class="listing-meta">
-        <span>📍 Wirral (CH41–CH49) • Local</span>
-        <span>🕒 Weekend</span>
-        <span>✅ Community rated</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
 </div>
-    </div>
-
-
-    <div class="ca<div class="listing-meta">
-        <span>📍 Leeds (LS1–LS10) • Local</span>
-        <span class="posted" data-posted="2026-01-13">Posted: —</span>
-        <span class="trust-pill">New</span>
-      </div>"margin:0; color:var(--muted);">Trade for: Help with a small repair list (hooks, shelves, silicone, etc.)</p>
-      <div class="listing-meta">
-        <span>📍 Leeds (LS1–LS10) • Local</span>
-        <span>🕒 Flexible</span>
-        <span>✅ New member</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="account.html?mode=signup&next=trade.html">View trade</a>
 </div>
+</header>
+<section class="section" style="padding-top:22px;">
+<div class="notice" style="margin-top:16px;">
+<strong style="color:var(--text);">Tip:</strong> Click any trade to see details. If you want to message, you’ll be asked to sign up.
     </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="cta-band">
-      <div>
-        <h2 style="font-size:22px; margin-bottom:6px;">Want to post your own?</h2>
-        <p>List what you need (or what you offer) and get local help without paying cash.</p>
-      </div>
-      <div>
-        <a class="btn btn-primary" href="account.html?mode=signup&next=create-listing.html">Create a free listing</a>
-      </div>
-    </div>
-  </section>
+<div class="cards">
+<div class="card">
+<div class="badge">Assembly</div>
+<h3 style="margin-top:10px; margin-bottom:6px;">Flat-pack wardrobe assembly (IKEA style)</h3>
+<p style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
+<div class="listing-meta"><span>📍 Southport (PR8) • Local</span><span class="posted" data-posted="2026-01-19">Posted: —</span><span class="trust-pill">Verified</span></div>
+<div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
+</div>
+<div class="card">
+<div class="badge">Plumbing</div>
+<h3 style="margin-top:10px; margin-bottom:6px;">Small plumbing jobs (leaks, taps, toilets)</h3>
+<p style="margin:0; color:var(--muted);">Trade for: Painting a room / prep + rolling</p>
+<div class="listing-meta"><span>📍 Liverpool (L1–L20) • Local</span><span class="posted" data-posted="2026-01-18">Posted: —</span><span class="trust-pill">Community rated</span></div>
+<div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
+</div>
+<div class="card">
+<div class="badge">DIY &amp; Repairs</div>
+<h3 style="margin-top:10px; margin-bottom:6px;">Fence panel repair / replace 2 panels</h3>
+<p style="margin:0; color:var(--muted);">Trade for: Deep clean (kitchen + bathroom)</p>
+<div class="listing-meta"><span>📍 Manchester (M1–M20) • Local</span><span class="posted" data-posted="2026-01-17">Posted: —</span><span class="trust-pill">New</span></div>
+<div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
+</div>
+<div class="card">
+<div class="badge">Gardening</div>
+<h3 style="margin-top:10px; margin-bottom:6px;">Gardening (mow, edges, light pruning)</h3>
+<p style="margin:0; color:var(--muted);">Trade for: Help fitting curtain poles / shelves</p>
+<div class="listing-meta"><span>📍 Preston (PR1–PR5) • Local</span><span class="posted" data-posted="2026-01-16">Posted: —</span><span class="trust-pill">Verified</span></div>
+<div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
+</div>
+<div class="card">
+<div class="badge">Electrical</div>
+<h3 style="margin-top:10px; margin-bottom:6px;">Minor electrics (replace sockets / light fitting)</h3>
+<p style="margin:0; color:var(--muted);">Trade for: 3 hours moving help / lifting / van assist</p>
+<div class="listing-meta"><span>📍 Wirral (CH41–CH49) • Local</span><span class="posted" data-posted="2026-01-15">Posted: —</span><span class="trust-pill">Community rated</span></div>
+<div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
+</div>
+<div class="card">
+<div class="badge">Painting</div>
+<h3 style="margin-top:10px; margin-bottom:6px;">Painting &amp; decorating (1–2 rooms)</h3>
+<p style="margin:0; color:var(--muted);">Trade for: Help with a small repair list (hooks, shelves, silicone, etc.)</p>
+<div class="listing-meta"><span>📍 Leeds (LS1–LS10) • Local</span><span class="posted" data-posted="2026-01-13">Posted: —</span><span class="trust-pill">New</span></div>
+<div class="card-actions"><a class="btn btn-primary" href="account.html?mode=signup&amp;next=trade.html">View trade</a></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="cta-band">
+<div>
+<h2 style="font-size:22px; margin-bottom:6px;">Want to post your own?</h2>
+<p>List what you need (or what you offer) and get local help without paying cash.</p>
+</div>
+<div>
+<a class="btn btn-primary" href="account.html?mode=signup&amp;next=create-listing.html">Create a free listing</a>
+</div>
+</div>
+</section>
 </main>
-
 <footer>
 <div>© 2025 TradBarter™. All rights reserved. TradBarter™ is a registered trademark in the UK.</div>
 <div class="footer-links">
-  <a href="about.html">About Us</a>
-  <span class="dot">•</span>
-  <a href="contact.html">Contact</a>
+<a href="about.html">About Us</a>
+<span class="dot">•</span>
+<a href="contact.html">Contact</a>
 </div>
 <div aria-label="Social links" class="social">
 <a href="https://x.com/tradbarter" rel="noreferrer" target="_blank"><img alt="X" src="static/social/x.png"/></a>
@@ -736,9 +653,6 @@
 <a href="https://instagram.com/tradbarter" rel="noreferrer" target="_blank"><img alt="Instagram" src="static/social/instagram.png"/></a>
 </div>
 </footer>
-
-
-
 <script>
   function toggleMenu(){
     const nav = document.querySelector('.nav-links');
@@ -761,7 +675,6 @@
     }
   });
 </script>
-
 <script>
   (function() {
     const q = document.getElementById('q');
@@ -812,8 +725,6 @@
     apply();
   })();
 </script>
-
-
 <script>
   // Posted time labels (relative)
   (function(){
@@ -837,7 +748,5 @@
       el.textContent = labelFromDays(d);
     });
   })();
-</script>
-
-</body>
+</script></body>
 </html>
