@@ -154,7 +154,7 @@
     }
     .btn-primary{background:var(--orange); color:#fff;}
     .btn-primary:hover{filter:brightness(0.97); transform:translateY(-1px);}
-    .btn-secondary{background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:0 2px 6px rgba(0,0,0,0.10);}
+    .btn-secondary{background:transparent; color:var(--navy); border-color:rgba(8,39,77,0.35); box-shadow:none;}
     .btn-secondary:hover{filter:brightness(0.95); transform:translateY(-1px);}
 .hero-note{margin-top:10px;}
 
@@ -339,6 +339,58 @@
   height:auto;
   display:block;
   filter:drop-shadow(0 22px 60px rgba(0,0,0,0.18));
+}
+
+
+/* --- Mobile hero fix (stack layout + 2-line headline) --- */
+@media (max-width: 820px){
+  .hero-inner{
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    align-items: start !important;
+  }
+  .hero-copy{
+    order: 1;
+    max-width: 520px;
+  }
+  .hero h1{
+    font-size: 42px !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px !important;
+  }
+  .hero p.lead{
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 16px !important;
+    max-width: 520px;
+  }
+  .hero-actions{
+    flex-wrap: wrap;
+    gap: 10px !important;
+  }
+  .hero-actions .btn{
+    width: auto;
+    min-width: 0;
+  }
+  .hero-phone{
+    order: 2;
+    justify-self: center !important;
+    align-self: start !important;
+    width: 100% !important;
+    max-width: 240px !important;
+    margin: 6px auto 0 !important;
+  }
+  .hero-phone img,
+  .hero-phone picture,
+  .hero-phone source{
+    max-width: 100% !important;
+  }
+}
+/* Slightly tighter small phones */
+@media (max-width: 420px){
+  .hero h1{ font-size: 38px !important; }
+  .hero-phone{ max-width: 220px !important; }
 }
 
 </style>
