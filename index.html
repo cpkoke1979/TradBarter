@@ -393,6 +393,21 @@
   .hero-phone{ max-width: 220px !important; }
 }
 
+
+/* FORCE Browse Trades button to be blue everywhere */
+.btn-browse,
+a.btn-browse,
+button.btn-browse{
+  background-color:#0b3a67 !important;
+  color:#ffffff !important;
+  border:none !important;
+}
+.btn-browse:hover,
+.btn-browse:active{
+  background-color:#092f54 !important;
+  color:#ffffff !important;
+}
+
 </style>
 
 
@@ -445,7 +460,7 @@
         <p>Trade practical skills locally — without money getting in the way.</p>
 
         <div class="hero-actions">
-          <a class="btn btn-secondary" href="/browse">Browse trades</a>
+          <a class="btn btn-browse" href="/browse">Browse trades</a>
           <a class="btn btn-primary" href="/account?mode=signup&next=/create-listing">Post a trade (free)</a>
           </div>
 
@@ -524,7 +539,7 @@ Post only when you’re ready.<br/>
         <p>Create your first listing in minutes. No commitment. No pressure.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn btn-invert" href="/browse">Browse trades</a>
+        <a class="btn btn-browse" href="/browse">Browse trades</a>
         <a class="btn btn-primary" href="/account?mode=signup&next=/create-listing">Post a trade (free)</a>
       </div>
     </div>
