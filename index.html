@@ -344,11 +344,51 @@
 
 @media (max-width: 760px){
 
-/* Mobile hamburger: stack bars */
-.menu-toggle{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;
+  /* Hamburger */
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:4px;
+  }
+  .menu-toggle span{ margin:0; }
 
-/* Mobile hero: fix awkward stacking & overlap */
-.hero{padding:18px 16px 10px;}
+  /* Hero layout */
+  .hero{padding:18px 16px 10px;}
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .hero-copy{order:1;}
+  .hero-phone{
+    order:2;
+    justify-self:center;
+    max-width:260px;
+    margin-top:10px;
+  }
+
+  .hero h1{
+    font-size:42px;
+    line-height:1.08;
+    margin-bottom:10px;
+  }
+
+  .hero p{
+    font-size:16px;
+    line-height:1.45;
+    margin-bottom:14px;
+  }
+
+  .hero-actions{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .hero-actions .btn{width:100%;}
+}
+
 .hero-inner{display:grid;grid-template-columns:1fr;gap:14px;}
 .hero-copy{order:1;}
 .hero-phone{order:2;justify-self:center;max-width:260px;margin-top:6px;}
@@ -420,7 +460,7 @@
         <p>Trade practical skills locally — without money getting in the way.</p>
 
         <div class="hero-actions">
-          <a class="btn btn-secondary" href="/browse">Browse trades</a>
+          <a class="btn btn-primary" href="/browse">Browse trades</a>
           <a class="btn btn-primary" href="/account?mode=signup&next=/create-listing">Post a trade (free)</a>
           </div>
 
