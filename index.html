@@ -60,15 +60,9 @@
       border-radius:12px;
       padding:10px 12px;
       cursor:pointer;
-    }
+     flex-direction:column; gap:4px; align-items:center; justify-content:center;}
     .menu-toggle:focus{outline:2px solid rgba(247,148,29,0.35); outline-offset:2px;}
-    .menu-toggle span{
-      display:block;
-      height:2px; width:22px;
-      background:var(--navy);
-      margin:4px 0;
-      border-radius:2px;
-    }
+    .menu-toggle span{display:block;height:2px;width:22px;background:var(--navy);margin:0;border-radius:2px;}
 
     .nav-links{
       display:flex;
@@ -292,11 +286,7 @@
 
     }
     @media (max-width: 820px){
-      .brand img{ height:104px; 
-      .menu-toggle{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;line-height:0;}
-
-      .menu-toggle span{display:block;height:2px;width:22px;background:var(--navy);margin:0;border-radius:2px;}
-}
+      .brand img{ height:104px; }
 
       .menu-toggle{display:flex; align-items:center; justify-content:center; line-height:0;}
       .nav-links{
@@ -346,72 +336,34 @@
 }
 
 
-/* --- Mobile hero fix (stack layout + 2-line headline) --- */
-@media (max-width: 820px){
-  .hero-inner{
-    grid-template-columns: 1fr !important;
-    gap: 18px !important;
-    align-items: start !important;
-  }
-  .hero-copy{
-    order: 1;
-    max-width: 520px;
-  }
-  .hero h1{
-    font-size: 42px !important;
-    line-height: 1.06 !important;
-    letter-spacing: -0.02em;
-    margin-bottom: 10px !important;
-  }
-  .hero p.lead{
-    font-size: 16px !important;
-    line-height: 1.45 !important;
-    margin-bottom: 16px !important;
-    max-width: 520px;
-  }
-  .hero-actions{
-    flex-wrap: wrap;
-    gap: 10px !important;
-  }
-  .hero-actions .btn{
-    width: auto;
-    min-width: 0;
-  }
-  .hero-phone{
-    order: 2;
-    justify-self: center !important;
-    align-self: start !important;
-    width: 100% !important;
-    max-width: 240px !important;
-    margin: 6px auto 0 !important;
-  }
-  .hero-phone img,
-  .hero-phone picture,
-  .hero-phone source{
-    max-width: 100% !important;
-  }
-}
-/* Slightly tighter small phones */
-@media (max-width: 420px){
-  .hero h1{ font-size: 38px !important; }
-  .hero-phone{ max-width: 220px !important; }
-}
+@media (max-width: 760px){
+  .menu-toggle{display:flex;}
 
 
-/* FORCE Browse Trades button to be blue everywhere */
-.btn-browse,
-a.btn-browse,
-button.btn-browse{
-  background-color:#0b3a67 !important;
-  color:#ffffff !important;
-  border:none !important;
+/* Mobile hamburger: stack bars */
+.menu-toggle{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;
+
+/* Mobile hero: fix awkward stacking & overlap */
+.hero{padding:18px 16px 10px;}
+.hero-inner{display:grid;grid-template-columns:1fr;gap:14px;}
+.hero-copy{order:1;}
+.hero-phone{order:2;justify-self:center;max-width:260px;margin-top:6px;}
+.hero h1{font-size:44px;line-height:1.03;letter-spacing:-0.02em;margin-bottom:10px;}
+.hero p.lead{font-size:16px;line-height:1.4;margin-bottom:14px;max-width:34ch;}
+.hero-actions{display:flex;flex-direction:column;gap:10px;align-items:stretch;}
+.hero-actions .btn{width:100%;}
+
 }
-.btn-browse:hover,
-.btn-browse:active{
-  background-color:#092f54 !important;
-  color:#ffffff !important;
+.menu-toggle span{display:block;height:2px;width:22px;background:var(--navy);margin:0;border-radius:2px;}
+
 }
 
+@media (max-width: 380px){
+
+.hero h1{font-size:40px;}
+.hero-phone{max-width:240px;}
+
+}
 </style>
 
 
@@ -464,7 +416,7 @@ button.btn-browse{
         <p>Trade practical skills locally — without money getting in the way.</p>
 
         <div class="hero-actions">
-          <a class="btn btn-browse" href="/browse">Browse trades</a>
+          <a class="btn btn-secondary" href="/browse">Browse trades</a>
           <a class="btn btn-primary" href="/account?mode=signup&next=/create-listing">Post a trade (free)</a>
           </div>
 
@@ -543,7 +495,7 @@ Post only when you’re ready.<br/>
         <p>Create your first listing in minutes. No commitment. No pressure.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn btn-browse" href="/browse">Browse trades</a>
+        <a class="btn btn-invert" href="/browse">Browse trades</a>
         <a class="btn btn-primary" href="/account?mode=signup&next=/create-listing">Post a trade (free)</a>
       </div>
     </div>
