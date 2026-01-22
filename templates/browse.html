@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -18,7 +17,6 @@
       --shadow: 0 6px 18px rgba(0,0,0,0.08);
       --radius: 12px;
     }
-
     *{ box-sizing:border-box; margin:0; padding:0; }
     body{
       font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
@@ -26,7 +24,6 @@
       color:var(--text);
       line-height:1.5;
     }
-
     /* Top nav */
     .top-nav{
       position:sticky;
@@ -40,7 +37,6 @@
       border-bottom:2px solid rgba(0,0,0,0.08);
       box-shadow:0 6px 18px rgba(0,0,0,0.12);
     }
-
     .brand{
       flex:0 0 auto;
       display:flex;
@@ -48,7 +44,6 @@
       gap:12px;
       min-width: 320px;
     }
-
      .brand img{
       height:128px;
       flex-shrink:0;
@@ -57,7 +52,6 @@
       display:block;
       object-fit:contain;
     }
-
     .menu-toggle{
       display:none;
       flex-direction:column;
@@ -73,7 +67,6 @@
       margin:3px 0;
       border-radius:2px;
     }
-
     .nav-links{
       display:flex;
       gap:10px;
@@ -81,7 +74,6 @@
       flex-wrap:wrap;
       justify-content:flex-end;
     }
-
     .nav-links a{
       text-decoration:none;
       color:var(--navy);
@@ -91,19 +83,16 @@
       border-radius:8px;
     }
     .nav-links a:hover{ background: rgba(11,46,89,0.07); }
-
     .nav-links a.cta{
       background:var(--orange);
       color:#ffffff;
     }
     .nav-links a.cta:hover{ background:#e88610; }
-
     /* Hero */
     .hero{
       background: linear-gradient(180deg, var(--light), #ffffff 65%);
       padding:42px 18px 26px;
     }
-
     .hero-inner{
       max-width:1100px;
       margin:0 auto;
@@ -112,21 +101,18 @@
       gap:24px;
       align-items:center;
     }
-
     .hero h1{
       font-size:42px;
       letter-spacing:-0.02em;
       line-height:1.15;
       margin-bottom:12px;
     }
-
     .hero p{
       font-size:18px;
       color:var(--muted);
       margin-bottom:18px;
       max-width: 52ch;
     }
-
     .hero p.scope{
       font-size:14px;
       color:var(--muted);
@@ -134,14 +120,12 @@
       margin-bottom:18px;
       opacity:0.95;
     }
-
     .hero-actions{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
       align-items:center;
     }
-
     .btn{
       display:inline-flex;
       align-items:center;
@@ -155,13 +139,10 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.10);
       transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
     }
-
     .btn-primary{ background:var(--orange); color:#fff; }
     .btn-primary:hover{ background:#e88610; transform: translateY(-1px); }
-
     .btn-secondary{ background:var(--navy); color:#fff; }
     .btn-secondary:hover{ background:#062241; transform: translateY(-1px); }
-
     .btn-ghost{
       background:transparent;
       color:var(--navy);
@@ -169,12 +150,10 @@
       box-shadow:none;
     }
     .btn-ghost:hover{ background: rgba(11,46,89,0.06); }
-
     .mockup-wrap{
       display:flex;
       justify-content:center;
     }
-
     .mockup{
       width:100%;
       transform: translateY(4px);
@@ -184,27 +163,23 @@
       object-fit:contain;
       filter: drop-shadow(0 12px 18px rgba(0,0,0,0.16));
     }
-
     /* Sections */
     .section{
       max-width:1100px;
       margin:0 auto;
       padding:26px 18px;
     }
-
     .section-title{
       text-align:center;
       font-size:26px;
       margin-bottom:18px;
       letter-spacing:-0.01em;
     }
-
     .cards{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap:16px;
     }
-
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -212,13 +187,11 @@
       box-shadow: var(--shadow);
       padding:18px;
     }
-
     .how-card{
       display:flex;
       gap:14px;
       align-items:flex-start;
     }
-
     .icon{
       width:44px;
       height:44px;
@@ -229,23 +202,19 @@
       background: rgba(11,46,89,0.06);
       border:1px solid rgba(11,46,89,0.10);
     }
-
     .icon svg{
       width:22px;
       height:26px;
       stroke: var(--navy); /* consistent */
     }
-
     .how-card h3{
       font-size:18px;
       margin-bottom:6px;
     }
-
     .how-card p{
       font-size:15px;
       color:var(--muted);
     }
-
     .cta-band{
       background: var(--navy);
       color:#fff;
@@ -257,9 +226,7 @@
       gap:16px;
       flex-wrap:wrap;
     }
-
     .cta-band p{ color: rgba(255,255,255,0.88); max-width: 60ch; }
-
     /* Footer */
     footer{
       text-align:center;
@@ -267,7 +234,6 @@
       color:#6b7f92;
       padding:22px 12px 28px;
     }
-
     .social{
       display:flex;
       justify-content:center;
@@ -285,7 +251,6 @@
       background:#fff;
     }
     .social img{ width:22px; height:22px; }
-
     /* Responsive */
     @media (max-width: 900px){
       .hero-inner{ grid-template-columns: 1fr; text-align:center; }
@@ -295,7 +260,6 @@
       .cards{ grid-template-columns: 1fr; }
       .how-card{ align-items:center; }
     }
-
     @media (max-width: 768px){
       .top-nav{ flex-wrap:wrap; }
       .brand{ flex:1 1 auto; min-width:0; }
@@ -303,7 +267,6 @@
       .nav-links{ position:absolute; left:0; right:0; top:100%; background:linear-gradient(to bottom, #cfe3f4 0%, #bcd6ee 100%); border-bottom:1px solid var(--border); box-shadow: 0 12px 22px rgba(0,0,0,0.10); padding:12px 16px 16px; }
       .nav-links a{ width:100%; text-align:center; }
       .nav-links a.nav-cta{ width:100%; }
-
       .brand img{ height:104px; }
       .menu-toggle{ display:flex; }
       .menu-toggle{ transform: translateY(-5px); }
@@ -319,7 +282,6 @@
       .nav-links.active{ display:flex; }
       .nav-links a{ text-align:center; }
     }
-
     @media (max-width: 600px){
       .brand{ min-width: 0; }
       .brand img{ height:104px; }
@@ -327,7 +289,6 @@
       .hero{ padding-top:30px; }
       .hero h1{ font-size:34px; }
     }
-  
 .nav-login{padding:10px 14px;border-radius:8px;color:var(--navy);text-decoration:none;font-weight:700;}
 .nav-login:hover{background:rgba(11,46,89,0.06);}
 .nav-cta{padding:10px 14px;border-radius:12px;background:var(--orange);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 6px 18px rgba(247,148,29,0.25);}
@@ -337,8 +298,6 @@
     .footer-links a{ color:var(--navy); text-decoration:none; font-weight:600; font-size:13px; opacity:0.85; }
     .footer-links a:hover{ opacity:1; text-decoration:underline; }
     .footer-links .dot{ opacity:0.35; }
-
-
 /* Browse page additions */
 .hero.browse-hero { padding: 34px 0 18px; }
 .filters { display:flex; gap:12px; flex-wrap:wrap; align-items:end; margin-top:14px; }
@@ -380,8 +339,6 @@
   max-width:1100px;
   margin:0 auto 18px;
 }
-
-  
 /* Filters container (reduce floaty look) */
 .filter-card{
   border:1px solid rgba(255,255,255,0.12);
@@ -393,7 +350,6 @@
 }
 .filter-card .filters{ margin-top:0; }
 .filter-card .pills{ margin-top:12px; }
-
 /* === Browse filter UX polish (v3) === */
 .filter-card{
   width: 100%;
@@ -405,7 +361,6 @@
   margin-top: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
-
 .filter-card .filters{
   width: 100%;
   display: grid;
@@ -414,27 +369,23 @@
   align-items: end;
   margin: 0;
 }
-
 @media (max-width: 980px){
   .filter-card .filters{ grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px){
   .filter-card .filters{ grid-template-columns: 1fr; }
 }
-
 .filter-card .field{
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .filter-card .field label{
   font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
 }
-
 .filter-card .field input,
 .filter-card .field select{
   width: 100%;
@@ -446,24 +397,20 @@
   border-radius: 14px !important;
   outline: none;
 }
-
 .filter-card .field input::placeholder{
   color: rgba(0,0,0,0.45);
 }
-
 .filter-card .field input:focus,
 .filter-card .field select:focus{
   border-color: rgba(0,0,0,0.22) !important;
   box-shadow: 0 0 0 4px rgba(0,0,0,0.06);
 }
-
 .filter-card .pills{
   margin-top: 12px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
-
 .filter-card .pill{
   border: 1px solid rgba(0,0,0,0.10);
   background: rgba(0,0,0,0.03);
@@ -472,8 +419,6 @@
   border-radius: 999px;
   font-size: 12px;
 }
-
-
 /* hamburger-align-fix */
 @media (max-width: 820px){
   .brand a{ display:flex; align-items:center; }
@@ -485,8 +430,6 @@
     transform: translateY(-5px);
   }
 }
-
-
 /* hamburger-align-fix-v2 (visual centering) */
 @media (max-width: 820px){
   /* ensure header row centers visually */
@@ -496,11 +439,9 @@
   header .nav-row{
     align-items: center;
   }
-
   /* logo container */
   .brand, .logo, .navbar-brand{ display:flex; align-items:center; }
   .brand a, .logo a{ display:flex; align-items:center; }
-
   /* hamburger button */
   .menu-toggle{
     display:flex;
@@ -512,8 +453,6 @@
     transform: translateY(-5px);
   }
 }
-
-
 .card{ display:flex; flex-direction:column; }
 .card-actions{ margin-top:auto; display:flex; }
 .card-actions .btn{ width: fit-content; }
@@ -529,7 +468,6 @@
   font-size: 12px;
   white-space: nowrap;
 }
-
 /* meta-bar-v1: fixed positions for card meta */
 .card{
   display:flex;
@@ -549,7 +487,6 @@
   overflow:hidden;
   min-height: 44px;
 }
-
 .meta-bar{
   margin-top: 12px;
   display:grid;
@@ -564,7 +501,6 @@
 .meta-left{ grid-area: loc; min-width:0; }
 .meta-right{ grid-area: posted; justify-self:end; }
 .meta-bottom{ grid-area: trust; }
-
 .meta-loc{
   display:block;
   overflow:hidden;
@@ -588,13 +524,11 @@
   font-size: 12px;
   white-space: nowrap;
 }
-
 .card-actions{
   margin-top:auto;
   padding-top: 12px;
   display:flex;
 }
-
 /* trust-variants-v1 */
 .trust-pill.trust-verified{
   background: rgba(16, 185, 129, 0.10);
@@ -608,21 +542,16 @@
   background: rgba(245, 158, 11, 0.10);
   border-color: rgba(245, 158, 11, 0.25);
 }
-
-
 /* === Browse flow upgrades (logged-out friendly) === */
 .browse-reassure{ margin-top: 10px; color: var(--muted); font-size: 13px; }
 .pill-btn{ cursor: pointer; user-select: none; }
 .pill-btn.active{ border-color: rgba(11,46,89,0.28); background: rgba(11,46,89,0.06); }
-
 .card h3{ margin-top: 6px; margin-bottom: 10px; }
 .label{ display:inline-block; font-size: 12px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
 .card-need p{ margin: 0 0 10px; color: var(--muted); }
 .card-offers{ margin-bottom: 8px; }
 .offer-list{ margin: 0; padding-left: 18px; }
 .offer-list li{ margin: 6px 0; color: var(--muted); }
-
-
 /* === Card separation + pop (v2) === */
 .cards{ gap: 20px !important; }
 .card{
@@ -644,16 +573,12 @@
   transform: translateY(-2px);
   box-shadow: 0 18px 44px rgba(0,0,0,0.14) !important;
 }
-
-
 /* === Header text consistency fix === */
 .nav-links a{
   font-weight:800 !important;
   letter-spacing:0 !important;
   text-transform:none !important;
 }
-
-
 /* === Remove header gap / white seam === */
 .top-nav{
   margin-bottom:0 !important;
@@ -661,11 +586,133 @@
 .hero{
   margin-top:0 !important;
 }
-
 /* === Header seam kill (final override) === */
 .top-nav{ border-bottom:2px solid rgba(0,0,0,0.08) !important; }
 .hero{ margin-top:0 !important; }
-
+/* === Logged-out message gate modal (v1) === */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.48);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+.modal-overlay.active{ display:flex; }
+.modal{
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.20);
+  overflow: hidden;
+}
+.modal-header{
+  padding: 16px 18px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 10px;
+}
+.modal-title{
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text);
+  margin: 0;
+}
+.modal-close{
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 10px;
+  color: var(--muted);
+  font-weight: 900;
+}
+.modal-close:hover{ background: rgba(0,0,0,0.05); }
+.modal-body{
+  padding: 14px 18px 18px;
+}
+.modal-body p{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.modal-actions{
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+}
+.modal-actions .btn{
+  flex: 1 1 auto;
+  justify-content:center;
+}
+.modal-actions .btn.btn-ghost{
+  border:1px solid rgba(11,46,89,0.18);
+  box-shadow:none;
+}
+@media (max-width: 460px){
+  .modal-actions .btn{ width: 100%; }
+}
+.btn-message:hover{
+  background: rgba(247,148,29,0.08);
+  transform: translateY(-1px);
+}
+/* === Card action alignment (v3) === */
+.card-actions{
+  display:flex !important;
+  gap:12px !important;
+  align-items:stretch !important;
+}
+.card-actions .btn{
+  flex: 1 1 0 !important;
+  width: auto !important;
+}
+/* === Message button: solid orange (commit intent) === */
+.btn-message{
+  background: var(--orange) !important;
+  color: #fff !important;
+  border: 2px solid var(--orange) !important;
+  box-shadow: 0 6px 18px rgba(247,148,29,0.25) !important;
+}
+.btn-message:hover{
+  filter: brightness(0.97);
+  transform: translateY(-1px);
+}
+/* === Card hierarchy: Needs → Offers (v5) === */
+.card .offers{
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(11,46,89,0.10);
+}
+.card .offers h4{
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 6px;
+  color: var(--navy);
+}
+.card .offers ul{
+  margin-left: 14px;
+}
+/* === Trust signal: trades completed pill (v7) === */
+.trades-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(11,46,89,0.14);
+  background: rgba(11,46,89,0.04);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.trades-pill strong{ font-weight: 900; }
+.meta-bottom{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
 </style>
 <script>
     function toggleMenu(){
@@ -699,7 +746,6 @@
 <span></span><span></span><span></span>
 </button>
 <nav aria-label="Primary" class="nav-links">
-
 <a class="nav-login" href="/account?mode=login">Login</a>
 <a class="nav-cta" href="/account?mode=signup">Sign Up</a>
 </nav>
@@ -729,9 +775,6 @@
 <button class="pill pill-btn" data-chip="moving" type="button">📦 Moving</button>
 <button class="pill pill-btn" data-chip="cleaning" type="button">🧹 Cleaning</button>
 </div>
-<div class="browse-reassure">
-<strong>No sign-up needed to browse.</strong> You only create an account if you want to message.
-        </div>
 </div>
 </div>
 </div>
@@ -765,11 +808,12 @@
 <span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>1</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=flat-pack-wardrobe-assembly-ikea-style-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=flat-pack-wardrobe-assembly-ikea-style-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="fix-leaking-tap-reseal-basin-001" data-tags="repairs plumbing">
 <h3>Fix leaking tap + reseal basin</h3>
@@ -793,11 +837,12 @@
 <span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>1</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=fix-leaking-tap-reseal-basin-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=fix-leaking-tap-reseal-basin-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="fence-panel-replacement-2-panels-001" data-tags="repairs">
 <h3>Fence panel replacement (2 panels)</h3>
@@ -821,11 +866,12 @@
 <span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=fence-panel-replacement-2-panels-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=fence-panel-replacement-2-panels-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="lawn-mow-edging-front-back-001" data-tags="gardens">
 <h3>Lawn mow + edging (front + back)</h3>
@@ -849,11 +895,12 @@
 <span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=lawn-mow-edging-front-back-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=lawn-mow-edging-front-back-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="replace-2-light-fittings-check-switch-001" data-tags="repairs">
 <h3>Replace 2 light fittings + check switch</h3>
@@ -877,11 +924,12 @@
 <span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=replace-2-light-fittings-check-switch-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=replace-2-light-fittings-check-switch-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="paint-1-room-prep-rolling-001" data-tags="painting">
 <h3>Paint 1 room (prep + rolling)</h3>
@@ -905,11 +953,12 @@
 <span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=paint-1-room-prep-rolling-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=paint-1-room-prep-rolling-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="hang-2-internal-doors-existing-frames-001" data-tags="repairs">
 <h3>Hang 2 internal doors (existing frames)</h3>
@@ -933,11 +982,12 @@
 <span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=hang-2-internal-doors-existing-frames-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=hang-2-internal-doors-existing-frames-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="deep-clean-kitchen-no-oven-001" data-tags="cleaning">
 <h3>Deep clean kitchen (no oven)</h3>
@@ -961,11 +1011,12 @@
 <span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=deep-clean-kitchen-no-oven-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=deep-clean-kitchen-no-oven-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="hedge-trim-up-to-10m-001" data-tags="gardens">
 <h3>Hedge trim (up to 10m)</h3>
@@ -989,11 +1040,12 @@
 <span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.6★</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=hedge-trim-up-to-10m-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=hedge-trim-up-to-10m-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="mount-tv-on-wall-hide-cables-001" data-tags="repairs">
 <h3>Mount TV on wall + hide cables</h3>
@@ -1017,11 +1069,12 @@
 <span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=mount-tv-on-wall-hide-cables-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=mount-tv-on-wall-hide-cables-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="unblock-sink-slow-drain-001" data-tags="repairs plumbing">
 <h3>Unblock sink / slow drain</h3>
@@ -1045,11 +1098,12 @@
 <span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.6★</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=unblock-sink-slow-drain-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=unblock-sink-slow-drain-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="build-ikea-desk-chair-001" data-tags="repairs">
 <h3>Build IKEA desk + chair</h3>
@@ -1073,11 +1127,12 @@
 <span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=build-ikea-desk-chair-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=build-ikea-desk-chair-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="end-of-tenancy-clean-1-bed-flat-001" data-tags="cleaning">
 <h3>End-of-tenancy clean (1 bed flat)</h3>
@@ -1101,11 +1156,12 @@
 <span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=end-of-tenancy-clean-1-bed-flat-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=end-of-tenancy-clean-1-bed-flat-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="fix-squeaky-floorboards-2-door-latches-001" data-tags="repairs">
 <h3>Fix squeaky floorboards + 2 door latches</h3>
@@ -1129,11 +1185,12 @@
 <span class="meta-posted posted" data-posted="2026-01-10">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.7★</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=fix-squeaky-floorboards-2-door-latches-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=fix-squeaky-floorboards-2-door-latches-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="weeding-tidy-borders-2-hours-001" data-tags="gardens">
 <h3>Weeding + tidy borders (2 hours)</h3>
@@ -1157,11 +1214,12 @@
 <span class="meta-posted posted" data-posted="2026-01-09">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.9★</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=weeding-tidy-borders-2-hours-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=weeding-tidy-borders-2-hours-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="replace-3-fence-slats-screws-001" data-tags="repairs">
 <h3>Replace 3 fence slats + screws</h3>
@@ -1185,11 +1243,12 @@
 <span class="meta-posted posted" data-posted="2026-01-07">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>10</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=replace-3-fence-slats-screws-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=replace-3-fence-slats-screws-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="paint-hallway-stairs-light-prep-001" data-tags="painting">
 <h3>Paint hallway + stairs (light prep)</h3>
@@ -1213,11 +1272,12 @@
 <span class="meta-posted posted" data-posted="2026-01-05">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>10</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=paint-hallway-stairs-light-prep-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=paint-hallway-stairs-light-prep-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="change-4-sockets-like-for-like-001" data-tags="repairs">
 <h3>Change 4 sockets (like-for-like)</h3>
@@ -1241,11 +1301,12 @@
 <span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>1</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=change-4-sockets-like-for-like-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=change-4-sockets-like-for-like-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="replace-shower-head-reseal-tray-001" data-tags="repairs plumbing">
 <h3>Replace shower head + reseal tray</h3>
@@ -1269,11 +1330,12 @@
 <span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.7★</span>
+<span class="trades-pill"><strong>1</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=replace-shower-head-reseal-tray-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=replace-shower-head-reseal-tray-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="install-2-curtain-rails-001" data-tags="repairs">
 <h3>Install 2 curtain rails</h3>
@@ -1297,11 +1359,12 @@
 <span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=install-2-curtain-rails-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=install-2-curtain-rails-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="weekly-clean-2-hours-001" data-tags="cleaning">
 <h3>Weekly clean (2 hours)</h3>
@@ -1325,11 +1388,12 @@
 <span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.6★</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=weekly-clean-2-hours-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=weekly-clean-2-hours-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="clear-leaves-compost-tidy-001" data-tags="repairs">
 <h3>Clear leaves + compost tidy</h3>
@@ -1353,11 +1417,12 @@
 <span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-verified">Verified ID</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=clear-leaves-compost-tidy-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=clear-leaves-compost-tidy-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="assemble-bunk-bed-001" data-tags="repairs">
 <h3>Assemble bunk bed</h3>
@@ -1381,11 +1446,12 @@
 <span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=assemble-bunk-bed-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=assemble-bunk-bed-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="fix-loose-kitchen-cupboard-doors-001" data-tags="repairs">
 <h3>Fix loose kitchen cupboard doors</h3>
@@ -1409,11 +1475,12 @@
 <span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.9★</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=fix-loose-kitchen-cupboard-doors-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=fix-loose-kitchen-cupboard-doors-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="bleed-radiators-check-pressure-001" data-tags="repairs plumbing">
 <h3>Bleed radiators + check pressure</h3>
@@ -1437,11 +1504,12 @@
 <span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=bleed-radiators-check-pressure-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=bleed-radiators-check-pressure-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="prep-paint-skirting-1-room-001" data-tags="painting">
 <h3>Prep + paint skirting (1 room)</h3>
@@ -1465,11 +1533,12 @@
 <span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 5.0★</span>
+<span class="trades-pill"><strong>3</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=prep-paint-skirting-1-room-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=prep-paint-skirting-1-room-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="fit-new-smoke-alarm-test-001" data-tags="repairs">
 <h3>Fit new smoke alarm + test</h3>
@@ -1493,11 +1562,12 @@
 <span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.8★</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=fit-new-smoke-alarm-test-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=fit-new-smoke-alarm-test-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="carpet-clean-living-room-001" data-tags="cleaning">
 <h3>Carpet clean (living room)</h3>
@@ -1521,11 +1591,12 @@
 <span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-new">New listing</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=carpet-clean-living-room-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=carpet-clean-living-room-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="mow-strim-small-garden-001" data-tags="gardens">
 <h3>Mow + strim small garden</h3>
@@ -1549,11 +1620,12 @@
 <span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.9★</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=mow-strim-small-garden-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=mow-strim-small-garden-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div><div class="card" data-id="put-up-3-shelves-straight-level-001" data-tags="repairs">
 <h3>Put up 3 shelves (straight + level)</h3>
@@ -1577,11 +1649,12 @@
 <span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span>
 </div>
 <div class="meta-bottom">
-<span class="trust-pill trust-rated">Rated 4.9★</span>
+<span class="trades-pill"><strong>6</strong>&nbsp;trades completed</span>
 </div>
 </div>
 <div class="card-actions">
-<a class="btn btn-primary" href="/trade?id=put-up-3-shelves-straight-level-001">See details</a>
+<a class="btn btn-secondary" href="/trade?id=put-up-3-shelves-straight-level-001">See details</a>
+<a class="btn btn-message message-btn" href="#" data-intent="message">Message</a>
 </div>
 </div>
 </div>
@@ -1638,36 +1711,28 @@
     const cards = Array.from(document.querySelectorAll('.cards .card'));
     const chipButtons = Array.from(document.querySelectorAll('.pill-btn'));
     let activeChip = "";
-
     function normalize(s) { return (s || '').toLowerCase(); }
-
     function cardSearchText(card){
       const title = card.querySelector('h3')?.innerText || '';
       const need = card.querySelector('.card-need p')?.innerText || '';
       const offers = Array.from(card.querySelectorAll('.offer-list li')).map(li => li.innerText).join(' ');
       return normalize(title + " " + need + " " + offers);
     }
-
     function cardLocationText(card){
       const loc = card.querySelector('.meta-loc')?.innerText || '';
       return normalize(loc + " " + card.innerText);
     }
-
     function cardTagsText(card){
       return normalize(card.getAttribute('data-tags') || '');
     }
-
     function apply(){
       const qv = normalize(q?.value);
       const wv = normalize(where?.value);
-
       cards.forEach(card => {
         const searchText = cardSearchText(card);
         const locationText = cardLocationText(card);
         const tagsText = cardTagsText(card);
-
         const matchesQ = !qv || searchText.includes(qv);
-
         let matchesW = true;
         if (wv) {
           matchesW = locationText.includes(wv);
@@ -1676,24 +1741,18 @@
             if (first && first.length >= 2) matchesW = locationText.includes(first);
           }
         }
-
         const matchesChip = !activeChip || tagsText.includes(activeChip);
-
         card.style.display = (matchesQ && matchesW && matchesChip) ? '' : 'none';
       });
     }
-
     q?.addEventListener('input', apply);
     where?.addEventListener('input', apply);
-
     chipButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const chip = btn.getAttribute('data-chip') || '';
         const isActive = btn.classList.contains('active');
-
         chipButtons.forEach(b => b.classList.remove('active'));
         activeChip = "";
-
         if (!isActive) {
           btn.classList.add('active');
           activeChip = chip;
@@ -1701,7 +1760,6 @@
         apply();
       });
     });
-
     apply();
   })();
 </script>
@@ -1729,5 +1787,90 @@
     });
   })();
 </script>
+<!-- Logged-out message gate modal -->
+<div class="modal-overlay" id="messageGate" role="dialog" aria-modal="true" aria-labelledby="messageGateTitle">
+  <div class="modal" role="document">
+    <div class="modal-header">
+      <h3 class="modal-title" id="messageGateTitle">Create an account to message</h3>
+      <button class="modal-close" type="button" aria-label="Close" id="messageGateClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Browsing stays open. You only need an account when you want to contact someone.</p>
+      <div class="modal-actions">
+        <a class="btn btn-secondary" id="messageGateLogin" href="/account?mode=login">Log in</a>
+        <a class="btn btn-primary" id="messageGateSignup" href="/account?mode=signup">Create account</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Logged-out message gate (v1)
+  (function(){
+    const overlay = document.getElementById('messageGate');
+    const closeBtn = document.getElementById('messageGateClose');
+    const loginBtn = document.getElementById('messageGateLogin');
+    const signupBtn = document.getElementById('messageGateSignup');
+    function openGate(nextUrl){
+      if(!overlay) return;
+      const next = nextUrl || '/browse';
+      // Preserve where the user wanted to go next
+      if(loginBtn)  loginBtn.href  = '/account?mode=login&next='  + encodeURIComponent(next);
+      if(signupBtn) signupBtn.href = '/account?mode=signup&next=' + encodeURIComponent(next);
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeGate(){
+      if(!overlay) return;
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', function(e){
+      const btn = e.target && e.target.closest && e.target.closest('.message-btn');
+      if(!btn) return;
+      // Figure out the "details" URL from the same card
+      e.preventDefault();
+      const card = btn.closest('.card');
+      const details = card ? card.querySelector('.card-actions a.btn-primary') : null;
+      const nextUrl = details ? details.getAttribute('href') : '/browse';
+      openGate(nextUrl);
+    });
+    if(closeBtn) closeBtn.addEventListener('click', closeGate);
+    if(overlay) overlay.addEventListener('click', function(e){
+      if(e.target === overlay) closeGate();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && overlay && overlay.classList.contains('active')) closeGate();
+    });
+  })();
+</script>
+
+<script>
+  // Trades completed pill: pluralisation + hide zeros (v11)
+  (function(){
+    function normaliseTradesPills(){
+      document.querySelectorAll('.trades-pill').forEach(function(pill){
+        var strong = pill.querySelector('strong');
+        if(!strong) return;
+        var n = parseInt((strong.textContent || '').trim(), 10);
+        if(isNaN(n)) return;
+
+        if(n <= 0){
+          pill.remove();
+          return;
+        }
+        // Ensure label is correct and spacing can't collapse
+        var label = (n === 1) ? 'trade completed' : 'trades completed';
+        // Keep <strong> number then nbsp then label
+        pill.innerHTML = '<strong>' + n + '</strong>&nbsp;' + label;
+      });
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', normaliseTradesPills);
+    }else{
+      normaliseTradesPills();
+    }
+  })();
+</script>
+
 </body>
 </html>
