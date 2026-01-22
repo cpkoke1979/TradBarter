@@ -1,0 +1,6 @@
+/browse   /templates/browse.html   200
+/trade    /templates/trade.html    200
+/about    /templates/about.html    200
+/contact  /templates/contact.html  200
+/account  /templates/account.html  200
+/         /templates/index.html    200
