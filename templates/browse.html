@@ -52,13 +52,27 @@
       display:block;
       object-fit:contain;
     }
-    
+    .menu-toggle{
+      display:none;
+      border:0;
+      background:transparent;
+      -webkit-appearance:none;
+      appearance:none;
+      border-radius:12px;
+      padding:10px 12px;
+      cursor:pointer;
+      flex-direction:column;
+      gap:4px;
+      align-items:center;
+      justify-content:center;
+    }
     .menu-toggle:focus{ outline: 2px solid rgba(247,148,29,0.35); outline-offset: 2px; }
     .menu-toggle span{
+      display:block;
       height:2px;
       width:22px;
       background:var(--navy);
-      margin:3px 0;
+      margin:0;
       border-radius:2px;
     }
     .nav-links{
@@ -262,8 +276,8 @@
       .nav-links a{ width:100%; text-align:center; }
       .nav-links a.nav-cta{ width:100%; }
       .brand img{ height:104px; }
+      .menu-toggle{ display:flex; }
       
-      .menu-toggle{ transform: translateY(-5px); }
       .brand a{ display:flex; align-items:center; }
       .nav-links{
         display:none;
@@ -416,7 +430,13 @@
 /* hamburger-align-fix */
 @media (max-width: 820px){
   .brand a{ display:flex; align-items:center; }
-  
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height: 1;
+    transform: translateY(-5px);
+  }
 }
 /* hamburger-align-fix-v2 (visual centering) */
 @media (max-width: 820px){
@@ -431,7 +451,15 @@
   .brand, .logo, .navbar-brand{ display:flex; align-items:center; }
   .brand a, .logo a{ display:flex; align-items:center; }
   /* hamburger button */
-  
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transform: translateY(-5px);
+  }
 }
 .card{ display:flex; flex-direction:column; }
 .card-actions{ margin-top:auto; display:flex; }
@@ -696,7 +724,17 @@
 
 /* === Mobile hamburger menu (match index) === */
 @media (max-width: 820px){
-  
+  .menu-toggle{
+    display:flex !important;
+    border:0 !important;
+    background:transparent !important;
+    -webkit-appearance:none !important;
+    appearance:none !important;
+
+    align-items:center !important;
+    justify-content:center !important;
+    line-height:0 !important;
+  }
   .nav-links{
     display:none !important;
     position:absolute !important;
@@ -720,19 +758,6 @@
   }
 }
 /* === End mobile hamburger match === */
-
-
-/* === Header hamburger visibility (match index) === */
-.menu-toggle {
-  display: none;
-}
-
-@media (max-width: 820px) {
-  .menu-toggle {
-    display: flex;
-  }
-}
-/* === End hamburger visibility === */
 
 </style>
 <script>
