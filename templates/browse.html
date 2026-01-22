@@ -5,7 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>TradBarter™ — Browse</title>
-<style>:root {
+<style>
+:root {
   --header-bg: #cfe3f4; /* dedicated header colour */
       --navy:#0B2E59;
       --light:#DBEAF7;
@@ -27,22 +28,18 @@
     }
 
     /* Top nav */
-    .top-nav{ position:relative;
+    .top-nav{
+      position:sticky;
+      top:0;
+      z-index:100;
       display:flex;
       justify-content:space-between;
       align-items:center;
       padding:10px 20px;
       background:linear-gradient(to bottom, #cfe3f4 0%, #bcd6ee 100%);
-      position:sticky;
-      top:0;
-      z-index: 100;
-      border-bottom:1px solid var(--border);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      \
-
-  border-bottom: 2px solid rgba(0,0,0,0.08);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-}
+      border-bottom:2px solid rgba(0,0,0,0.08);
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
 
     .brand{
       flex:0 0 auto;
@@ -611,15 +608,90 @@
   background: rgba(245, 158, 11, 0.10);
   border-color: rgba(245, 158, 11, 0.25);
 }
+
+
+/* === Browse flow upgrades (logged-out friendly) === */
+.browse-reassure{ margin-top: 10px; color: var(--muted); font-size: 13px; }
+.pill-btn{ cursor: pointer; user-select: none; }
+.pill-btn.active{ border-color: rgba(11,46,89,0.28); background: rgba(11,46,89,0.06); }
+
+.card h3{ margin-top: 6px; margin-bottom: 10px; }
+.label{ display:inline-block; font-size: 12px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+.card-need p{ margin: 0 0 10px; color: var(--muted); }
+.card-offers{ margin-bottom: 8px; }
+.offer-list{ margin: 0; padding-left: 18px; }
+.offer-list li{ margin: 6px 0; color: var(--muted); }
+
+
+/* === Card separation + pop (v2) === */
+.cards{ gap: 20px !important; }
+.card{
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.12) !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; right:0;
+  height:4px;
+  background: linear-gradient(90deg, rgba(247,148,29,0.85), rgba(11,46,89,0.35));
+  opacity: 0.85;
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.14) !important;
+}
+
+
+/* === Header text consistency fix === */
+.nav-links a{
+  font-weight:800 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+
+
+/* === Remove header gap / white seam === */
+.top-nav{
+  margin-bottom:0 !important;
+}
+.hero{
+  margin-top:0 !important;
+}
+
+/* === Header seam kill (final override) === */
+.top-nav{ border-bottom:2px solid rgba(0,0,0,0.08) !important; }
+.hero{ margin-top:0 !important; }
+
 </style>
-</head>
+<script>
+    function toggleMenu(){
+      const nav = document.querySelector('.nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      const isOpen = nav.classList.toggle('active');
+      if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+    }
+    document.addEventListener('click', function(e){
+      const nav = document.querySelector('.nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      if(!nav || !btn) return;
+      const clickedLink = e.target && e.target.closest && e.target.closest('.nav-links a');
+      if(clickedLink && nav.classList.contains('active')){
+        nav.classList.remove('active');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  </script></head>
 <body>
 <div class="top-nav">
-<div class="brand" style="flex:0 0 auto">
+<div class="brand">
 <a aria-label="TradBarter home" href="/">
 <picture>
-<source srcset="/static/img/tradbarter-logo-horizontal.svg" type="image/svg+xml"/>
-<img alt="TradBarter" src="/static/img/tradbarter-logo-horizontal.png"/>
+<source srcset="/static/img/tradbarter-horizontal.svg?v=2" type="image/svg+xml"/>
+<img alt="TradBarter" src="/static/img/tradbarter-horizontal.png?v=2"/>
 </picture>
 </a>
 </div>
@@ -627,8 +699,7 @@
 <span></span><span></span><span></span>
 </button>
 <nav aria-label="Primary" class="nav-links">
-<a href="/#how-it-works">How it Works</a>
-<a href="/about">About</a>
+
 <a class="nav-login" href="/account?mode=login">Login</a>
 <a class="nav-cta" href="/account?mode=signup">Sign Up</a>
 </nav>
@@ -641,9 +712,8 @@
 <p>Home services and practical everyday help — no cash required.</p>
 <p class="scope">Browse first. Sign up only when you’re ready to contact someone.</p>
 <div class="filter-card">
-<div class="filter-card">
 <div class="filters">
-<div class="field" style="flex:1; min-width:240px;">
+<div class="field">
 <label for="q">Search</label>
 <input id="q" placeholder="Search: leak, tap, flat-pack, fence repair…" type="text"/>
 </div>
@@ -652,136 +722,869 @@
 <input id="where" placeholder="Postcode or town (e.g. PR, PR8, Liverpool)" type="text"/>
 </div>
 </div>
+<div aria-label="Quick categories" class="pills">
+<button class="pill pill-btn" data-chip="repairs" type="button">🔧 Repairs</button>
+<button class="pill pill-btn" data-chip="painting" type="button">🎨 Painting</button>
+<button class="pill pill-btn" data-chip="gardens" type="button">🌿 Gardens</button>
+<button class="pill pill-btn" data-chip="moving" type="button">📦 Moving</button>
+<button class="pill pill-btn" data-chip="cleaning" type="button">🧹 Cleaning</button>
 </div>
+<div class="browse-reassure">
+<strong>No sign-up needed to browse.</strong> You only create an account if you want to message.
+        </div>
 </div>
 </div>
 </div>
 </header>
 <section class="section" style="padding-top:22px;">
 <div class="notice" style="margin-top:16px;">
-<strong style="color:var(--text);">Tip:</strong> Click any trade to see details. If you want to message, you’ll be asked to sign up.
-    </div>
-<div class="cards"><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Flat-pack wardrobe assembly (IKEA style)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: 2 hours garden tidy / hedge trim</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Southport (PR8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Fix leaking tap + reseal basin</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help moving a sofa / lifting</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Fence panel replacement (2 panels)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Deep clean (kitchen + bathroom)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Lawn mow + edging (front + back)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help fitting curtain poles / shelves</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Preston (PR1–PR5) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Replace 2 light fittings + check switch</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: 3 hours moving help / van assist</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Wirral (CH41–CH49) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Paint 1 room (prep + rolling)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Small repair list help (hooks, shelves)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Hang 2 internal doors (existing frames)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Garden strim / tidy</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Bolton (BL1–BL6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Deep clean kitchen (no oven)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Flat-pack assembly (small)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Wigan (WN1–WN6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Hedge trim (up to 10m)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with tip run / disposal</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Chorley (PR6–PR7) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.6★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Mount TV on wall + hide cables</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Dog walking (x3)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Salford (M5–M50) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Unblock sink / slow drain</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Paint touch-ups (1–2 hours)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Stockport (SK1–SK8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.6★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Build IKEA desk + chair</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Basic tech help (Wi‑Fi/printer)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 St Helens (WA9–WA11) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">End-of-tenancy clean (1 bed flat)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Gardening (mow + tidy)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Fix squeaky floorboards + 2 door latches</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help assembling flat-pack</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Bury (BL8–BL9) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-10">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.7★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Weeding + tidy borders (2 hours)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Window cleaning (front)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Oldham (OL1–OL9) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-09">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Replace 3 fence slats + screws</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Car wash + interior vacuum</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Rochdale (OL11–OL16) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-07">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Paint hallway + stairs (light prep)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help moving boxes (2 hours)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-05">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Change 4 sockets (like-for-like)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Flat-pack assembly (small)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Leigh (WN7) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Replace shower head + reseal tray</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Gardening hedge trim</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Preston (PR1–PR5) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.7★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Install 2 curtain rails</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Dog sitting (half day)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Blackburn (BB1–BB2) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Weekly clean (2 hours)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with DIY (drilling/holding)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Southport (PR8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.6★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Clear leaves + compost tidy</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Paint one wall / feature wall</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Sefton (L30–L38) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-verified">Verified ID</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Assemble bunk bed</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help lifting + moving (stairs)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Liverpool (L1–L20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Fix loose kitchen cupboard doors</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Clean windows + frames</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Manchester (M1–M20) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Bleed radiators + check pressure</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help building shelves</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Bolton (BL1–BL6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Prep + paint skirting (1 room)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Garden tidy (2 hours)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Wigan (WN1–WN6) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 5.0★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Fit new smoke alarm + test</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Deep clean bathroom</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Salford (M5–M50) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.8★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Carpet clean (living room)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Flat-pack assembly</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-new">New listing</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Mow + strim small garden</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Help with tip run</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 St Helens (WA9–WA11) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div><div class="card">
-<h3 style="margin-top:10px; margin-bottom:6px;">Put up 3 shelves (straight + level)</h3>
-<p class="trade-for" style="margin:0; color:var(--muted);">Trade for: Basic plumbing help (tap)</p>
-<div class="meta-bar"><div class="meta-left"><span class="meta-loc">📍 Stockport (SK1–SK8) • Local</span></div><div class="meta-right"><span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span></div><div class="meta-bottom"><span class="trust-pill trust-rated">Rated 4.9★</span></div></div><div class="card-actions"><a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade">View trade</a></div>
-</div></div>
+<strong style="color:var(--text);">How it works:</strong>
+    Browse freely. Click a trade to see full details.
+    <strong>Trades are agreed upfront</strong> — scope, time, and expectations — before anything starts.
+  </div>
+<div class="cards">
+<div class="card" data-id="flat-pack-wardrobe-assembly-ikea-style-001" data-tags="repairs">
+<h3>Flat-pack wardrobe assembly (IKEA style)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Flat-pack wardrobe assembly.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>2 hours garden tidy / hedge trim</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Help moving / lifting (1–2 hours)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Southport (PR8) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=flat-pack-wardrobe-assembly-ikea-style-001">See details</a>
+</div>
+</div><div class="card" data-id="fix-leaking-tap-reseal-basin-001" data-tags="repairs plumbing">
+<h3>Fix leaking tap + reseal basin</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Fix leaking tap + reseal basin.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help moving a sofa / lifting</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Liverpool (L1–L20) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=fix-leaking-tap-reseal-basin-001">See details</a>
+</div>
+</div><div class="card" data-id="fence-panel-replacement-2-panels-001" data-tags="repairs">
+<h3>Fence panel replacement (2 panels)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Fence panel replacement.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Deep clean (kitchen + bathroom)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Manchester (M1–M20) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=fence-panel-replacement-2-panels-001">See details</a>
+</div>
+</div><div class="card" data-id="lawn-mow-edging-front-back-001" data-tags="gardens">
+<h3>Lawn mow + edging (front + back)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Lawn mow + edging.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help fitting curtain poles / shelves</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Preston (PR1–PR5) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=lawn-mow-edging-front-back-001">See details</a>
+</div>
+</div><div class="card" data-id="replace-2-light-fittings-check-switch-001" data-tags="repairs">
+<h3>Replace 2 light fittings + check switch</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Replace 2 light fittings + check switch.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>3 hours moving help / van assist</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Wirral (CH41–CH49) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=replace-2-light-fittings-check-switch-001">See details</a>
+</div>
+</div><div class="card" data-id="paint-1-room-prep-rolling-001" data-tags="painting">
+<h3>Paint 1 room (prep + rolling)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Paint 1 room.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Small repair list help (hooks, shelves)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=paint-1-room-prep-rolling-001">See details</a>
+</div>
+</div><div class="card" data-id="hang-2-internal-doors-existing-frames-001" data-tags="repairs">
+<h3>Hang 2 internal doors (existing frames)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Hang 2 internal doors.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Garden strim / tidy</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Bolton (BL1–BL6) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=hang-2-internal-doors-existing-frames-001">See details</a>
+</div>
+</div><div class="card" data-id="deep-clean-kitchen-no-oven-001" data-tags="cleaning">
+<h3>Deep clean kitchen (no oven)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Deep clean kitchen.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Flat-pack assembly (small)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Help moving / lifting (1–2 hours)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Wigan (WN1–WN6) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=deep-clean-kitchen-no-oven-001">See details</a>
+</div>
+</div><div class="card" data-id="hedge-trim-up-to-10m-001" data-tags="gardens">
+<h3>Hedge trim (up to 10m)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Hedge trim.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help with tip run / disposal</li>
+<li>Help moving / lifting (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Chorley (PR6–PR7) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.6★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=hedge-trim-up-to-10m-001">See details</a>
+</div>
+</div><div class="card" data-id="mount-tv-on-wall-hide-cables-001" data-tags="repairs">
+<h3>Mount TV on wall + hide cables</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Mount TV on wall + hide cables.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Dog walking (x3)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Salford (M5–M50) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=mount-tv-on-wall-hide-cables-001">See details</a>
+</div>
+</div><div class="card" data-id="unblock-sink-slow-drain-001" data-tags="repairs plumbing">
+<h3>Unblock sink / slow drain</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Unblock sink / slow drain.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Paint touch-ups (1–2 hours)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Stockport (SK1–SK8) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.6★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=unblock-sink-slow-drain-001">See details</a>
+</div>
+</div><div class="card" data-id="build-ikea-desk-chair-001" data-tags="repairs">
+<h3>Build IKEA desk + chair</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Build IKEA desk + chair.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Basic tech help (Wi‑Fi/printer)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 St Helens (WA9–WA11) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=build-ikea-desk-chair-001">See details</a>
+</div>
+</div><div class="card" data-id="end-of-tenancy-clean-1-bed-flat-001" data-tags="cleaning">
+<h3>End-of-tenancy clean (1 bed flat)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>End-of-tenancy clean.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Gardening (mow + tidy)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Liverpool (L1–L20) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=end-of-tenancy-clean-1-bed-flat-001">See details</a>
+</div>
+</div><div class="card" data-id="fix-squeaky-floorboards-2-door-latches-001" data-tags="repairs">
+<h3>Fix squeaky floorboards + 2 door latches</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Fix squeaky floorboards + 2 door latches.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help assembling flat-pack</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Bury (BL8–BL9) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-10">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.7★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=fix-squeaky-floorboards-2-door-latches-001">See details</a>
+</div>
+</div><div class="card" data-id="weeding-tidy-borders-2-hours-001" data-tags="gardens">
+<h3>Weeding + tidy borders (2 hours)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Weeding + tidy borders.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Window cleaning (front)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Oldham (OL1–OL9) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-09">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.9★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=weeding-tidy-borders-2-hours-001">See details</a>
+</div>
+</div><div class="card" data-id="replace-3-fence-slats-screws-001" data-tags="repairs">
+<h3>Replace 3 fence slats + screws</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Replace 3 fence slats + screws.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Car wash + interior vacuum</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Rochdale (OL11–OL16) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-07">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=replace-3-fence-slats-screws-001">See details</a>
+</div>
+</div><div class="card" data-id="paint-hallway-stairs-light-prep-001" data-tags="painting">
+<h3>Paint hallway + stairs (light prep)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Paint hallway + stairs.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help moving boxes (2 hours)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Manchester (M1–M20) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-05">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=paint-hallway-stairs-light-prep-001">See details</a>
+</div>
+</div><div class="card" data-id="change-4-sockets-like-for-like-001" data-tags="repairs">
+<h3>Change 4 sockets (like-for-like)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Change 4 sockets.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Flat-pack assembly (small)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Help moving / lifting (1–2 hours)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Leigh (WN7) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=change-4-sockets-like-for-like-001">See details</a>
+</div>
+</div><div class="card" data-id="replace-shower-head-reseal-tray-001" data-tags="repairs plumbing">
+<h3>Replace shower head + reseal tray</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Replace shower head + reseal tray.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Gardening hedge trim</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Preston (PR1–PR5) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-19">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.7★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=replace-shower-head-reseal-tray-001">See details</a>
+</div>
+</div><div class="card" data-id="install-2-curtain-rails-001" data-tags="repairs">
+<h3>Install 2 curtain rails</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Install 2 curtain rails.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Dog sitting (half day)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Blackburn (BB1–BB2) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=install-2-curtain-rails-001">See details</a>
+</div>
+</div><div class="card" data-id="weekly-clean-2-hours-001" data-tags="cleaning">
+<h3>Weekly clean (2 hours)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Weekly clean.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help with DIY (drilling/holding)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Southport (PR8) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-18">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.6★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=weekly-clean-2-hours-001">See details</a>
+</div>
+</div><div class="card" data-id="clear-leaves-compost-tidy-001" data-tags="repairs">
+<h3>Clear leaves + compost tidy</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Clear leaves + compost tidy.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Paint one wall / feature wall</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Sefton (L30–L38) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-verified">Verified ID</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=clear-leaves-compost-tidy-001">See details</a>
+</div>
+</div><div class="card" data-id="assemble-bunk-bed-001" data-tags="repairs">
+<h3>Assemble bunk bed</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Assemble bunk bed.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help lifting + moving (stairs)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Liverpool (L1–L20) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-17">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=assemble-bunk-bed-001">See details</a>
+</div>
+</div><div class="card" data-id="fix-loose-kitchen-cupboard-doors-001" data-tags="repairs">
+<h3>Fix loose kitchen cupboard doors</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Fix loose kitchen cupboard doors.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Clean windows + frames</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Manchester (M1–M20) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.9★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=fix-loose-kitchen-cupboard-doors-001">See details</a>
+</div>
+</div><div class="card" data-id="bleed-radiators-check-pressure-001" data-tags="repairs plumbing">
+<h3>Bleed radiators + check pressure</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Bleed radiators + check pressure.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help building shelves</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Bolton (BL1–BL6) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-16">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=bleed-radiators-check-pressure-001">See details</a>
+</div>
+</div><div class="card" data-id="prep-paint-skirting-1-room-001" data-tags="painting">
+<h3>Prep + paint skirting (1 room)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Prep + paint skirting.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Garden tidy (2 hours)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Wigan (WN1–WN6) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-15">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 5.0★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=prep-paint-skirting-1-room-001">See details</a>
+</div>
+</div><div class="card" data-id="fit-new-smoke-alarm-test-001" data-tags="repairs">
+<h3>Fit new smoke alarm + test</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Fit new smoke alarm + test.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Deep clean bathroom</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Salford (M5–M50) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-14">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.8★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=fit-new-smoke-alarm-test-001">See details</a>
+</div>
+</div><div class="card" data-id="carpet-clean-living-room-001" data-tags="cleaning">
+<h3>Carpet clean (living room)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Carpet clean.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Flat-pack assembly</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Leeds (LS1–LS10) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-13">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-new">New listing</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=carpet-clean-living-room-001">See details</a>
+</div>
+</div><div class="card" data-id="mow-strim-small-garden-001" data-tags="gardens">
+<h3>Mow + strim small garden</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Mow + strim small garden.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Help with tip run</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 St Helens (WA9–WA11) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-12">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.9★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=mow-strim-small-garden-001">See details</a>
+</div>
+</div><div class="card" data-id="put-up-3-shelves-straight-level-001" data-tags="repairs">
+<h3>Put up 3 shelves (straight + level)</h3>
+<div class="card-need">
+<span class="label">Needs</span>
+<p>Put up 3 shelves.</p>
+</div>
+<div class="card-offers">
+<span class="label">Offers (choose one)</span>
+<ul class="offer-list">
+<li>Basic plumbing help (tap)</li>
+<li>Garden tidy / hedge trim (1–2 hours)</li>
+<li>Flat-pack assembly (small)</li>
+</ul>
+</div>
+<div class="meta-bar">
+<div class="meta-left">
+<span class="meta-loc">📍 Stockport (SK1–SK8) • Local</span>
+</div>
+<div class="meta-right">
+<span class="meta-posted posted" data-posted="2026-01-11">Posted: —</span>
+</div>
+<div class="meta-bottom">
+<span class="trust-pill trust-rated">Rated 4.9★</span>
+</div>
+</div>
+<div class="card-actions">
+<a class="btn btn-primary" href="/trade?id=put-up-3-shelves-straight-level-001">See details</a>
+</div>
+</div>
+</div>
 </section>
 <section class="section">
 <div class="cta-band">
@@ -814,15 +1617,12 @@
     const btn = document.querySelector('.menu-toggle');
     if(!nav) return;
     const isOpen = nav.classList.toggle('active');
-    if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+    if(btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
-
-  // Close menu after tapping a link (mobile)
   document.addEventListener('click', function(e){
     const nav = document.querySelector('.nav-links');
     const btn = document.querySelector('.menu-toggle');
     if(!nav || !btn) return;
-
     const clickedLink = e.target && e.target.closest && e.target.closest('.nav-links a');
     if(clickedLink && nav.classList.contains('active')){
       nav.classList.remove('active');
@@ -831,32 +1631,43 @@
   });
 </script>
 <script>
+  // Search + location + quick chips filtering
   (function() {
     const q = document.getElementById('q');
     const where = document.getElementById('where');
     const cards = Array.from(document.querySelectorAll('.cards .card'));
+    const chipButtons = Array.from(document.querySelectorAll('.pill-btn'));
+    let activeChip = "";
 
     function normalize(s) { return (s || '').toLowerCase(); }
 
-    function apply() {
-      const qv = normalize(q && q.value);
-      const wv = normalize(where && where.value);
+    function cardSearchText(card){
+      const title = card.querySelector('h3')?.innerText || '';
+      const need = card.querySelector('.card-need p')?.innerText || '';
+      const offers = Array.from(card.querySelectorAll('.offer-list li')).map(li => li.innerText).join(' ');
+      return normalize(title + " " + need + " " + offers);
+    }
+
+    function cardLocationText(card){
+      const loc = card.querySelector('.meta-loc')?.innerText || '';
+      return normalize(loc + " " + card.innerText);
+    }
+
+    function cardTagsText(card){
+      return normalize(card.getAttribute('data-tags') || '');
+    }
+
+    function apply(){
+      const qv = normalize(q?.value);
+      const wv = normalize(where?.value);
 
       cards.forEach(card => {
-        // Search should match only:
-        //  - post title (h3)
-        //  - "Trade for:" line (first p in card)
-        const titleEl = card.querySelector('h3');
-        const tradeEl = card.querySelector('p');
-        const searchText = normalize((titleEl ? titleEl.innerText : '') + ' ' + (tradeEl ? tradeEl.innerText : ''));
-
-        // Location should match listing meta (postcode/town). Fallback to full card text.
-        const metaEl = card.querySelector('.listing-meta');
-        const locationText = normalize(metaEl ? metaEl.innerText : card.innerText);
+        const searchText = cardSearchText(card);
+        const locationText = cardLocationText(card);
+        const tagsText = cardTagsText(card);
 
         const matchesQ = !qv || searchText.includes(qv);
 
-        // Loose location matching: prefix/town substring match
         let matchesW = true;
         if (wv) {
           matchesW = locationText.includes(wv);
@@ -866,17 +1677,31 @@
           }
         }
 
-        card.style.display = (matchesQ && matchesW) ? '' : 'none';
+        const matchesChip = !activeChip || tagsText.includes(activeChip);
+
+        card.style.display = (matchesQ && matchesW && matchesChip) ? '' : 'none';
       });
     }
 
-    // Auto-filter as you type / change
-    q && q.addEventListener('input', apply);
-    where && where.addEventListener('input', apply);
-    q && q.addEventListener('change', apply);
-    where && where.addEventListener('change', apply);
+    q?.addEventListener('input', apply);
+    where?.addEventListener('input', apply);
 
-    // Initial pass
+    chipButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const chip = btn.getAttribute('data-chip') || '';
+        const isActive = btn.classList.contains('active');
+
+        chipButtons.forEach(b => b.classList.remove('active'));
+        activeChip = "";
+
+        if (!isActive) {
+          btn.classList.add('active');
+          activeChip = chip;
+        }
+        apply();
+      });
+    });
+
     apply();
   })();
 </script>
@@ -903,5 +1728,6 @@
       el.textContent = labelFromDays(d);
     });
   })();
-</script></body>
+</script>
+</body>
 </html>

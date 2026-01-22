@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>TradBarter — Trade details</title>
+<style>
+    :root{
+      --navy:#0B2E59; --light:#DBEAF7; --orange:#F7941D;
+      --text:#0B2E59; --muted:#4B6B87; --card:#fff;
+      --border:#D3E5F7; --shadow:0 6px 18px rgba(0,0,0,0.08);
+      --radius:12px;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif; background:#fff; color:var(--text); line-height:1.5; }
+
+    .top-nav{
+      position:sticky; top:0; z-index:100;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 20px;
+      background:linear-gradient(to bottom, #cfe3f4 0%, #bcd6ee 100%);
+      border-bottom:2px solid rgba(0,0,0,0.08);
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .brand img{ height:104px; width:auto; display:block; object-fit:contain; }
+    .nav-links{ display:flex; gap:10px; align-items:center; }
+    .nav-links a{ text-decoration:none; color:var(--navy); font-weight:800; padding:10px 12px; border-radius:10px; }
+    .nav-cta{ background:var(--orange); color:#fff; border-radius:12px; padding:10px 14px; }
+
+    .hero{
+      background:linear-gradient(180deg,var(--light), #ffffff 65%);
+      padding: 28px 18px 18px;
+    }
+    .wrap{ max-width:1100px; margin:0 auto; }
+    h1{ font-size:34px; letter-spacing:-0.02em; line-height:1.15; margin-bottom:10px; }
+    .sub{ color:var(--muted); margin-bottom: 12px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:16px;
+      padding: 18px 18px 26px;
+    }
+    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .meta-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top: 8px;
+    }
+    .pill{
+      display:inline-flex; align-items:center;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(11,46,89,0.14);
+      background: rgba(11,46,89,0.04);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .section-title{ font-size:14px; font-weight:900; margin: 0 0 8px; }
+    ul{ padding-left: 18px; }
+    li{ margin: 6px 0; color:var(--muted); }
+
+    .snapshot{
+      border:1px solid rgba(0,0,0,0.10);
+      background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .snapshot h3{ font-size:14px; margin-bottom:8px; }
+    .snapshot .line{ display:flex; gap:10px; margin: 6px 0; color: var(--muted); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:900;
+      text-decoration:none;
+      border:1px solid transparent;
+      box-shadow:0 2px 6px rgba(0,0,0,0.10);
+      white-space:nowrap;
+    }
+    .btn-primary{ background:var(--orange); color:#fff; width:100%; }
+    .btn-ghost{
+      background:transparent; color:var(--navy);
+      border:1px solid rgba(11,46,89,0.18);
+      width:100%;
+      box-shadow:none;
+    }
+    .small-note{ margin-top:10px; color:var(--muted); font-size:13px; }
+  
+
+/* === Standard header (match index) === */
+.top-nav{
+  position:sticky; top:0; z-index:100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  background:linear-gradient(to bottom, #cfe3f4 0%, #bcd6ee 100%);
+  border-bottom:2px solid rgba(0,0,0,0.08);
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+.brand{display:flex; align-items:center; gap:12px; min-width:0;}
+.brand img{ height:128px; width:auto; max-width:none; display:block; object-fit:contain; }
+
+.menu-toggle{
+  display:none;
+  border:0;
+  background:transparent;
+  border-radius:12px;
+  padding:10px 12px;
+  cursor:pointer;
+  flex-direction:column; gap:4px; align-items:center; justify-content:center;
+}
+.menu-toggle:focus{outline:2px solid rgba(247,148,29,0.35); outline-offset:2px;}
+.menu-toggle span{display:block;height:2px;width:22px;background:var(--navy);margin:0;border-radius:2px;}
+
+.nav-links{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--navy);
+  font-weight:800;
+  font-size:15px;
+  padding:10px 12px;
+  border-radius:10px;
+}
+.nav-links a:hover{background:rgba(11,46,89,0.07);}
+.nav-login{ padding:10px 14px; border-radius:10px; font-weight:800; }
+.nav-cta{
+  padding:10px 14px;
+  border-radius:12px;
+  background:var(--orange);
+  color:#fff;
+  font-weight:900;
+  box-shadow:0 6px 18px rgba(247,148,29,0.25);
+}
+.nav-cta:hover{filter:brightness(0.97);}
+
+@media (max-width: 820px){
+  .brand img{ height:104px; }
+  .menu-toggle{display:flex; align-items:center; justify-content:center; line-height:0;}
+  .nav-links{
+    display:none;
+    position:absolute;
+    left:0; right:0; top:100%;
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:6px;
+    padding:12px 16px 16px;
+    background:linear-gradient(to bottom,var(--header-bg, #cfe3f4) 0%, var(--header-bg2, #bcd6ee) 100%);
+    border-bottom:1px solid rgba(0,0,0,0.08);
+    box-shadow:0 12px 22px rgba(0,0,0,0.10);
+  }
+  .nav-links.active{display:flex;}
+  .nav-links a{width:100%; text-align:center;}
+}
+
+/* === Trade page cards pop === */
+.card{
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.12) !important;
+}
+</style>
+<script>
+    function toggleMenu(){
+      const nav = document.querySelector('.nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      const isOpen = nav.classList.toggle('active');
+      if(btn){ btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+    }
+    document.addEventListener('click', function(e){
+      const nav = document.querySelector('.nav-links');
+      const btn = document.querySelector('.menu-toggle');
+      if(!nav || !btn) return;
+      const clickedLink = e.target && e.target.closest && e.target.closest('.nav-links a');
+      if(clickedLink && nav.classList.contains('active')){
+        nav.classList.remove('active');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  </script></head>
+<body>
+<div class="top-nav">
+<div class="brand">
+<a aria-label="TradBarter home" href="/">
+<picture>
+<source srcset="/static/img/tradbarter-horizontal.svg?v=2" type="image/svg+xml"/>
+<img alt="TradBarter" src="/static/img/tradbarter-horizontal.png?v=2"/>
+</picture>
+</a>
+</div>
+<button aria-expanded="false" aria-label="Open menu" class="menu-toggle" onclick="toggleMenu()" type="button">
+<span></span><span></span><span></span>
+</button>
+<nav aria-label="Primary" class="nav-links">
+<a href="/browse">Browse</a>
+<a class="nav-login" href="/account?mode=login">Login</a>
+<a class="nav-cta" href="/account?mode=signup">Sign Up</a>
+</nav>
+</div>
+<header class="hero">
+<div class="wrap">
+<h1 id="title">Trade details</h1>
+<p class="sub" id="lead">See what’s needed, what’s offered, and agree upfront before anything starts.</p>
+<div class="meta-row">
+<span id="loc">📍 —</span>
+<span class="pill" id="trust">—</span>
+<span id="posted">Posted: —</span>
+</div>
+</div>
+</header>
+<main class="wrap">
+<div class="grid">
+<div class="card">
+<div class="section-title">Needs</div>
+<p id="needText" style="color:var(--muted); margin-bottom:14px;">—</p>
+<div class="section-title">Offers (choose one)</div>
+<ul id="offersList"></ul>
+<div class="section-title" style="margin-top:14px;">Fairness</div>
+<p style="color:var(--muted);">
+          Trades are agreed upfront — scope, time, and expectations — before anything starts.
+        </p>
+</div>
+<div class="card">
+<div class="snapshot">
+<h3>Fair Trade Snapshot</h3>
+<div class="line">⏱ <span id="timeEstimate">Estimated time: —</span></div>
+<div class="line">🔁 <span>Clear exchange: pick one offer and agree details</span></div>
+<div class="line">✅ <span>Agreed before work begins</span></div>
+<div class="line">📍 <span>Local swap</span></div>
+</div>
+<div style="margin-top:12px;">
+<a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade" id="messageBtn">Message / propose trade</a>
+<p class="small-note">Free account required to message. No payment details.</p>
+</div>
+<div style="margin-top:10px;">
+<a class="btn btn-ghost" href="/browse">Back to browse</a>
+</div>
+</div>
+</div>
+</main>
+<script>
+    // Static MVP data. Replace with API later.
+    const TRADES = {};
+    // Build TRADES from the browse cards if needed later. For now, provide a fallback.
+    TRADES["default"] = {
+      title: "Trade details",
+      need: "—",
+      offers: ["—","—","—"],
+      location: "📍 Local",
+      trust: "New listing",
+      postedISO: "2026-01-19",
+      est: "1–2 hours"
+    };
+
+    function daysBetween(a,b){
+      const ms = 24*60*60*1000;
+      return Math.floor((a - b)/ms);
+    }
+    function labelFromDays(d){
+      if(d <= 0) return "Posted: Today";
+      if(d === 1) return "Posted: 1 day ago";
+      if(d < 7) return "Posted: " + d + " days ago";
+      const w = Math.floor(d/7);
+      if(w === 1) return "Posted: 1 week ago";
+      return "Posted: " + w + " weeks ago";
+    }
+
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id") || "default";
+
+      const t = TRADES[id] || TRADES["default"];
+
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("needText").innerText = t.need;
+      document.getElementById("loc").innerText = t.location;
+      document.getElementById("trust").innerText = t.trust;
+      document.getElementById("timeEstimate").innerText = "Estimated time: " + t.est;
+
+      const now = new Date();
+      const dt = new Date(t.postedISO + "T00:00:00");
+      const d = daysBetween(now, dt);
+      document.getElementById("posted").innerText = labelFromDays(d);
+
+      const ul = document.getElementById("offersList");
+      ul.innerHTML = "";
+      (t.offers || []).slice(0,3).forEach(x => {
+        const li = document.createElement("li");
+        li.innerText = x;
+        ul.appendChild(li);
+      });
+
+      const nextUrl = "/trade?id=" + encodeURIComponent(id);
+      document.getElementById("messageBtn").href = "/account?mode=signup&next=" + encodeURIComponent(nextUrl);
+      document.getElementById("signupTop").href = "/account?mode=signup&next=" + encodeURIComponent(nextUrl);
+    })();
+  </script>
+</body>
+</html>
