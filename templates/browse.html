@@ -397,7 +397,7 @@
 .filter-card .field input,
 .filter-card .field select{
   width: 100%;
-  min-height: 46px;
+  min-height: 40px;
   border: 1px solid rgba(0,0,0,0.12) !important;
   background: #fff !important;
   color: var(--text) !important;
@@ -708,7 +708,7 @@
 /* === Search highlight block (subtle, professional) === */
 .filter-card{
   border: 1px solid rgba(11,46,89,0.15) !important;
-  box-shadow: 0 8px 22px rgba(11,46,89,0.08) !important;
+  box-shadow: 0 6px 16px rgba(11,46,89,0.06) !important;
   background: #ffffff !important;
   margin-top: 16px; /* breathing room from header */
 }
@@ -746,7 +746,7 @@
 
 @media (min-width: 768px){
   .filter-card{
-    padding: 26px 28px;
+    padding: 18px 22px;
   }
 }
 /* === End search block sizing refinement === */
@@ -793,6 +793,114 @@
   white-space: nowrap;
 }
 /* === End trades completed meta === */
+
+
+/* === Filter sizing override (final) === */
+.filter-card{
+  padding: 16px 18px !important;
+  box-shadow: 0 6px 16px rgba(11,46,89,0.06) !important;
+}
+@media (min-width: 768px){
+  .filter-card{
+    padding: 18px 22px !important;
+  }
+}
+.filter-card .field input,
+.filter-card .field select{
+  min-height: 40px !important;
+  border-radius: 12px !important;
+  padding: 9px 11px !important;
+}
+/* === End filter sizing override === */
+
+
+/* === Reduced search & filter width (minimal change) === */
+.filter-card{
+  max-width: 860px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-card .filters{
+  grid-template-columns: 1.6fr 1fr !important;
+  gap: 14px !important;
+}
+
+.filter-card .field input{
+  max-width: 100%;
+}
+/* === End reduced search & filter width === */
+
+/* === Contain filter row within the search box width === */
+.filter-card .filters{
+  max-width: 760px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* === End contain filter row === */
+
+
+
+/* === Fix filter overlap + keep contained (final) === */
+.filter-card .filters{
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  grid-template-columns: 1.6fr 1fr !important;
+  gap: 14px !important;
+}
+
+/* Kill fixed min-widths that cause overlap */
+.filter-card .search-input,
+.filter-card .location-input,
+.filter-card input[type="search"],
+.filter-card input[type="text"]{
+  min-width: 0 !important;
+  width: 100% !important;
+}
+/* === End fix filter overlap === */
+
+
+/* === Force filters left-aligned === */
+.filter-card{
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.filter-card .filters{
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+/* === End force left-aligned === */
+
+
+/* === Actually reduce space between reassurance and filters === */
+.notice-highlight{
+  margin-top: 4px !important;
+}
+.filter-card{
+  margin-bottom: 8px !important;
+}
+/* === End spacing reduction === */
+
+
+/* === Further tighten reassurance <-> filters spacing === */
+.notice-highlight{
+  margin-top: 2px !important;
+}
+.filter-card{
+  margin-bottom: 4px !important;
+}
+/* === End further tighten === */
+
+
+/* === Final micro-tighten (last notch) === */
+.notice-highlight{
+  margin-top: 0px !important;
+}
+.filter-card{
+  margin-bottom: 2px !important;
+}
+/* === End final micro-tighten === */
 
 </style>
 <script>
@@ -861,6 +969,8 @@
     Trades are agreed upfront — scope, time, and expectations — before anything starts.
   </strong>
 </div>
+
+<div id="resultsCount" class="helper" style="margin: 6px 0 14px; text-align:left; max-width:1100px;">Showing —</div>
 
 <div class="cards">
 <div class="card" data-id="flat-pack-wardrobe-assembly-ikea-style-001" data-tags="repairs">
@@ -1917,6 +2027,103 @@
     });
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && overlay && overlay.classList.contains('active')) closeGate();
+    });
+  })();
+</script>
+
+
+<script>
+  (function(){
+    const cards = Array.from(document.querySelectorAll('.cards .card'));
+    const BATCH = 12;
+    let visible = BATCH;
+
+    const countEl = document.getElementById('resultsCount');
+    function updateCount(){
+      const total = cards.length;
+      const shown = cards.filter(c => c.style.display !== 'none').length;
+      if(countEl){
+        countEl.textContent = `Showing ${shown} of ${total} trades`;
+      }
+    }
+    // Expose for the filter script to call after it hides/shows cards
+    window.__tbUpdateCount = updateCount;
+
+    function update(){
+      cards.forEach((card, i) => {
+        card.style.display = i < visible ? '' : 'none';
+      });
+      if (visible >= cards.length) {
+        loadMoreBtn.style.display = 'none';
+      }
+      updateCount();
+    }
+
+    const loadMoreBtn = document.createElement('button');
+    loadMoreBtn.className = 'btn btn-secondary';
+    loadMoreBtn.textContent = 'Load more trades';
+    loadMoreBtn.style.margin = '26px auto 0';
+    loadMoreBtn.style.display = 'block';
+
+    loadMoreBtn.addEventListener('click', () => {
+      visible += BATCH;
+      update();
+    });
+
+    const cardsWrap = document.querySelector('.cards');
+    if(cardsWrap){
+      cardsWrap.after(loadMoreBtn);
+    }
+
+    update();
+  })();
+</script>
+
+
+
+
+
+<script>
+  (function(){
+    let loadMoreClicked = false;
+
+    // Hook into existing Load More button
+    const observer = new MutationObserver(() => {
+      const loadBtn = document.querySelector('button.btn.btn-secondary');
+      if(loadBtn && !loadBtn.dataset.bound){
+        loadBtn.dataset.bound = 'true';
+        loadBtn.addEventListener('click', () => {
+          loadMoreClicked = true;
+        });
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Back to top';
+    btn.className = 'btn btn-ghost';
+    btn.style.position = 'fixed';
+    btn.style.right = '20px';
+    btn.style.bottom = '20px';
+    btn.style.display = 'none';
+    btn.style.zIndex = '1000';
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+      if (!loadMoreClicked) {
+        btn.style.display = 'none';
+        return;
+      }
+      if (window.scrollY > 1200) {
+        btn.style.display = 'inline-flex';
+      } else {
+        btn.style.display = 'none';
+      }
     });
   })();
 </script>
