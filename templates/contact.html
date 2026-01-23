@@ -416,6 +416,15 @@
 
   
 .nav-spacer{ flex: 1; }
+
+/* === Contact CTAs: equal size (hard override) === */
+@media (max-width: 600px){
+  a.btn[href="/browse"][style*="width:220px"],
+  button.btn.btn-primary[style*="width:220px"]{
+    width: 100% !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -438,12 +447,7 @@
         <p class="lead" style="margin: 10px 0 0;">
           Got feedback, a bug, or a question? Send it over. We read everything.
         </p>
-        <div class="help-row" style="margin-top: 12px;">
-          <span class="help-pill">📍 UK-first</span>
-          <span class="help-pill">🛠️ Building in public</span>
-          <span class="help-pill">🤝 Community-led</span>
-        </div>
-      </div>
+</div>
     </div>
   </header>
 
@@ -473,9 +477,9 @@
             <textarea id="message" name="message" placeholder="Tell us what happened, what you expected, and what device you’re on if it’s a bug." required></textarea>
           </div>
 
-          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top: 16px; flex-wrap:wrap;">
-            <a class="btn btn-ghost" href="/browse">Browse trades</a>
-            <button class="btn btn-primary" type="submit">Send message</button>
+          <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px; flex-wrap:wrap;">
+            <a class="btn btn-secondary" href="/browse" style="width:220px; display:inline-flex; justify-content:center;">Browse trades</a>
+            <button class="btn btn-primary" type="submit" style="width:220px; display:inline-flex; justify-content:center;">Send message</button>
           </div>
 
           <p class="helper" style="margin-top: 10px;">
