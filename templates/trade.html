@@ -96,6 +96,8 @@
       white-space:nowrap;
     }
     .btn-primary{ background:var(--orange); color:#fff; width:100%; }
+    .btn-secondary{ background:var(--navy); color:#fff; width:100%; }
+    .btn-secondary:hover{ background:#062241; }
     .btn-ghost{
       background:transparent; color:var(--navy);
       border:1px solid rgba(11,46,89,0.18);
@@ -218,7 +220,6 @@
 <nav aria-label="Primary" class="nav-links">
 <a href="/browse">Browse</a>
 <a class="nav-login" href="/account?mode=login">Login</a>
-<a class="nav-cta" href="/account?mode=signup">Sign Up</a>
 </nav>
 </div>
 <header class="hero">
@@ -252,17 +253,23 @@
 <div class="line">✅ <span>Agreed before work begins</span></div>
 <div class="line">📍 <span>Local swap</span></div>
 </div>
+
 <div style="margin-top:12px;">
-<a class="btn btn-primary" href="/account?mode=signup&amp;next=/trade" id="messageBtn">Message / propose trade</a>
-<p class="small-note">Free account required to message. No payment details.</p>
+  <a class="btn btn-primary" href="/login" id="messageBtn">Log in to message</a>
+  <p class="small-note">
+    New here?
+    <a href="/signup" id="signupLink">Create an account</a>
+  </p>
 </div>
+
 <div style="margin-top:10px;">
-<a class="btn btn-ghost" href="/browse">Back to browse</a>
+<a class="btn btn-secondary" href="/browse">Back to browse</a>
 </div>
 </div>
 </div>
 </main>
 <script>
+    const LOGGED_IN = {{ "true" if logged_in else "false" }};
     // Static MVP data. Replace with API later.
     const TRADES = {};
     // Build TRADES from the browse cards if needed later. For now, provide a fallback.
@@ -315,8 +322,18 @@
       });
 
       const nextUrl = "/trade?id=" + encodeURIComponent(id);
-      document.getElementById("messageBtn").href = "/account?mode=signup&next=" + encodeURIComponent(nextUrl);
-      document.getElementById("signupTop").href = "/account?mode=signup&next=" + encodeURIComponent(nextUrl);
+      const mb = document.getElementById("messageBtn");
+      if(mb){
+        if(LOGGED_IN){
+          mb.textContent = "Message / propose trade";
+          mb.href = "/propose-trade/" + encodeURIComponent(id);
+        } else {
+          mb.textContent = "Log in to message";
+          mb.href = "/login?next=" + encodeURIComponent(nextUrl);
+        }
+      }
+      document.getElementById("signupTop").href = "/signup?next=" + encodeURIComponent(nextUrl);
+      const sl = document.getElementById("signupLink"); if(sl){ sl.href = "/signup?next=" + encodeURIComponent(nextUrl); }
     })();
   </script>
 </body>
